@@ -153,14 +153,17 @@ public class clientenovoJpaController implements Serializable {
      * @param mes
      * @return
      */
-    public List getclienteaniversario (int mes){
+    public List getclienteaniversario (){
               
        EntityManager em = getEntityManager();
-       // return (clientenovo)em.createQuery("select nome,date_part ('day', data_nasc) as mes from clientenovo where date_part ('month', data_nasc) ="+ mes).getResultList();
+     
        //select p from produto p where p.qtd <=2
-       return em.createQuery("select c from clientenovo c where c.data_nasc="+ mes).getResultList();
-       //return (clientenovo)em.createQuery("(select nome, date_part ('day', data_nasc) from clientenovo where date_part ('month', data_nasc)) ="+ mes).getSingleResult();
+       //SELECT DATE_PART('MONTH', CURRENT_TIMESTAMP) AS mes;
+       //return em.createQuery("select c from clientenovo c where c.data_nasc = 12").getResultList();
        
+      // return em.createQuery("select c from clientenovo c where c.data_nasc.MONTH = 12").getResultList();
+       //return em.createQuery("select c from clientenovo c where date_part ('month',c.data_nasc) = 1").getResultList();
+       return em.createQuery("select c from clientenovo c where Extract ('month' from c.data_nasc) = 1").getResultList();
     } 
       
 }

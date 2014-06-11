@@ -68,9 +68,11 @@ public class ConnectionFactory {
     public static Connection getSalaoBelezaConnection() throws SQLException {
  
         return getConnection(
-                "jdbc:postgresql://localhost:5433/salao.beleza",
+                "jdbc:postgresql://localhost:5433/salao.beleza,"
+                        + " defaultResultSetHoldable=True" ,
                 "postgres",
-                "petecO12" );
+                "petecO12" 
+        );
  
     }
  

@@ -174,7 +174,7 @@ public class Aniversarios extends javax.swing.JFrame {
         mes = 02;
         }
         
-        List l = (List) new clientenovoJpaController().getclienteaniversario(mes);
+        List l = (List) new clientenovoJpaController().getclienteaniversario();
         
         //List l = new clientenovoJpaController().findclientenovoEntities();
         lstaniversario.setListData(l.toArray());
