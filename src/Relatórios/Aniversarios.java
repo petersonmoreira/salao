@@ -169,16 +169,47 @@ public class Aniversarios extends javax.swing.JFrame {
 
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
 
-        String mes = null;  
-       
-   // switch (mes) {
-     //   case (cbomes.getSelectedItem() == "Janeiro"):
-       // mes ="01";
-    //}
+        int mes = 0;  
+        
+        if (cbomes.getSelectedItem() == "Março"){
+            mes = 03;
+           }
+        if (cbomes.getSelectedItem() == "Dezembro"){
+            mes = 12;
+               }
+        if (cbomes.getSelectedItem() == "Setembro"){
+            mes = 9;
+                }
+        if (cbomes.getSelectedItem() == "Janeiro"){
+            mes = 01;
+        }
+        if (cbomes.getSelectedItem() == "Novembro"){
+            mes = 11;
+        }
+        if (cbomes.getSelectedItem() == "Fevereiro"){
+            mes = 02;
+        }
+        if (cbomes.getSelectedItem() == "Abril"){
+            mes = 04;
+        }
+        if (cbomes.getSelectedItem() == "Maio"){
+            mes = 05;
+        }
+         if (cbomes.getSelectedItem() == "Junho"){
+            mes = 06;
+        }
+          if (cbomes.getSelectedItem() == "Julho"){
+            mes = 07;
+        }
+           if (cbomes.getSelectedItem() == "Agosto"){
+            mes = 8;
+        }
+        if (cbomes.getSelectedItem() == "Outubro"){
+            mes = 10;
+        }
         
         List l = (List) new clientenovoJpaController().getclienteaniversario(mes);
         
-        //List l = new clientenovoJpaController().findclientenovoEntities();
         lstaniversario.setListData(l.toArray());
         
     }//GEN-LAST:event_btnbuscarActionPerformed

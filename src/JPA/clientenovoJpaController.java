@@ -153,7 +153,7 @@ public class clientenovoJpaController implements Serializable {
      * @param mes
      * @return
      */
-    public List getclienteaniversario (String mes){
+    public List getclienteaniversario (int mes){
               
        EntityManager em = getEntityManager();
      

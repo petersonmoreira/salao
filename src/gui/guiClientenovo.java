@@ -398,10 +398,9 @@ public class guiClientenovo extends javax.swing.JFrame {
 
         txtnome.setText(c.getNome());
         txtCpf.setText(c.getId());
-        txtdia.setText(c.getDia());
-        txtmes.setText(c.getMes());
-        txtano.setText(c.getAno());
-//txtdatanasc.setCalendar(c.getData_nasc());
+        txtdia.setText(String.valueOf(c.getDia()));
+        txtmes.setText(String.valueOf(c.getMes()));
+        txtano.setText(String.valueOf(c.getAno()));
         txtemail.setText(c.getEmail());
         txttelefone.setText(c.getTelefone());
         txtendereco.setText(c.getEndereco());
@@ -424,9 +423,9 @@ public class guiClientenovo extends javax.swing.JFrame {
             cliente  = new clientenovo();
             cliente.setNome(txtnome.getText());
             cliente.setId(txtCpf.getText());
-            cliente.setDia(txtdia.getText());
-            cliente.setMes(txtmes.getText());
-            cliente.setAno(txtano.getText());
+            cliente.setDia(Integer.parseInt(txtdia.getText()));
+            cliente.setMes(Integer.parseInt(txtmes.getText()));
+            cliente.setAno(Integer.parseInt(txtano.getText()));
             //cliente.setData_nasc(txtdatanasc.getCalendar());
             cliente.setEmail(txtemail.getText());
             cliente.setTelefone(txttelefone.getText());
@@ -449,9 +448,9 @@ public class guiClientenovo extends javax.swing.JFrame {
 
             txtnome.setText("");
             txtCpf.setText("");
-            txtdia.setText("");
-            txtmes.setText("");
-            txtano.setText("");
+            txtdia.setText("DD");
+            txtmes.setText("MM");
+            txtano.setText("AAAA");
             //txtdatanasc.setCalendar(null);
             txtemail.setText("");
             txttelefone.setText("");
@@ -473,8 +472,9 @@ public class guiClientenovo extends javax.swing.JFrame {
         
         cliente.setNome(txtnome.getText());
         cliente.setId(txtCpf.getText());
-        cliente.setDia(txtdia.getText());
-        cliente.setMes(txtmes.getText());
+        cliente.setDia(Integer.parseInt(txtdia.getText()));
+        cliente.setMes(Integer.parseInt(txtmes.getText()));
+        cliente.setAno(Integer.parseInt(txtano.getText()));
         //cliente.setData_nasc(txtdatanasc.getCalendar());
         cliente.setEmail(txtemail.getText());
         cliente.setTelefone(txttelefone.getText());
@@ -497,9 +497,9 @@ public class guiClientenovo extends javax.swing.JFrame {
 
         txtnome.setText("");
         txtCpf.setText("");
-         txtdia.setText("");
-         txtmes.setText("");
-         txtano.setText("");
+        txtdia.setText("DD");
+        txtmes.setText("MM");
+        txtano.setText("AAAA");
         //txtdatanasc.setCalendar(null);
         txtemail.setText("");
         txttelefone.setText("");
@@ -527,9 +527,9 @@ public class guiClientenovo extends javax.swing.JFrame {
                 //código que cancela a exclusão
                  txtnome.setText("");
                  txtCpf.setText("");
-                 txtdia.setText("");
-                 txtmes.setText("");
-                 txtano.setText("");                 
+                 txtdia.setText("DD");
+                 txtmes.setText("MM");
+                 txtano.setText("AAAA");                 
 //txtdatanasc.setCalendar(null);
                  txtemail.setText("");
                  txttelefone.setText("");
@@ -556,9 +556,9 @@ public class guiClientenovo extends javax.swing.JFrame {
 */
         txtnome.setText("");
         txtCpf.setText("");
-        txtdia.setText("");
-        txtmes.setText("");
-        txtano.setText("");
+        txtdia.setText("DD");
+        txtmes.setText("MM");
+        txtano.setText("AAAA");
         //txtdatanasc.setCalendar(null);
         txtemail.setText("");
         txttelefone.setText("");
@@ -581,9 +581,9 @@ public class guiClientenovo extends javax.swing.JFrame {
 
         txtnome.setText(cliente.getNome());
         txtCpf.setText(cliente.getId());
-        txtdia.setText(cliente.getDia());
-        txtmes.setText(cliente.getMes());
-        txtano.setText(cliente.getAno());
+        txtdia.setText(String.valueOf(cliente.getDia()));
+        txtmes.setText(String.valueOf(cliente.getMes()));
+        txtano.setText(String.valueOf(cliente.getAno()));
         //txtdatanasc.setCalendar(cliente.getData_nasc());
         txtemail.setText(cliente.getEmail());
         txttelefone.setText(cliente.getTelefone());
