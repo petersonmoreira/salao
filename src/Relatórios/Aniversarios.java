@@ -82,6 +82,11 @@ public class Aniversarios extends javax.swing.JFrame {
 
         cbomes.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
         cbomes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }));
+        cbomes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbomesActionPerformed(evt);
+            }
+        });
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -164,26 +169,18 @@ public class Aniversarios extends javax.swing.JFrame {
 
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
 
-      //String mes = null;
-        int mes = 0;// = null;  
+        String mes = null;  
        
-        if (cbomes.getSelectedItem()=="Janeiro"){
-        mes = 01;
-        }
-        if (cbomes.getSelectedItem()=="Fevereiro"){
-        mes = 02;
-        }
+   // switch (mes) {
+     //   case (cbomes.getSelectedItem() == "Janeiro"):
+       // mes ="01";
+    //}
         
-        List l = (List) new clientenovoJpaController().getclienteaniversario();
+        List l = (List) new clientenovoJpaController().getclienteaniversario(mes);
         
         //List l = new clientenovoJpaController().findclientenovoEntities();
         lstaniversario.setListData(l.toArray());
         
-     
-        
-            
-       
-
     }//GEN-LAST:event_btnbuscarActionPerformed
 
     private void btngerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngerarActionPerformed
@@ -192,6 +189,10 @@ public class Aniversarios extends javax.swing.JFrame {
         //new Main().abrirRelatorioClientes();
         // TODO add your handling code here:
     }//GEN-LAST:event_btngerarActionPerformed
+
+    private void cbomesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbomesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbomesActionPerformed
 
     /**
      * @param args the command line arguments

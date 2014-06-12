@@ -61,7 +61,11 @@ public class guiClientenovo extends javax.swing.JFrame {
         btnexcluir = new javax.swing.JToggleButton();
         btnbuscar = new javax.swing.JButton();
         btnnovo = new javax.swing.JToggleButton();
-        txtdatanasc = new com.toedter.calendar.JDateChooser();
+        txtdia = new javax.swing.JTextField();
+        txtmes = new javax.swing.JTextField();
+        txtano = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -120,7 +124,7 @@ public class guiClientenovo extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel2.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
         jLabel2.setText("Nome:");
@@ -160,6 +164,7 @@ public class guiClientenovo extends javax.swing.JFrame {
         jLabel7.setText("Endereço:");
 
         txtemail.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
+        txtemail.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         jLabel8.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
         jLabel8.setText("E-mail:");
@@ -219,7 +224,40 @@ public class guiClientenovo extends javax.swing.JFrame {
             }
         });
 
-        txtdatanasc.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
+        txtdia.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
+        txtdia.setText("DD");
+        txtdia.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtdiaFocusGained(evt);
+            }
+        });
+
+        txtmes.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
+        txtmes.setText("MM");
+        txtmes.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtmesFocusGained(evt);
+            }
+        });
+
+        txtano.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
+        txtano.setText("AAAA");
+        txtano.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtanoActionPerformed(evt);
+            }
+        });
+        txtano.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtanoFocusGained(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
+        jLabel9.setText("/");
+
+        jLabel10.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
+        jLabel10.setText("/");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -232,6 +270,34 @@ public class guiClientenovo extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel8))
+                                .addGap(25, 25, 25)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txtemail, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txttelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(optf)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(optm)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel4)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtdia, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(5, 5, 5)
+                                        .addComponent(jLabel10)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(txtmes, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(5, 5, 5)
+                                        .addComponent(jLabel9)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(txtano, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3))
@@ -242,27 +308,7 @@ public class guiClientenovo extends javax.swing.JFrame {
                                         .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnbuscar))
-                                    .addComponent(txtnome)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel8))
-                                .addGap(25, 25, 25)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txtemail, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txttelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(optf)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(optm)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel4)
-                                        .addGap(37, 37, 37)
-                                        .addComponent(txtdatanasc, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(txtnome))))
                         .addContainerGap(34, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnexcluir)
@@ -283,18 +329,20 @@ public class guiClientenovo extends javax.swing.JFrame {
                     .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnbuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(optf)
-                            .addComponent(optm)))
-                    .addComponent(txtdatanasc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(optf)
+                    .addComponent(optm)
+                    .addComponent(txtdia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtmes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -350,7 +398,10 @@ public class guiClientenovo extends javax.swing.JFrame {
 
         txtnome.setText(c.getNome());
         txtCpf.setText(c.getId());
-        txtdatanasc.setCalendar(c.getData_nasc());
+        txtdia.setText(c.getDia());
+        txtmes.setText(c.getMes());
+        txtano.setText(c.getAno());
+//txtdatanasc.setCalendar(c.getData_nasc());
         txtemail.setText(c.getEmail());
         txttelefone.setText(c.getTelefone());
         txtendereco.setText(c.getEndereco());
@@ -373,7 +424,10 @@ public class guiClientenovo extends javax.swing.JFrame {
             cliente  = new clientenovo();
             cliente.setNome(txtnome.getText());
             cliente.setId(txtCpf.getText());
-            cliente.setData_nasc(txtdatanasc.getCalendar());
+            cliente.setDia(txtdia.getText());
+            cliente.setMes(txtmes.getText());
+            cliente.setAno(txtano.getText());
+            //cliente.setData_nasc(txtdatanasc.getCalendar());
             cliente.setEmail(txtemail.getText());
             cliente.setTelefone(txttelefone.getText());
             cliente.setEndereco(txtendereco.getText());
@@ -395,7 +449,10 @@ public class guiClientenovo extends javax.swing.JFrame {
 
             txtnome.setText("");
             txtCpf.setText("");
-            txtdatanasc.setCalendar(null);
+            txtdia.setText("");
+            txtmes.setText("");
+            txtano.setText("");
+            //txtdatanasc.setCalendar(null);
             txtemail.setText("");
             txttelefone.setText("");
             txtendereco.setText("");
@@ -416,7 +473,9 @@ public class guiClientenovo extends javax.swing.JFrame {
         
         cliente.setNome(txtnome.getText());
         cliente.setId(txtCpf.getText());
-        cliente.setData_nasc(txtdatanasc.getCalendar());
+        cliente.setDia(txtdia.getText());
+        cliente.setMes(txtmes.getText());
+        //cliente.setData_nasc(txtdatanasc.getCalendar());
         cliente.setEmail(txtemail.getText());
         cliente.setTelefone(txttelefone.getText());
         cliente.setEndereco(txtendereco.getText());
@@ -438,7 +497,10 @@ public class guiClientenovo extends javax.swing.JFrame {
 
         txtnome.setText("");
         txtCpf.setText("");
-        txtdatanasc.setCalendar(null);
+         txtdia.setText("");
+         txtmes.setText("");
+         txtano.setText("");
+        //txtdatanasc.setCalendar(null);
         txtemail.setText("");
         txttelefone.setText("");
         txtendereco.setText("");
@@ -465,7 +527,10 @@ public class guiClientenovo extends javax.swing.JFrame {
                 //código que cancela a exclusão
                  txtnome.setText("");
                  txtCpf.setText("");
-                 txtdatanasc.setCalendar(null);
+                 txtdia.setText("");
+                 txtmes.setText("");
+                 txtano.setText("");                 
+//txtdatanasc.setCalendar(null);
                  txtemail.setText("");
                  txttelefone.setText("");
                  txtendereco.setText("");
@@ -491,7 +556,10 @@ public class guiClientenovo extends javax.swing.JFrame {
 */
         txtnome.setText("");
         txtCpf.setText("");
-        txtdatanasc.setCalendar(null);
+        txtdia.setText("");
+        txtmes.setText("");
+        txtano.setText("");
+        //txtdatanasc.setCalendar(null);
         txtemail.setText("");
         txttelefone.setText("");
         txtendereco.setText("");
@@ -511,12 +579,15 @@ public class guiClientenovo extends javax.swing.JFrame {
         
          
 
-        txtnome.setText(cliente.getNome().toString());
-        txtCpf.setText(cliente.getId().toString());
-        txtdatanasc.setCalendar(cliente.getData_nasc());
-        txtemail.setText(cliente.getEmail().toString());
-        txttelefone.setText(cliente.getTelefone().toString());
-        txtendereco.setText(cliente.getEndereco().toString());
+        txtnome.setText(cliente.getNome());
+        txtCpf.setText(cliente.getId());
+        txtdia.setText(cliente.getDia());
+        txtmes.setText(cliente.getMes());
+        txtano.setText(cliente.getAno());
+        //txtdatanasc.setCalendar(cliente.getData_nasc());
+        txtemail.setText(cliente.getEmail());
+        txttelefone.setText(cliente.getTelefone());
+        txtendereco.setText(cliente.getEndereco());
         if (cliente.getSexo().equals("Masculino")){
             optm.setSelected(true);
         } else {
@@ -529,7 +600,10 @@ public class guiClientenovo extends javax.swing.JFrame {
 
         txtnome.setText("");
         txtCpf.setText("");
-        txtdatanasc.setCalendar(null);
+        txtdia.setText("");
+        txtmes.setText("");
+        txtano.setText("");
+        //txtdatanasc.setCalendar(null);
         txtemail.setText("");
         txttelefone.setText("");
         txtendereco.setText("");
@@ -549,6 +623,26 @@ public class guiClientenovo extends javax.swing.JFrame {
         
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
+
+    private void txtanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtanoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtanoActionPerformed
+
+    private void txtdiaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtdiaFocusGained
+
+        txtdia.selectAll();// TODO add your handling code here:
+    }//GEN-LAST:event_txtdiaFocusGained
+
+    private void txtmesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtmesFocusGained
+
+        txtmes.selectAll();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtmesFocusGained
+
+    private void txtanoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtanoFocusGained
+
+        txtano.selectAll();// TODO add your handling code here:
+    }//GEN-LAST:event_txtanoFocusGained
 
     /**
      * @param args the command line arguments
@@ -591,6 +685,7 @@ public class guiClientenovo extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnnovo;
     private javax.swing.JToggleButton btnsalvar1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -598,6 +693,7 @@ public class guiClientenovo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -606,9 +702,11 @@ public class guiClientenovo extends javax.swing.JFrame {
     private javax.swing.JRadioButton optf;
     private javax.swing.JRadioButton optm;
     private javax.swing.JFormattedTextField txtCpf;
-    private com.toedter.calendar.JDateChooser txtdatanasc;
+    private javax.swing.JTextField txtano;
+    private javax.swing.JTextField txtdia;
     private javax.swing.JTextField txtemail;
     private javax.swing.JTextField txtendereco;
+    private javax.swing.JTextField txtmes;
     private javax.swing.JTextField txtnome;
     private javax.swing.JTextField txttelefone;
     // End of variables declaration//GEN-END:variables

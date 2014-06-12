@@ -5,10 +5,10 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Calendar;
+//import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
+//import javax.persistence.Temporal;
 
 /**
  *
@@ -26,8 +26,11 @@ public class clientenovo implements Serializable {
     private String telefone;
     private String email;
     private String endereco;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Calendar data_nasc;
+   // @Temporal(javax.persistence.TemporalType.DATE)
+    private String dia;
+    private String mes;
+    private String ano;
+   // private Calendar data_nasc;
 
     
     public String getId() {
@@ -78,17 +81,31 @@ public class clientenovo implements Serializable {
         this.endereco = endereco;
     }
 
-    public Calendar getData_nasc() {
-        return data_nasc;
+    public String getDia() {
+        return dia;
     }
 
-    public void setData_nasc(Calendar data_nasc) {
-        this.data_nasc = data_nasc;
+    public void setDia(String dia) {
+        this.dia = dia;
+    }
+
+    public String getMes() {
+        return mes;
+    }
+
+    public void setMes(String mes) {
+        this.mes = mes;
+    }
+
+    public String getAno() {
+        return ano;
+    }
+
+    public void setAno(String ano) {
+        this.ano = ano;
     }
 
    
-
-    
     @Override
     public int hashCode() {
         int hash = 0;
