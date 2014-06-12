@@ -52,7 +52,7 @@ public class guiControleEstoque extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         lstprodutos = new javax.swing.JList();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));

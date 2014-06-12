@@ -4,7 +4,10 @@
  */
 package gui;
 
+import JPA.produtoJpaController;
 import Relatórios.JDBC.abrirRelatorioCliente;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -52,6 +55,11 @@ public class principal extends javax.swing.JFrame {
         cadastrarfuncao2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Logo.png"))); // NOI18N
 
@@ -334,11 +342,20 @@ public class principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cadastrarfuncao2ActionPerformed
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+
+      
+// TODO add your handling code here:
+    }//GEN-LAST:event_formWindowActivated
+
     
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
+        
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -366,6 +383,7 @@ public class principal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new principal().setVisible(true);
+                JOptionPane.showMessageDialog(null,"ATENÇÃO: PRODUTOS COM ESTOQUE MÍNIMO" + (List) new produtoJpaController().checarestoque());
             }
         });
     }
