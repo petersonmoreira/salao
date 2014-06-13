@@ -5,7 +5,7 @@
 package Relatórios;
 
 import JPA.clientenovoJpaController;
-import Relatórios.JDBC.abrirRelatorioCliente;
+//import Relatórios.JDBC.abrirRelatorioCliente;
 import java.util.List;
 
 /**
@@ -216,7 +216,7 @@ public class Aniversarios extends javax.swing.JFrame {
 
     private void btngerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngerarActionPerformed
 
-        new abrirRelatorioCliente().abrirRelatorioClientes();
+       // new abrirRelatorioCliente().abrirRelatorioClientes();
         //new Main().abrirRelatorioClientes();
         // TODO add your handling code here:
     }//GEN-LAST:event_btngerarActionPerformed

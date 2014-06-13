@@ -27,14 +27,6 @@ public class ConnectionFactory {
  
             // caso a classe não seja encontrada
         } catch ( ClassNotFoundException exc ) {
- 
-            /*
-             * Como log usaremos o stacktrace das excessões, mas recomendo
-             * que para um projeto real você utilize algum mecanismo de log
-             * melhor, como o Log4J por exemplo.
-             */
-            exc.printStackTrace();
- 
         }
     }
     

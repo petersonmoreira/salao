@@ -5,7 +5,7 @@
 package gui;
 
 import JPA.produtoJpaController;
-import Relatórios.JDBC.abrirRelatorioCliente;
+//import Relatórios.JDBC.abrirRelatorioCliente;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -326,7 +326,7 @@ public class principal extends javax.swing.JFrame {
 
     private void cadastrarfuncao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarfuncao1ActionPerformed
 
-        new abrirRelatorioCliente().abrirRelatorioClientes();
+       // new abrirRelatorioCliente().abrirRelatorioClientes();
        
         
         // TODO add your handling code here:

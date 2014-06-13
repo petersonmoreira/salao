@@ -55,6 +55,7 @@ public class ReportUtils {
      * @throws JRException Caso ocorra algum problema na execução do relatório
      */
     public static void openReport(
+            
             String titulo,
             InputStream inputStream,
             Map parametros,
@@ -66,7 +67,6 @@ public class ReportUtils {
          */
         JasperPrint print = JasperFillManager.fillReport(
                 inputStream, parametros, dataSource );
- 
         // abre o JasperPrint em um JFrame
         viewReportFrame( titulo, print );
  

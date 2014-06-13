@@ -17,11 +17,17 @@ import net.sf.jasperreports.engine.JRException;
  *
  * @author Peterson
  */
-public class abrirRelatorioCliente {
-    
-    public void abrirRelatorioClientes() {
+public class Main {
  
-        /*
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        new Main().abrirRelatorioClientes();
+    }
+ 
+    public void abrirRelatorioClientes() {
+         /*
          * Obtendo o arquivo do relatório.
          * Note que estamos utilizando um InputStream para obter o arquivo que
          * está dentro do nosso projeto. Fazendo isso, não teremos problema
@@ -39,13 +45,13 @@ public class abrirRelatorioCliente {
          * (botão direito no nó raiz do projeto, Clean and Build (Limpar e Construir)
          *
          */
-        InputStream inputStream = getClass().getResourceAsStream( "/RelatorioClientes.jasper" );
+        InputStream inputStream = getClass().getResourceAsStream( "C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/RelatorioClientes.jasper" );
  
         // mapa de parâmetros do relatório (ainda vamos aprender a usar)
         Map parametros = new HashMap();
  
         try {
- 
+           
             // abre o relatório
             ReportUtils.openReport( "Clientes", inputStream, parametros,
                     ConnectionFactory.getSalaoBelezaConnection() );
