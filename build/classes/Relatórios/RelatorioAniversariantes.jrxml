@@ -4,12 +4,17 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[select *from clientenovo c]]>
+		<![CDATA[SELECT
+     *
+FROM
+     "clientenovo" c]]>
 	</queryString>
 	<field name="id" class="java.lang.String"/>
-	<field name="data_nasc" class="java.lang.String"/>
+	<field name="ano" class="java.lang.Integer"/>
+	<field name="dia" class="java.lang.Integer"/>
 	<field name="email" class="java.lang.String"/>
 	<field name="endereco" class="java.lang.String"/>
+	<field name="mes" class="java.lang.Integer"/>
 	<field name="nome" class="java.lang.String"/>
 	<field name="sexo" class="java.lang.String"/>
 	<field name="telefone" class="java.lang.String"/>
@@ -44,6 +49,13 @@
 				</textElement>
 				<text><![CDATA[NOME:]]></text>
 			</staticText>
+			<staticText>
+				<reportElement uuid="fc93f430-0ac6-471f-be54-e1ec75458a74" x="364" y="47" width="191" height="20"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<text><![CDATA[DATA DE NASCIMENTO:]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
@@ -55,17 +67,17 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
-			<textField pattern="dd de MMM">
-				<reportElement uuid="5871dbd1-49fc-4ef5-9fb8-c67c53c5e568" x="412" y="0" width="143" height="20"/>
-				<textElement>
+			<textField>
+				<reportElement uuid="7823420a-5107-4519-8fe3-aa1ac60fb36d" x="364" y="0" width="62" height="20"/>
+				<textElement textAlignment="Center">
 					<font fontName="Comic Sans MS" size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{data_nasc}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{dia}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="43" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>

@@ -5,9 +5,15 @@
 package gui;
 
 import JPA.produtoJpaController;
-//import Relatórios.JDBC.abrirRelatorioCliente;
+import Relatórios.JDBC.ConectaBanco;
+import java.util.HashMap;
 import java.util.List;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -15,11 +21,13 @@ import javax.swing.JOptionPane;
  */
 public class principal extends javax.swing.JFrame {
 
+    ConectaBanco conecta = new ConectaBanco();
     /**
      * Creates new form principal
      */
     public principal() {
         initComponents();
+        conecta.conexao();
     }
 
     /**
@@ -51,8 +59,9 @@ public class principal extends javax.swing.JFrame {
         menurelatorioclientes = new javax.swing.JMenu();
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
         jSeparator6 = new javax.swing.JPopupMenu.Separator();
-        cadastrarfuncao1 = new javax.swing.JMenuItem();
+        RelClientes = new javax.swing.JMenuItem();
         cadastrarfuncao2 = new javax.swing.JMenuItem();
+        RelAniversariantes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -198,19 +207,19 @@ public class principal extends javax.swing.JFrame {
         menurelatorioclientes.add(jSeparator5);
         menurelatorioclientes.add(jSeparator6);
 
-        cadastrarfuncao1.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
-        cadastrarfuncao1.setText("Clientes Cadastrados");
-        cadastrarfuncao1.addMouseListener(new java.awt.event.MouseAdapter() {
+        RelClientes.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
+        RelClientes.setText("Clientes Cadastrados");
+        RelClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cadastrarfuncao1MouseClicked(evt);
+                RelClientesMouseClicked(evt);
             }
         });
-        cadastrarfuncao1.addActionListener(new java.awt.event.ActionListener() {
+        RelClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastrarfuncao1ActionPerformed(evt);
+                RelClientesActionPerformed(evt);
             }
         });
-        menurelatorioclientes.add(cadastrarfuncao1);
+        menurelatorioclientes.add(RelClientes);
 
         cadastrarfuncao2.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
         cadastrarfuncao2.setText("Controle de Estoque");
@@ -225,6 +234,20 @@ public class principal extends javax.swing.JFrame {
             }
         });
         menurelatorioclientes.add(cadastrarfuncao2);
+
+        RelAniversariantes.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
+        RelAniversariantes.setText("Aniversariantes");
+        RelAniversariantes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RelAniversariantesMouseClicked(evt);
+            }
+        });
+        RelAniversariantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RelAniversariantesActionPerformed(evt);
+            }
+        });
+        menurelatorioclientes.add(RelAniversariantes);
 
         jMenuBar1.add(menurelatorioclientes);
 
@@ -320,17 +343,27 @@ public class principal extends javax.swing.JFrame {
         new guiEquipamento().setVisible(true);
     }//GEN-LAST:event_cadastrarcliente3ActionPerformed
 
-    private void cadastrarfuncao1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarfuncao1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cadastrarfuncao1MouseClicked
+    private void RelClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RelClientesMouseClicked
+          try{
+            conecta.executaSQL("select * from clientenovo");
+            JRResultSetDataSource relatResul = new JRResultSetDataSource(conecta.rs);
+            JasperPrint jpPrint = JasperFillManager.fillReport("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/RelatorioClientes.jasper", new HashMap(), relatResul);
+            JasperViewer jv = new JasperViewer (jpPrint);
+            jv.setVisible(true);
+        } catch (JRException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Erro ao chamar o relatorio!\nErro:" + ex);
+        }
+// TODO add your handling code here:
+    }//GEN-LAST:event_RelClientesMouseClicked
 
-    private void cadastrarfuncao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarfuncao1ActionPerformed
+    private void RelClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelClientesActionPerformed
 
+      
        // new abrirRelatorioCliente().abrirRelatorioClientes();
        
         
         // TODO add your handling code here:
-    }//GEN-LAST:event_cadastrarfuncao1ActionPerformed
+    }//GEN-LAST:event_RelClientesActionPerformed
 
     private void cadastrarfuncao2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarfuncao2MouseClicked
         // TODO add your handling code here:
@@ -347,6 +380,25 @@ public class principal extends javax.swing.JFrame {
       
 // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
+
+    private void RelAniversariantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RelAniversariantesMouseClicked
+        System.out.println("entrou relatorio");
+        try{
+            conecta.executaSQL("select * from clientenovo");
+            System.out.println("PASSOU CONECTA");
+            JRResultSetDataSource relatResul = new JRResultSetDataSource(conecta.rs);
+            JasperPrint jpPrint = JasperFillManager.fillReport("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/RelatorioAniversariantes.jasper", new HashMap(), relatResul);
+            JasperViewer jv = new JasperViewer (jpPrint);
+            jv.setVisible(true);
+        } catch (JRException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Erro ao chamar o relatorio!\nErro:" + ex);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RelAniversariantesMouseClicked
+
+    private void RelAniversariantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelAniversariantesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RelAniversariantesActionPerformed
 
     
     /**
@@ -383,18 +435,19 @@ public class principal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new principal().setVisible(true);
-                JOptionPane.showMessageDialog(null,"ATENÇÃO: PRODUTOS COM ESTOQUE MÍNIMO" + (List) new produtoJpaController().checarestoque());
+                JOptionPane.showMessageDialog(null,"ATENÇÃO:\n PRODUTOS COM ESTOQUE MÍNIMO\n" + (List) new produtoJpaController().checarestoque());
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuAgendar;
+    private javax.swing.JMenuItem RelAniversariantes;
+    private javax.swing.JMenuItem RelClientes;
     private javax.swing.JMenuItem cadastrarcliente;
     private javax.swing.JMenuItem cadastrarcliente1;
     private javax.swing.JMenuItem cadastrarcliente2;
     private javax.swing.JMenuItem cadastrarcliente3;
     private javax.swing.JMenuItem cadastrarfuncao;
-    private javax.swing.JMenuItem cadastrarfuncao1;
     private javax.swing.JMenuItem cadastrarfuncao2;
     private javax.swing.JMenuItem cadastrarprofissional;
     private javax.swing.JMenuItem cadastrarservico;
