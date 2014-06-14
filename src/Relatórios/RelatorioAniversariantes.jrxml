@@ -3,11 +3,16 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString>
+	<parameter name="mes" class="java.lang.Integer"/>
+	<queryString language="ejbql">
 		<![CDATA[SELECT
-     *
+     *,
+     clientenovo."nome" AS clientenovo_nome,
+     clientenovo."dia" AS clientenovo_dia
 FROM
-     "clientenovo" c]]>
+     "clientenovo" clientenovo
+WHERE
+     mes LIKE '$P{mes}']]>
 	</queryString>
 	<field name="id" class="java.lang.String"/>
 	<field name="ano" class="java.lang.Integer"/>
@@ -18,6 +23,8 @@ FROM
 	<field name="nome" class="java.lang.String"/>
 	<field name="sexo" class="java.lang.String"/>
 	<field name="telefone" class="java.lang.String"/>
+	<field name="clientenovo_nome" class="java.lang.String"/>
+	<field name="clientenovo_dia" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -56,6 +63,20 @@ FROM
 				</textElement>
 				<text><![CDATA[DATA DE NASCIMENTO:]]></text>
 			</staticText>
+			<staticText>
+				<reportElement uuid="b77871bf-2dd1-4077-9187-00d960902cc8" x="188" y="0" width="84" height="35"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="24" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Mês:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="a9cc6734-33a0-4780-b550-50e8ce76f5b5" x="272" y="0" width="215" height="46"/>
+				<textElement>
+					<font fontName="Arial Black" size="24"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{mes}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
