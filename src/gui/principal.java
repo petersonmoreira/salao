@@ -344,20 +344,21 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastrarcliente3ActionPerformed
 
     private void RelClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RelClientesMouseClicked
-          try{
-            conecta.executaSQL("select * from clientenovo");
-            JRResultSetDataSource relatResul = new JRResultSetDataSource(conecta.rs);
-            JasperPrint jpPrint = JasperFillManager.fillReport("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/RelatorioClientes.jasper", new HashMap(), relatResul);
-            JasperViewer jv = new JasperViewer (jpPrint);
-            jv.setVisible(true);
-        } catch (JRException ex) {
-            JOptionPane.showMessageDialog(rootPane, "Erro ao chamar o relatorio!\nErro:" + ex);
-        }
+         
 // TODO add your handling code here:
     }//GEN-LAST:event_RelClientesMouseClicked
 
     private void RelClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelClientesActionPerformed
-
+ try{
+            conecta.executaSQL("select * from clientenovo");
+            JRResultSetDataSource relatResul = new JRResultSetDataSource(conecta.rs);
+            JasperPrint jpPrint = JasperFillManager.fillReport("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/RelatorioClientes.jasper", new HashMap(), relatResul);
+            JasperViewer jv = new JasperViewer (jpPrint,false);
+            jv.setVisible(true);
+            jv.toFront();
+        } catch (JRException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Erro ao chamar o relatorio!\nErro:" + ex);
+        }
       
        // new abrirRelatorioCliente().abrirRelatorioClientes();
        
@@ -382,22 +383,23 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void RelAniversariantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RelAniversariantesMouseClicked
+       
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RelAniversariantesMouseClicked
+
+    private void RelAniversariantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelAniversariantesActionPerformed
         System.out.println("entrou relatorio");
         try{
             conecta.executaSQL("select * from clientenovo");
             System.out.println("PASSOU CONECTA");
             JRResultSetDataSource relatResul = new JRResultSetDataSource(conecta.rs);
             JasperPrint jpPrint = JasperFillManager.fillReport("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/RelatorioAniversariantes.jasper", new HashMap(), relatResul);
-            JasperViewer jv = new JasperViewer (jpPrint);
+            JasperViewer jv = new JasperViewer (jpPrint,false);
             jv.setVisible(true);
+            jv.toFront();
         } catch (JRException ex) {
             JOptionPane.showMessageDialog(rootPane, "Erro ao chamar o relatorio!\nErro:" + ex);
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RelAniversariantesMouseClicked
-
-    private void RelAniversariantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelAniversariantesActionPerformed
-        // TODO add your handling code here:
+        }// TODO add your handling code here:
     }//GEN-LAST:event_RelAniversariantesActionPerformed
 
     
