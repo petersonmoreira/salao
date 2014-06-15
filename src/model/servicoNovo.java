@@ -20,7 +20,7 @@ public class servicoNovo implements Serializable {
     private String codigo;
     
     private String descricao;
-    private String preco;
+    private Double preco;
 
     public String getDescricao() {
         return descricao;
@@ -30,11 +30,15 @@ public class servicoNovo implements Serializable {
         this.descricao = descricao;
     }
 
-    public String getPreco() {
+    /**
+     *
+     * @return
+     */
+    public Double getPreco() {
         return preco;
     }
 
-    public void setPreco(String preco) {
+    public void setPreco(Double preco) {
         this.preco = preco;
     }
 

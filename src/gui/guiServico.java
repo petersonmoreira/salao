@@ -6,7 +6,6 @@ package gui;
 
 import JPA.exceptions.NonexistentEntityException;
 import JPA.exceptions.PreexistingEntityException;
-//import JPA.servicoJpaController;
 import JPA.servicoNovoJpaController;
 import java.util.List;
 import java.util.logging.Level;
@@ -204,9 +203,8 @@ public class guiServico extends javax.swing.JFrame {
         
        txtcodigo.setText(s.getCodigo());
        txtdescricao.setText(s.getDescricao());
-       txtpreco.setText(s.getPreco());
-        
-         
+       txtpreco.setText(String.valueOf(s.getPreco()));
+               
         // TODO add your handling code here:
     }//GEN-LAST:event_lstservicoValueChanged
 
@@ -215,7 +213,8 @@ public class guiServico extends javax.swing.JFrame {
         servicoNovo s = new servicoNovo();
         s.setCodigo(txtcodigo.getText());
         s.setDescricao(txtdescricao.getText());
-        s.setPreco(txtpreco.getText());
+        s.setPreco(Double.parseDouble(txtpreco.getText()));
+       // s.setPreco(txtpreco.getText());
         try {
             new servicoNovoJpaController().create(s);
         } catch (PreexistingEntityException ex) {
@@ -282,8 +281,8 @@ public class guiServico extends javax.swing.JFrame {
        }
         txtcodigo.setText(servico.getCodigo());
         txtdescricao.setText(servico.getDescricao());
-        txtpreco.setText(servico.getPreco());
-                 
+        txtpreco.setText(String.valueOf(servico.getPreco()));
+            
     }//GEN-LAST:event_btnbuscarActionPerformed
 
     /**
