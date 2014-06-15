@@ -89,7 +89,7 @@ public class produto implements Serializable {
 
     @Override
     public String toString() {
-        return this.nome + " - " + this.qtd + " unidades";
+        return this.nome + " - " + this.qtd + " unidade(s)";
     }
     
 }

@@ -21,7 +21,7 @@ public class promocaonovo implements Serializable {
     
     private String nome;
     private String descricao;
-    private String valor;
+    private Double valor;
 
     public String getNome() {
         return nome;
@@ -39,11 +39,11 @@ public class promocaonovo implements Serializable {
         this.descricao = descricao;
     }
 
-    public String getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
     

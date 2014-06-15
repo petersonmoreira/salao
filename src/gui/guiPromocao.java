@@ -306,7 +306,7 @@ public class guiPromocao extends javax.swing.JFrame {
         txtcodigo.setText(pro.getCodigo());
         txtnome.setText(pro.getNome());
         txtdescricao.setText(pro.getDescricao());
-        txtvalor.setText(pro.getValor());
+        txtvalor.setText(String.valueOf(pro.getValor()));
     }//GEN-LAST:event_lstpromocaoValueChanged
 
     private void btnsalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsalvarMouseClicked
@@ -320,7 +320,7 @@ public class guiPromocao extends javax.swing.JFrame {
         pro.setCodigo(txtcodigo.getText());
         pro.setNome(txtnome.getText());
         pro.setDescricao(txtdescricao.getText());
-        pro.setValor(txtvalor.getText());
+        pro.setValor(Double.parseDouble(txtvalor.getText()));
         try {
             new promocaonovoJpaController().create(pro);
         } catch (PreexistingEntityException ex) {
@@ -432,7 +432,7 @@ public class guiPromocao extends javax.swing.JFrame {
         txtcodigo.setText(promocao.getCodigo());
         txtnome.setText(promocao.getNome());
         txtdescricao.setText(promocao.getDescricao());
-        txtvalor.setText((promocao.getValor()));
+        txtvalor.setText(String.valueOf(promocao.getValor()));
       
 
     }//GEN-LAST:event_btnbuscarActionPerformed
