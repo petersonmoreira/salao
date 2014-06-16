@@ -20,6 +20,7 @@
     <class>model.promocaonovo</class>
     <class>model.PromocaoXCliente</class>
     <class>model.clienteXpromocao</class>
+    <class>gui.Clientexpromocao</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/salao.beleza"/>
       <property name="javax.persistence.jdbc.password" value="petecO12"/>

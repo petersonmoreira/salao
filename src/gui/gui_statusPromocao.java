@@ -22,12 +22,12 @@ import model.promocaonovo;
  *
  * @author Peterson
  */
-public class gui_clienteXpromocao extends javax.swing.JFrame {
+public class gui_statusPromocao extends javax.swing.JFrame {
 
     /**
      * Creates new form gui_clienteXpromocao
      */
-    public gui_clienteXpromocao() {
+    public gui_statusPromocao() {
         initComponents();
         clienteXpromocao cp = new clienteXpromocao();
         //clientenovo cliente;
@@ -277,13 +277,13 @@ public class gui_clienteXpromocao extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(gui_clienteXpromocao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(gui_statusPromocao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(gui_clienteXpromocao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(gui_statusPromocao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(gui_clienteXpromocao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(gui_statusPromocao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(gui_clienteXpromocao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(gui_statusPromocao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -291,7 +291,7 @@ public class gui_clienteXpromocao extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new gui_clienteXpromocao().setVisible(true);
+                new gui_statusPromocao().setVisible(true);
             }
         });
     }

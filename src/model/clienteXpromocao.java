@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -25,10 +25,12 @@ public class clienteXpromocao implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne
-    private clientenovo cliente;
-    @OneToOne
-    private promocaonovo promocao;
+   
+    @ManyToOne
+    private clientenovo Cliente;
+    
+    @ManyToOne
+    private promocaonovo Promocao;
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date data01;
@@ -42,19 +44,19 @@ public class clienteXpromocao implements Serializable {
     private Date data05;
 
     public clientenovo getCliente() {
-        return cliente;
+        return Cliente;
     }
 
     public void setCliente(clientenovo cliente) {
-        this.cliente = cliente;
+        this.Cliente = cliente;
     }
 
     public promocaonovo getPromocao() {
-        return promocao;
+        return Promocao;
     }
 
     public void setPromocao(promocaonovo promocao) {
-        this.promocao = promocao;
+        this.Promocao = promocao;
     }
 
     public Date getData01() {
@@ -127,7 +129,7 @@ public class clienteXpromocao implements Serializable {
     }
 
     public promocaonovo promocao(){
-        return this.promocao;
+        return this.Promocao;
         
     }
     
