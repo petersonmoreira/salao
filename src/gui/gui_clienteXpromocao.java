@@ -26,7 +26,7 @@ public class gui_clienteXpromocao extends javax.swing.JFrame {
      */
     public gui_clienteXpromocao() {
         initComponents();
-        clientenovo cliente;
+       // clientenovo cliente;
     }
 
     /**
@@ -152,7 +152,8 @@ public class gui_clienteXpromocao extends javax.swing.JFrame {
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
 
         try{
-            cliente = new clienteXpromocaoJpaController().
+            cliente = (SingularAttribute<clienteXpromocao, clientenovo>) new clientenovoJpaController().getclientenovo(txtCpf.getText());
+//cliente = new clienteXpromocaoJpaController().findclienteXpromocaoEntities(txtCpf.getText());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "CLIENTE NÃO CADASTRADO");
             return;

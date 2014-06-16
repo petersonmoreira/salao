@@ -13,9 +13,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import model.clienteXpromocao;
+import model.clientenovo;
 
 /**
  *
@@ -23,8 +25,8 @@ import model.clienteXpromocao;
  */
 public class clienteXpromocaoJpaController implements Serializable {
 
-    public clienteXpromocaoJpaController(EntityManagerFactory emf) {
-        this.emf = emf;
+    public clienteXpromocaoJpaController() {
+        emf = Persistence.createEntityManagerFactory("salao.belezaPU");
     }
     private EntityManagerFactory emf = null;
 
@@ -136,4 +138,9 @@ public class clienteXpromocaoJpaController implements Serializable {
         }
     }
     
+         public clientenovo getclientenovo (String id){
+       EntityManager em = getEntityManager();
+             System.out.println("ENTREI GETCLIENTE");
+       return (clientenovo)em.createQuery("select c from clientenovo c where c.id =" + id).getSingleResult();
+    } 
 }
