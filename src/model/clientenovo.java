@@ -5,9 +5,12 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 //import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 //import javax.persistence.Temporal;
 
 /**
@@ -30,7 +33,67 @@ public class clientenovo implements Serializable {
     private int dia;
     private int mes;
     private int ano;
-   // private Calendar data_nasc;
+    @ManyToOne
+    promocaonovo promocao;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date data01;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date data02;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date data03;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date data04;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date data05;
+
+    // private Calendar data_nasc;
+    public promocaonovo getPromocao() {
+        return promocao;
+    }
+
+    public Date getData01() {
+        return data01;
+    }
+
+    public void setData01(Date data01) {
+        this.data01 = data01;
+    }
+
+    public Date getData02() {
+        return data02;
+    }
+
+    public void setData02(Date data02) {
+        this.data02 = data02;
+    }
+
+    public Date getData03() {
+        return data03;
+    }
+
+    public void setData03(Date data03) {
+        this.data03 = data03;
+    }
+
+    public Date getData04() {
+        return data04;
+    }
+
+    public void setData04(Date data04) {
+        this.data04 = data04;
+    }
+
+    public Date getData05() {
+        return data05;
+    }
+
+    public void setData05(Date data05) {
+        this.data05 = data05;
+    }
+
+    public void setPromocao(promocaonovo promocao) {
+        this.promocao = promocao;
+    }
 
     
     public String getId() {

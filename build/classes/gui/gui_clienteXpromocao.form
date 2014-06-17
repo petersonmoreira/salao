@@ -21,6 +21,15 @@
         </Property>
       </Properties>
     </Component>
+    <Component class="javax.persistence.Query" name="query1">
+      <Properties>
+        <Property name="query" type="java.lang.String" value=""/>
+      </Properties>
+    </Component>
+    <Component class="java.util.List" name="list1">
+    </Component>
+    <Component class="java.util.List" name="list2">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -97,7 +106,7 @@
                   <Component id="btnsalvar1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnstatus" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="19" max="32767" attributes="0"/>
+              <EmptySpace pref="105" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -213,7 +222,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagens/Ok.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Status"/>
+        <Property name="text" type="java.lang.String" value="Cart&#xe3;o Fidelidade"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnstatusMouseClicked"/>

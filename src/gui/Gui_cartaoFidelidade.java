@@ -10,10 +10,7 @@ import JPA.clienteXpromocaoJpaController;
 import JPA.clientenovoJpaController;
 import JPA.promocaonovoJpaController;
 import java.util.List;
-import javax.persistence.metamodel.SingularAttribute;
 import model.clienteXpromocao;
-import static model.clienteXpromocao_.Cliente;
-import static model.clienteXpromocao_.Promocao;
 import model.clientenovo;
 import model.promocaonovo;
 
@@ -22,12 +19,12 @@ import model.promocaonovo;
  *
  * @author Peterson
  */
-public class gui_statusPromocao extends javax.swing.JFrame {
+public class Gui_cartaoFidelidade extends javax.swing.JFrame {
 
     /**
      * Creates new form gui_clienteXpromocao
      */
-    public gui_statusPromocao() {
+    public Gui_cartaoFidelidade() {
         initComponents();
         clienteXpromocao cp = new clienteXpromocao();
         //clientenovo cliente;
@@ -53,7 +50,6 @@ public class gui_statusPromocao extends javax.swing.JFrame {
         cboPromocao = new javax.swing.JComboBox();
         cboCliente = new javax.swing.JComboBox();
         btnsalvar1 = new javax.swing.JToggleButton();
-        btnstatus = new javax.swing.JToggleButton();
 
         jLabel2.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
         jLabel2.setText("Nome:");
@@ -74,7 +70,7 @@ public class gui_statusPromocao extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("AR ESSENCE", 0, 36)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Usuário.png"))); // NOI18N
-        jLabel1.setText("CLIENTE X PROMOÇÃO");
+        jLabel1.setText("CARTÃO FIDELIDADE");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -83,7 +79,7 @@ public class gui_statusPromocao extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(jLabel1)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,42 +132,26 @@ public class gui_statusPromocao extends javax.swing.JFrame {
             }
         });
 
-        btnstatus.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
-        btnstatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Ok.png"))); // NOI18N
-        btnstatus.setText("Status");
-        btnstatus.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnstatusMouseClicked(evt);
-            }
-        });
-        btnstatus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnstatusActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3))
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cboPromocao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel3))
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cboCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cboPromocao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnstatus)
-                                .addGap(18, 18, 18)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnsalvar1)))))
                 .addContainerGap())
         );
@@ -189,9 +169,7 @@ public class gui_statusPromocao extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(cboPromocao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnsalvar1)
-                    .addComponent(btnstatus))
+                .addComponent(btnsalvar1)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -207,7 +185,15 @@ public class gui_statusPromocao extends javax.swing.JFrame {
     }//GEN-LAST:event_cboPromocaoActionPerformed
 
     private void cboClienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboClienteItemStateChanged
-        // TODO add your handling code here:
+        clientenovo c = (clientenovo) cboCliente.getSelectedItem();
+        if(c==null) return;
+        List l = new promocaonovoJpaController().getListPromocaoCliente(c);
+        cboPromocao.removeAllItems();
+        for (int i = 0; i < l.size(); i++) {
+            promocaonovo p = (promocaonovo)l.get(i);
+            cboPromocao.addItem(p);
+        }
+// TODO add your handling code here:
     }//GEN-LAST:event_cboClienteItemStateChanged
 
     private void cboClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboClienteActionPerformed
@@ -215,19 +201,12 @@ public class gui_statusPromocao extends javax.swing.JFrame {
     }//GEN-LAST:event_cboClienteActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        cboPromocao.removeAllItems();
-        List l1 = new promocaonovoJpaController().findpromocaonovoEntities();
-
-        for (int i = 0; i < l1.size(); i++) {
-            promocaonovo p = (promocaonovo) l1.get(i);
-            cboPromocao.addItem(p);
-        }
-        
+              
         cboCliente.removeAllItems();
         List l = new clientenovoJpaController().findclientenovoEntities();
 
-        for (int i = 0; i < l.size(); i++) {
-            clientenovo c = (clientenovo) l.get(i);
+        for (Object l1 : l) {
+            clientenovo c = (clientenovo) l1;
             cboCliente.addItem(c);
         }
 // TODO add your handling code here:
@@ -252,14 +231,6 @@ public class gui_statusPromocao extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnsalvar1ActionPerformed
 
-    private void btnstatusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnstatusMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnstatusMouseClicked
-
-    private void btnstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnstatusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnstatusActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -277,13 +248,13 @@ public class gui_statusPromocao extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(gui_statusPromocao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gui_cartaoFidelidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(gui_statusPromocao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gui_cartaoFidelidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(gui_statusPromocao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gui_cartaoFidelidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(gui_statusPromocao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gui_cartaoFidelidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -291,14 +262,13 @@ public class gui_statusPromocao extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new gui_statusPromocao().setVisible(true);
+                new Gui_cartaoFidelidade().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnsalvar1;
-    private javax.swing.JToggleButton btnstatus;
     private javax.swing.JComboBox cboCliente;
     private javax.swing.JComboBox cboPromocao;
     private javax.swing.JLabel jLabel1;

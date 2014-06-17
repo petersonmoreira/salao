@@ -10,11 +10,14 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import model.clienteXpromocao;
+import static model.clienteXpromocao_.Cliente;
+import model.clientenovo;
 import model.promocaonovo;
 
 /**
@@ -140,9 +143,22 @@ public class promocaonovoJpaController implements Serializable {
             em.close();
         }
     }
-     /**
+    
+    public List getListPromocaoCliente(clientenovo c){
+        EntityManager em = getEntityManager();
+        List promocoes;
+        promocoes = em.createQuery("select p from clientenovo p where p.id = " + c.getId()).getResultList();
+        return promocoes;
+    }
+    
+      /*  public List getListCidadeEstado(Estado e) {
+        EntityManager em = getEntityManager();
+        List cidades = em.createQuery("select c from Cidade c where c.estado.id = " + e.getId().toString()).getResultList();
+        return cidades;
+    }*/
+    
+    /**
      *
-     * @param Id
      * @return
      */
     public promocaonovo getpromocao(String codigo) {

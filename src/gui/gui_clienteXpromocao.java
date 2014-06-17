@@ -46,6 +46,9 @@ public class gui_clienteXpromocao extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         txtnome = new javax.swing.JTextField();
+        query1 = java.beans.Beans.isDesignTime() ? null : ((javax.persistence.EntityManager)null).createQuery("");
+        list1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : ((javax.persistence.Query)null).getResultList();
+        list2 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : ((javax.persistence.Query)null).getResultList();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -138,7 +141,7 @@ public class gui_clienteXpromocao extends javax.swing.JFrame {
 
         btnstatus.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
         btnstatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Ok.png"))); // NOI18N
-        btnstatus.setText("Status");
+        btnstatus.setText("Cartão Fidelidade");
         btnstatus.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnstatusMouseClicked(evt);
@@ -192,7 +195,7 @@ public class gui_clienteXpromocao extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnsalvar1)
                     .addComponent(btnstatus))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         pack();
@@ -306,6 +309,9 @@ public class gui_clienteXpromocao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
+    private java.util.List list1;
+    private java.util.List list2;
+    private javax.persistence.Query query1;
     private javax.swing.JTextField txtnome;
     // End of variables declaration//GEN-END:variables
 }

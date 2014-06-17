@@ -68,13 +68,27 @@ public class guiClientenovo extends javax.swing.JFrame {
         txtano = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        JPromocao = new javax.swing.JPanel();
         btnincluir = new javax.swing.JToggleButton();
         jLabel21 = new javax.swing.JLabel();
-        cboPromocao1 = new javax.swing.JComboBox();
-        jPanel5 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        lstpromocoes = new javax.swing.JList();
+        cboPromocao = new javax.swing.JComboBox();
+        cartaofidelidade = new javax.swing.JPanel();
+        btnincluir1 = new javax.swing.JToggleButton();
+        jLabel27 = new javax.swing.JLabel();
+        jData1 = new com.toedter.calendar.JDateChooser();
+        jData2 = new com.toedter.calendar.JDateChooser();
+        jData3 = new com.toedter.calendar.JDateChooser();
+        jData5 = new com.toedter.calendar.JDateChooser();
+        jData4 = new com.toedter.calendar.JDateChooser();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        btnincluir2 = new javax.swing.JToggleButton();
+        btnincluir3 = new javax.swing.JToggleButton();
+        btnincluir4 = new javax.swing.JToggleButton();
+        btnincluir5 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -370,13 +384,13 @@ public class guiClientenovo extends javax.swing.JFrame {
                         .addComponent(btnalterar)
                         .addComponent(btnexcluir))
                     .addComponent(btnnovo))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        JPromocao.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        btnincluir.setBackground(new java.awt.Color(255, 255, 153));
         btnincluir.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
-        btnincluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Ok.png"))); // NOI18N
         btnincluir.setText("Incluir");
         btnincluir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -392,70 +406,229 @@ public class guiClientenovo extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
         jLabel21.setText("Promoção (Fidelidade):");
 
-        cboPromocao1.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
-        cboPromocao1.addItemListener(new java.awt.event.ItemListener() {
+        cboPromocao.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
+        cboPromocao.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cboPromocao1ItemStateChanged(evt);
+                cboPromocaoItemStateChanged(evt);
             }
         });
-        cboPromocao1.addActionListener(new java.awt.event.ActionListener() {
+        cboPromocao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboPromocao1ActionPerformed(evt);
+                cboPromocaoActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnincluir))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel21)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cboPromocao1, 0, 436, Short.MAX_VALUE)))
-                .addGap(28, 28, 28))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(cboPromocao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+        javax.swing.GroupLayout JPromocaoLayout = new javax.swing.GroupLayout(JPromocao);
+        JPromocao.setLayout(JPromocaoLayout);
+        JPromocaoLayout.setHorizontalGroup(
+            JPromocaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPromocaoLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cboPromocao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addComponent(btnincluir)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGap(45, 45, 45))
+        );
+        JPromocaoLayout.setVerticalGroup(
+            JPromocaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPromocaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(JPromocaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(cboPromocao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnincluir))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Promoções do Cliente"));
+        cartaofidelidade.setBackground(new java.awt.Color(255, 255, 204));
+        cartaofidelidade.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        lstpromocoes.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
-        lstpromocoes.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                lstpromocoesValueChanged(evt);
+        btnincluir1.setBackground(new java.awt.Color(255, 255, 153));
+        btnincluir1.setFont(new java.awt.Font("AR ESSENCE", 0, 14)); // NOI18N
+        btnincluir1.setForeground(new java.awt.Color(204, 0, 0));
+        btnincluir1.setText("Incluir");
+        btnincluir1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnincluir1MouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(lstpromocoes);
+        btnincluir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnincluir1ActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
-                .addContainerGap())
+        jLabel27.setFont(new java.awt.Font("AR ESSENCE", 0, 36)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel27.setText("CARTÃO DE FIDELIDADE");
+
+        jData1.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
+
+        jData2.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
+
+        jData3.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
+
+        jData5.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
+
+        jData4.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
+
+        jLabel28.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
+        jLabel28.setText("Data 1");
+
+        jLabel29.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
+        jLabel29.setText("Data 2");
+
+        jLabel30.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
+        jLabel30.setText("Data 3");
+
+        jLabel31.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
+        jLabel31.setText("Data 4");
+
+        jLabel32.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
+        jLabel32.setText("Data 5");
+
+        btnincluir2.setBackground(new java.awt.Color(255, 255, 153));
+        btnincluir2.setFont(new java.awt.Font("AR ESSENCE", 0, 14)); // NOI18N
+        btnincluir2.setForeground(new java.awt.Color(204, 0, 0));
+        btnincluir2.setText("Incluir");
+        btnincluir2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnincluir2MouseClicked(evt);
+            }
+        });
+        btnincluir2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnincluir2ActionPerformed(evt);
+            }
+        });
+
+        btnincluir3.setBackground(new java.awt.Color(255, 255, 153));
+        btnincluir3.setFont(new java.awt.Font("AR ESSENCE", 0, 14)); // NOI18N
+        btnincluir3.setForeground(new java.awt.Color(204, 0, 0));
+        btnincluir3.setText("Incluir");
+        btnincluir3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnincluir3MouseClicked(evt);
+            }
+        });
+        btnincluir3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnincluir3ActionPerformed(evt);
+            }
+        });
+
+        btnincluir4.setBackground(new java.awt.Color(255, 255, 153));
+        btnincluir4.setFont(new java.awt.Font("AR ESSENCE", 0, 14)); // NOI18N
+        btnincluir4.setForeground(new java.awt.Color(204, 0, 0));
+        btnincluir4.setText("Incluir");
+        btnincluir4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnincluir4MouseClicked(evt);
+            }
+        });
+        btnincluir4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnincluir4ActionPerformed(evt);
+            }
+        });
+
+        btnincluir5.setBackground(new java.awt.Color(255, 255, 153));
+        btnincluir5.setFont(new java.awt.Font("AR ESSENCE", 0, 14)); // NOI18N
+        btnincluir5.setForeground(new java.awt.Color(204, 0, 0));
+        btnincluir5.setText("Incluir");
+        btnincluir5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnincluir5MouseClicked(evt);
+            }
+        });
+        btnincluir5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnincluir5ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout cartaofidelidadeLayout = new javax.swing.GroupLayout(cartaofidelidade);
+        cartaofidelidade.setLayout(cartaofidelidadeLayout);
+        cartaofidelidadeLayout.setHorizontalGroup(
+            cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jData1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                            .addGap(27, 27, 27)
+                            .addComponent(btnincluir1)
+                            .addGap(98, 98, 98)
+                            .addComponent(btnincluir2)))
+                    .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel28)
+                        .addGap(78, 78, 78)
+                        .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel27)
+                            .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                                .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                                        .addGap(41, 41, 41)
+                                        .addComponent(jLabel29))
+                                    .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(jData2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                                        .addGap(79, 79, 79)
+                                        .addComponent(jLabel30)
+                                        .addGap(127, 127, 127)
+                                        .addComponent(jLabel31)
+                                        .addGap(135, 135, 135)
+                                        .addComponent(jLabel32))
+                                    .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                                        .addGap(85, 85, 85)
+                                        .addComponent(btnincluir3)
+                                        .addGap(104, 104, 104)
+                                        .addComponent(btnincluir4)
+                                        .addGap(105, 105, 105)
+                                        .addComponent(btnincluir5))
+                                    .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                                        .addGap(45, 45, 45)
+                                        .addComponent(jData3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(46, 46, 46)
+                                        .addComponent(jData4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(51, 51, 51)
+                                        .addComponent(jData5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 15, Short.MAX_VALUE)))
+                .addGap(134, 134, 134))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        cartaofidelidadeLayout.setVerticalGroup(
+            cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cartaofidelidadeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(jLabel29)
+                    .addComponent(jLabel30)
+                    .addComponent(jLabel31)
+                    .addComponent(jLabel32))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jData1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jData2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jData3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jData5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jData4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnincluir1)
+                        .addComponent(btnincluir2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnincluir4)
+                        .addComponent(btnincluir5)
+                        .addComponent(btnincluir3)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -467,27 +640,30 @@ public class guiClientenovo extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(JPromocao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cartaofidelidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 10, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(JPromocao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cartaofidelidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -532,6 +708,8 @@ public class guiClientenovo extends javax.swing.JFrame {
             cliente.setEmail(txtemail.getText());
             cliente.setTelefone(txttelefone.getText());
             cliente.setEndereco(txtendereco.getText());
+           
+            
             if (optf.isSelected()){
                 cliente.setSexo("Feminino");
             }else{
@@ -690,6 +868,15 @@ public class guiClientenovo extends javax.swing.JFrame {
         txtemail.setText(cliente.getEmail());
         txttelefone.setText(cliente.getTelefone());
         txtendereco.setText(cliente.getEndereco());
+        
+        cboPromocao.setSelectedItem(cliente.getPromocao());
+        jData1.setDate(cliente.getData01());
+        jData2.setDate(cliente.getData02());
+        jData3.setDate(cliente.getData03());
+        jData4.setDate(cliente.getData04());
+        jData5.setDate(cliente.getData05());
+        
+        //cboMedico.setSelectedItem(inter.getMedico());
         if (cliente.getSexo().equals("Masculino")){
             optm.setSelected(true);
         } else {
@@ -723,12 +910,12 @@ public class guiClientenovo extends javax.swing.JFrame {
         List l = new clientenovoJpaController().findclientenovoEntities();
         lstclientes.setListData(l.toArray());
         
-        cboPromocao1.removeAllItems();
+        cboPromocao.removeAllItems();
         List l1 = new promocaonovoJpaController().findpromocaonovoEntities();
 
         for (int i = 0; i < l1.size(); i++) {
             promocaonovo p = (promocaonovo) l1.get(i);
-            cboPromocao1.addItem(p);
+            cboPromocao.addItem(p);
         }
         
         // TODO add your handling code here:
@@ -754,16 +941,33 @@ public class guiClientenovo extends javax.swing.JFrame {
         txtano.selectAll();// TODO add your handling code here:
     }//GEN-LAST:event_txtanoFocusGained
 
-    private void cboPromocao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboPromocao1ActionPerformed
+    private void cboPromocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboPromocaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cboPromocao1ActionPerformed
+    }//GEN-LAST:event_cboPromocaoActionPerformed
 
-    private void cboPromocao1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboPromocao1ItemStateChanged
+    private void cboPromocaoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboPromocaoItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_cboPromocao1ItemStateChanged
+    }//GEN-LAST:event_cboPromocaoItemStateChanged
 
     private void btnincluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnincluirActionPerformed
 
+        if (cliente==null) return;
+        
+        cliente.setPromocao((promocaonovo) cboPromocao.getSelectedItem());
+       
+        try{
+            new clientenovoJpaController().edit(cliente);
+         } catch (NonexistentEntityException ex) {
+            JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage() + " Procure o Administrador do Sistema");
+        }
+
+        JOptionPane.showMessageDialog(null,"PROMOÇÃO INCLUÍDA COM SUCESSO!");
+         
+        
+        
+        cliente.setPromocao((promocaonovo) cboPromocao.getSelectedItem());
         
 // TODO add your handling code here:
     }//GEN-LAST:event_btnincluirActionPerformed
@@ -772,9 +976,125 @@ public class guiClientenovo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnincluirMouseClicked
 
-    private void lstpromocoesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstpromocoesValueChanged
+    private void btnincluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnincluir1ActionPerformed
+
+         if (cliente==null) return;
+        
+         cliente.setData01(jData1.getDate());
+         //cliente.setData_nasc(txtdatanasc.getCalendar());
+             
+        try{
+            new clientenovoJpaController().edit(cliente);
+         } catch (NonexistentEntityException ex) {
+            JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage() + " Procure o Administrador do Sistema");
+        }
+
+        JOptionPane.showMessageDialog(null,"DATA 01 INCLUÍDA COM SUCESSO!");
+        
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnincluir1ActionPerformed
+
+    private void btnincluir1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnincluir1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_lstpromocoesValueChanged
+    }//GEN-LAST:event_btnincluir1MouseClicked
+
+    private void btnincluir2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnincluir2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnincluir2MouseClicked
+
+    private void btnincluir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnincluir2ActionPerformed
+
+         if (cliente==null) return;
+        
+         cliente.setData02(jData2.getDate());
+         //cliente.setData_nasc(txtdatanasc.getCalendar());
+             
+        try{
+            new clientenovoJpaController().edit(cliente);
+         } catch (NonexistentEntityException ex) {
+            JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage() + " Procure o Administrador do Sistema");
+        }
+
+        JOptionPane.showMessageDialog(null,"DATA 02 INCLUÍDA COM SUCESSO!");
+        
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnincluir2ActionPerformed
+
+    private void btnincluir3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnincluir3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnincluir3MouseClicked
+
+    private void btnincluir3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnincluir3ActionPerformed
+
+         if (cliente==null) return;
+        
+         cliente.setData03(jData3.getDate());
+         //cliente.setData_nasc(txtdatanasc.getCalendar());
+             
+        try{
+            new clientenovoJpaController().edit(cliente);
+         } catch (NonexistentEntityException ex) {
+            JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage() + " Procure o Administrador do Sistema");
+        }
+
+        JOptionPane.showMessageDialog(null,"DATA 03 INCLUÍDA COM SUCESSO!");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnincluir3ActionPerformed
+
+    private void btnincluir4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnincluir4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnincluir4MouseClicked
+
+    private void btnincluir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnincluir4ActionPerformed
+ if (cliente==null) return;
+        
+         cliente.setData04(jData4.getDate());
+         //cliente.setData_nasc(txtdatanasc.getCalendar());
+             
+        try{
+            new clientenovoJpaController().edit(cliente);
+         } catch (NonexistentEntityException ex) {
+            JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage() + " Procure o Administrador do Sistema");
+        }
+
+        JOptionPane.showMessageDialog(null,"DATA 04 INCLUÍDA COM SUCESSO!");
+        
+ 
+    }//GEN-LAST:event_btnincluir4ActionPerformed
+
+    private void btnincluir5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnincluir5MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnincluir5MouseClicked
+
+    private void btnincluir5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnincluir5ActionPerformed
+
+        
+ if (cliente==null) return;
+        
+         cliente.setData05(jData5.getDate());
+         //cliente.setData_nasc(txtdatanasc.getCalendar());
+             
+        try{
+            new clientenovoJpaController().edit(cliente);
+         } catch (NonexistentEntityException ex) {
+            JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage() + " Procure o Administrador do Sistema");
+        }
+
+        JOptionPane.showMessageDialog(null,"DATA 05 INCLUÍDA COM SUCESSO!");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnincluir5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -811,18 +1131,36 @@ public class guiClientenovo extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel JPromocao;
     private javax.swing.JToggleButton btnalterar;
     private javax.swing.JButton btnbuscar;
     private javax.swing.JToggleButton btnexcluir;
     private javax.swing.JToggleButton btnincluir;
+    private javax.swing.JToggleButton btnincluir1;
+    private javax.swing.JToggleButton btnincluir2;
+    private javax.swing.JToggleButton btnincluir3;
+    private javax.swing.JToggleButton btnincluir4;
+    private javax.swing.JToggleButton btnincluir5;
     private javax.swing.JToggleButton btnnovo;
     private javax.swing.JToggleButton btnsalvar1;
-    private javax.swing.JComboBox cboPromocao1;
+    private javax.swing.JPanel cartaofidelidade;
+    private javax.swing.JComboBox cboPromocao;
+    private com.toedter.calendar.JDateChooser jData1;
+    private com.toedter.calendar.JDateChooser jData2;
+    private com.toedter.calendar.JDateChooser jData3;
+    private com.toedter.calendar.JDateChooser jData4;
+    private com.toedter.calendar.JDateChooser jData5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -832,12 +1170,8 @@ public class guiClientenovo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList lstclientes;
-    private javax.swing.JList lstpromocoes;
     private javax.swing.JRadioButton optf;
     private javax.swing.JRadioButton optm;
     private javax.swing.JFormattedTextField txtCpf;
