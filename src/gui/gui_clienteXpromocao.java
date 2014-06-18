@@ -220,7 +220,6 @@ public class gui_clienteXpromocao extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         cboPromocao.removeAllItems();
         List l1 = new promocaonovoJpaController().findpromocaonovoEntities();
-
         for (int i = 0; i < l1.size(); i++) {
             promocaonovo p = (promocaonovo) l1.get(i);
             cboPromocao.addItem(p);
