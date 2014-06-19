@@ -6,10 +6,12 @@ package gui;
 import JPA.clientenovoJpaController;
 import JPA.exceptions.NonexistentEntityException;
 import JPA.promocaonovoJpaController;
+import java.awt.Color;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import model.clienteXpromocao;
 import model.clientenovo;
 import model.promocaonovo;
 
@@ -27,6 +29,7 @@ public class guiClientenovo extends javax.swing.JFrame {
      */
     public guiClientenovo() {
         initComponents();
+        desativabotoes();
     }
 
     /**
@@ -72,9 +75,10 @@ public class guiClientenovo extends javax.swing.JFrame {
         btnincluir = new javax.swing.JToggleButton();
         jLabel21 = new javax.swing.JLabel();
         cboPromocao = new javax.swing.JComboBox();
+        btncartaofidelidade = new javax.swing.JToggleButton();
+        btnencerrar = new javax.swing.JToggleButton();
         cartaofidelidade = new javax.swing.JPanel();
         btnincluir1 = new javax.swing.JToggleButton();
-        jLabel27 = new javax.swing.JLabel();
         jData1 = new com.toedter.calendar.JDateChooser();
         jData2 = new com.toedter.calendar.JDateChooser();
         jData3 = new com.toedter.calendar.JDateChooser();
@@ -89,6 +93,9 @@ public class guiClientenovo extends javax.swing.JFrame {
         btnincluir3 = new javax.swing.JToggleButton();
         btnincluir4 = new javax.swing.JToggleButton();
         btnincluir5 = new javax.swing.JToggleButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(1, 0), new java.awt.Dimension(1, 0), new java.awt.Dimension(1, 32767));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -418,6 +425,34 @@ public class guiClientenovo extends javax.swing.JFrame {
             }
         });
 
+        btncartaofidelidade.setBackground(new java.awt.Color(255, 255, 153));
+        btncartaofidelidade.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
+        btncartaofidelidade.setText("Cartão Fidelidade");
+        btncartaofidelidade.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btncartaofidelidadeMouseClicked(evt);
+            }
+        });
+        btncartaofidelidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncartaofidelidadeActionPerformed(evt);
+            }
+        });
+
+        btnencerrar.setBackground(new java.awt.Color(255, 255, 153));
+        btnencerrar.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
+        btnencerrar.setText("Encerrar Promoção");
+        btnencerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnencerrarMouseClicked(evt);
+            }
+        });
+        btnencerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnencerrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout JPromocaoLayout = new javax.swing.GroupLayout(JPromocao);
         JPromocao.setLayout(JPromocaoLayout);
         JPromocaoLayout.setHorizontalGroup(
@@ -426,10 +461,14 @@ public class guiClientenovo extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cboPromocao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(29, 29, 29)
+                .addComponent(cboPromocao, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(btnincluir)
-                .addGap(45, 45, 45))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btncartaofidelidade)
+                .addGap(47, 47, 47)
+                .addComponent(btnencerrar)
+                .addGap(28, 28, 28))
         );
         JPromocaoLayout.setVerticalGroup(
             JPromocaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -438,7 +477,9 @@ public class guiClientenovo extends javax.swing.JFrame {
                 .addGroup(JPromocaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
                     .addComponent(cboPromocao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnincluir))
+                    .addComponent(btnincluir)
+                    .addComponent(btncartaofidelidade)
+                    .addComponent(btnencerrar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -460,18 +501,19 @@ public class guiClientenovo extends javax.swing.JFrame {
             }
         });
 
-        jLabel27.setFont(new java.awt.Font("AR ESSENCE", 0, 36)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel27.setText("CARTÃO DE FIDELIDADE");
-
+        jData1.setBackground(new java.awt.Color(255, 255, 204));
         jData1.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
 
+        jData2.setBackground(new java.awt.Color(255, 255, 204));
         jData2.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
 
+        jData3.setBackground(new java.awt.Color(255, 255, 204));
         jData3.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
 
+        jData5.setBackground(new java.awt.Color(255, 255, 204));
         jData5.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
 
+        jData4.setBackground(new java.awt.Color(255, 255, 204));
         jData4.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
 
         jLabel28.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
@@ -549,87 +591,138 @@ public class guiClientenovo extends javax.swing.JFrame {
             }
         });
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jLabel27.setFont(new java.awt.Font("AR ESSENCE", 1, 36)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel27.setText("C A R T Ã O   D E   F I D E L I D A D E");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(jLabel27))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(327, 327, 327)
+                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addComponent(jLabel27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout cartaofidelidadeLayout = new javax.swing.GroupLayout(cartaofidelidade);
         cartaofidelidade.setLayout(cartaofidelidadeLayout);
         cartaofidelidadeLayout.setHorizontalGroup(
             cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cartaofidelidadeLayout.createSequentialGroup()
                 .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jData1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(cartaofidelidadeLayout.createSequentialGroup()
-                            .addGap(27, 27, 27)
-                            .addComponent(btnincluir1)
-                            .addGap(98, 98, 98)
-                            .addComponent(btnincluir2)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cartaofidelidadeLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(btnincluir1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnincluir2)
+                        .addGap(163, 163, 163)
+                        .addComponent(btnincluir3)
+                        .addGap(93, 93, 93))
                     .addGroup(cartaofidelidadeLayout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel28)
-                        .addGap(78, 78, 78)
                         .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel27)
                             .addGroup(cartaofidelidadeLayout.createSequentialGroup()
-                                .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(cartaofidelidadeLayout.createSequentialGroup()
-                                        .addGap(41, 41, 41)
-                                        .addComponent(jLabel29))
-                                    .addGroup(cartaofidelidadeLayout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(jData2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(cartaofidelidadeLayout.createSequentialGroup()
-                                        .addGap(79, 79, 79)
-                                        .addComponent(jLabel30)
-                                        .addGap(127, 127, 127)
-                                        .addComponent(jLabel31)
-                                        .addGap(135, 135, 135)
-                                        .addComponent(jLabel32))
-                                    .addGroup(cartaofidelidadeLayout.createSequentialGroup()
-                                        .addGap(85, 85, 85)
-                                        .addComponent(btnincluir3)
-                                        .addGap(104, 104, 104)
-                                        .addComponent(btnincluir4)
-                                        .addGap(105, 105, 105)
-                                        .addComponent(btnincluir5))
-                                    .addGroup(cartaofidelidadeLayout.createSequentialGroup()
-                                        .addGap(45, 45, 45)
-                                        .addComponent(jData3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(46, 46, 46)
-                                        .addComponent(jData4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(51, 51, 51)
-                                        .addComponent(jData5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 15, Short.MAX_VALUE)))
-                .addGap(134, 134, 134))
+                                .addGap(52, 52, 52)
+                                .addComponent(jLabel28))
+                            .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jData1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                                .addGap(77, 77, 77)
+                                .addComponent(jData2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                                .addComponent(jData3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(55, 55, 55))
+                            .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                                .addGap(125, 125, 125)
+                                .addComponent(jLabel29)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel30)
+                                .addGap(112, 112, 112)))))
+                .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jData4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                        .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(btnincluir4))
+                            .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(jLabel31)))
+                        .addGap(39, 39, 39)))
+                .addGap(57, 57, 57)
+                .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cartaofidelidadeLayout.createSequentialGroup()
+                        .addComponent(btnincluir5)
+                        .addGap(65, 65, 65))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cartaofidelidadeLayout.createSequentialGroup()
+                        .addComponent(jLabel32)
+                        .addGap(76, 76, 76))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cartaofidelidadeLayout.createSequentialGroup()
+                        .addComponent(jData5, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))))
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         cartaofidelidadeLayout.setVerticalGroup(
             cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cartaofidelidadeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel27)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel28)
-                    .addComponent(jLabel29)
-                    .addComponent(jLabel30)
-                    .addComponent(jLabel31)
-                    .addComponent(jLabel32))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jData1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jData2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jData3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jData5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jData4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
                 .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnincluir1)
-                        .addComponent(btnincluir2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnincluir4)
-                        .addComponent(btnincluir5)
-                        .addComponent(btnincluir3)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                        .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                                .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel28)
+                                    .addComponent(jLabel29))
+                                .addGap(6, 6, 6))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cartaofidelidadeLayout.createSequentialGroup()
+                                .addComponent(jLabel30)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                                .addComponent(jData3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnincluir3))
+                            .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                                .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jData1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                                    .addComponent(jData2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnincluir2)
+                                    .addComponent(btnincluir1)))))
+                    .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                        .addComponent(jLabel32)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jData5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnincluir5))
+                    .addGroup(cartaofidelidadeLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jData4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnincluir4))
+                    .addComponent(jLabel31))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -641,14 +734,13 @@ public class guiClientenovo extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(JPromocao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cartaofidelidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 10, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(JPromocao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -662,7 +754,7 @@ public class guiClientenovo extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JPromocao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cartaofidelidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -691,6 +783,35 @@ public class guiClientenovo extends javax.swing.JFrame {
 
     }//GEN-LAST:event_lstclientesValueChanged
 
+    private void desativabotoes(){
+        //DESATIVAR A OPÇÃO DE PROMOÇÃO
+        jLabel21.setEnabled(false);
+        cboPromocao.setEnabled(false);
+        btnincluir.setEnabled(false);
+        btncartaofidelidade.setEnabled(false);
+        btnencerrar.setEnabled(false);
+        
+         //DESATIVAR CARTÃO FIDELIDADE
+        cartaofidelidade.setBackground(Color.gray);
+        jLabel27.setEnabled(false);
+        jLabel28.setEnabled(false);
+        jData1.setEnabled(false);
+        btnincluir1.setEnabled(false);
+        jLabel29.setEnabled(false);
+        jData2.setEnabled(false);
+        btnincluir2.setEnabled(false);
+        jLabel30.setEnabled(false);
+        jData3.setEnabled(false);
+        btnincluir3.setEnabled(false);
+        jLabel31.setEnabled(false);
+        jData4.setEnabled(false);
+        btnincluir4.setEnabled(false);
+        jLabel32.setEnabled(false);
+        jData5.setEnabled(false);
+        btnincluir5.setEnabled(false);
+                
+    }
+    
     private void btnsalvar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnsalvar1MouseClicked
 
         // TODO add your handling code here:
@@ -739,6 +860,8 @@ public class guiClientenovo extends javax.swing.JFrame {
             optf.setSelected(false);
 
             txtCpf.grabFocus();
+            
+            
 
             // TODO add your handling code here:
         
@@ -882,6 +1005,12 @@ public class guiClientenovo extends javax.swing.JFrame {
         } else {
             optf.setSelected(true);
         }
+        
+        //ATIVAR BOTÕES DA PROMOÇAO
+        jLabel21.setEnabled(true);
+        cboPromocao.setEnabled(true);
+        btnincluir.setEnabled(true);
+        btncartaofidelidade.setEnabled(true);
 
     }//GEN-LAST:event_btnbuscarActionPerformed
 
@@ -899,6 +1028,8 @@ public class guiClientenovo extends javax.swing.JFrame {
         optm.setSelected(false);
         optf.setSelected(false);
         txtCpf.grabFocus();
+        
+        desativabotoes();
     }//GEN-LAST:event_btnnovoMouseClicked
 
     private void btnnovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnovoActionPerformed
@@ -918,6 +1049,8 @@ public class guiClientenovo extends javax.swing.JFrame {
             cboPromocao.addItem(p);
         }
         
+              
+        //DESATIVAR O CARTÃO DE FIDELIDADE
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
 
@@ -976,11 +1109,71 @@ public class guiClientenovo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnincluirMouseClicked
 
-    private void btnincluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnincluir1ActionPerformed
+    private void btncartaofidelidadeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btncartaofidelidadeMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btncartaofidelidadeMouseClicked
 
-         if (cliente==null) return;
+    private void btncartaofidelidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncartaofidelidadeActionPerformed
+
+        //ATIVAR CARTÃO FIDELIDADE
+        cartaofidelidade.setBackground(Color.yellow);
+        jLabel27.setEnabled(true);
+        jLabel28.setEnabled(true);
+        jData1.setEnabled(true);
+        btnincluir1.setEnabled(true);
+        jLabel29.setEnabled(true);
+        jData2.setEnabled(true);
+        btnincluir2.setEnabled(true);
+        jLabel30.setEnabled(true);
+        jData3.setEnabled(true);
+        btnincluir3.setEnabled(true);
+        jLabel31.setEnabled(true);
+        jData4.setEnabled(true);
+        btnincluir4.setEnabled(true);
+        jLabel32.setEnabled(true);
+        jData5.setEnabled(true);
+        btnincluir5.setEnabled(true);        
+// TODO add your handling code here:
+    }//GEN-LAST:event_btncartaofidelidadeActionPerformed
+
+    private void btnencerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnencerrarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnencerrarMouseClicked
+
+    private void btnencerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnencerrarActionPerformed
+
+        int resposta;
+
+        try {
+            resposta = JOptionPane.showConfirmDialog(null, "ENCERRAR A PROMOÇÃO", "Deseja realmente encerrar?", JOptionPane.YES_NO_OPTION);
+            if (resposta == JOptionPane.YES_OPTION){
+             //   cliente.getData01(jData1.getDate());
+//cliente.setData01(jData1.getDate());
+                        
+                new clientenovoJpaController().destroy(cliente.getId());
+                JOptionPane.showMessageDialog(null, "CLIENTE EXCLUIDO!");
+            } else {
+                //código que cancela a exclusão
+                 txtnome.setText("");
+                 txtCpf.setText("");
+                 txtdia.setText("DD");
+                 txtmes.setText("MM");
+                 txtano.setText("AAAA");                 
+//txtdatanasc.setCalendar(null);
+                 txtemail.setText("");
+                 txttelefone.setText("");
+                 txtendereco.setText("");
+                 optm.setSelected(false);
+                 optf.setSelected(false);
+                 txtCpf.grabFocus();
+            }
+        } catch (NonexistentEntityException ex) {
+            
+        }
         
-         cliente.setData01(jData1.getDate());
+       // if (cliente==null) return;
+        
+         
          //cliente.setData_nasc(txtdatanasc.getCalendar());
              
         try{
@@ -993,53 +1186,65 @@ public class guiClientenovo extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(null,"DATA 01 INCLUÍDA COM SUCESSO!");
         
-        
 // TODO add your handling code here:
-    }//GEN-LAST:event_btnincluir1ActionPerformed
+    }//GEN-LAST:event_btnencerrarActionPerformed
 
-    private void btnincluir1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnincluir1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnincluir1MouseClicked
+    private void btnincluir5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnincluir5ActionPerformed
 
-    private void btnincluir2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnincluir2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnincluir2MouseClicked
+        if (cliente==null) return;
 
-    private void btnincluir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnincluir2ActionPerformed
+        cliente.setData05(jData5.getDate());
+        //cliente.setData_nasc(txtdatanasc.getCalendar());
 
-         if (cliente==null) return;
-        
-         cliente.setData02(jData2.getDate());
-         //cliente.setData_nasc(txtdatanasc.getCalendar());
-             
         try{
             new clientenovoJpaController().edit(cliente);
-         } catch (NonexistentEntityException ex) {
+        } catch (NonexistentEntityException ex) {
             JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage() + " Procure o Administrador do Sistema");
         }
 
-        JOptionPane.showMessageDialog(null,"DATA 02 INCLUÍDA COM SUCESSO!");
+        JOptionPane.showMessageDialog(null,"DATA 05 INCLUÍDA COM SUCESSO!");
         
-
-// TODO add your handling code here:
-    }//GEN-LAST:event_btnincluir2ActionPerformed
-
-    private void btnincluir3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnincluir3MouseClicked
+        btnencerrar.setEnabled(true);
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnincluir3MouseClicked
+    }//GEN-LAST:event_btnincluir5ActionPerformed
+
+    private void btnincluir5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnincluir5MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnincluir5MouseClicked
+
+    private void btnincluir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnincluir4ActionPerformed
+        if (cliente==null) return;
+
+        cliente.setData04(jData4.getDate());
+        //cliente.setData_nasc(txtdatanasc.getCalendar());
+
+        try{
+            new clientenovoJpaController().edit(cliente);
+        } catch (NonexistentEntityException ex) {
+            JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage() + " Procure o Administrador do Sistema");
+        }
+
+        JOptionPane.showMessageDialog(null,"DATA 04 INCLUÍDA COM SUCESSO!");
+    }//GEN-LAST:event_btnincluir4ActionPerformed
+
+    private void btnincluir4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnincluir4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnincluir4MouseClicked
 
     private void btnincluir3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnincluir3ActionPerformed
 
-         if (cliente==null) return;
-        
-         cliente.setData03(jData3.getDate());
-         //cliente.setData_nasc(txtdatanasc.getCalendar());
-             
+        if (cliente==null) return;
+
+        cliente.setData03(jData3.getDate());
+        //cliente.setData_nasc(txtdatanasc.getCalendar());
+
         try{
             new clientenovoJpaController().edit(cliente);
-         } catch (NonexistentEntityException ex) {
+        } catch (NonexistentEntityException ex) {
             JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage() + " Procure o Administrador do Sistema");
@@ -1049,52 +1254,57 @@ public class guiClientenovo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnincluir3ActionPerformed
 
-    private void btnincluir4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnincluir4MouseClicked
+    private void btnincluir3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnincluir3MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnincluir4MouseClicked
+    }//GEN-LAST:event_btnincluir3MouseClicked
 
-    private void btnincluir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnincluir4ActionPerformed
- if (cliente==null) return;
-        
-         cliente.setData04(jData4.getDate());
-         //cliente.setData_nasc(txtdatanasc.getCalendar());
-             
+    private void btnincluir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnincluir2ActionPerformed
+
+        if (cliente==null) return;
+
+        cliente.setData02(jData2.getDate());
+        //cliente.setData_nasc(txtdatanasc.getCalendar());
+
         try{
             new clientenovoJpaController().edit(cliente);
-         } catch (NonexistentEntityException ex) {
+        } catch (NonexistentEntityException ex) {
             JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage() + " Procure o Administrador do Sistema");
         }
 
-        JOptionPane.showMessageDialog(null,"DATA 04 INCLUÍDA COM SUCESSO!");
-        
- 
-    }//GEN-LAST:event_btnincluir4ActionPerformed
+        JOptionPane.showMessageDialog(null,"DATA 02 INCLUÍDA COM SUCESSO!");
 
-    private void btnincluir5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnincluir5MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnincluir5MouseClicked
+    }//GEN-LAST:event_btnincluir2ActionPerformed
 
-    private void btnincluir5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnincluir5ActionPerformed
+    private void btnincluir2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnincluir2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnincluir2MouseClicked
 
-        
- if (cliente==null) return;
-        
-         cliente.setData05(jData5.getDate());
-         //cliente.setData_nasc(txtdatanasc.getCalendar());
-             
+    private void btnincluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnincluir1ActionPerformed
+
+        if (cliente==null) return;
+
+        cliente.setData01(jData1.getDate());
+        //cliente.setData_nasc(txtdatanasc.getCalendar());
+
         try{
             new clientenovoJpaController().edit(cliente);
-         } catch (NonexistentEntityException ex) {
+        } catch (NonexistentEntityException ex) {
             JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage() + " Procure o Administrador do Sistema");
         }
 
-        JOptionPane.showMessageDialog(null,"DATA 05 INCLUÍDA COM SUCESSO!");
+        JOptionPane.showMessageDialog(null,"DATA 01 INCLUÍDA COM SUCESSO!");
+
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnincluir5ActionPerformed
+    }//GEN-LAST:event_btnincluir1ActionPerformed
+
+    private void btnincluir1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnincluir1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnincluir1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1127,6 +1337,8 @@ public class guiClientenovo extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new guiClientenovo().setVisible(true);
+               
+                
             }
         });
     }
@@ -1134,6 +1346,8 @@ public class guiClientenovo extends javax.swing.JFrame {
     private javax.swing.JPanel JPromocao;
     private javax.swing.JToggleButton btnalterar;
     private javax.swing.JButton btnbuscar;
+    private javax.swing.JToggleButton btncartaofidelidade;
+    private javax.swing.JToggleButton btnencerrar;
     private javax.swing.JToggleButton btnexcluir;
     private javax.swing.JToggleButton btnincluir;
     private javax.swing.JToggleButton btnincluir1;
@@ -1145,6 +1359,7 @@ public class guiClientenovo extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnsalvar1;
     private javax.swing.JPanel cartaofidelidade;
     private javax.swing.JComboBox cboPromocao;
+    private javax.swing.Box.Filler filler1;
     private com.toedter.calendar.JDateChooser jData1;
     private com.toedter.calendar.JDateChooser jData2;
     private com.toedter.calendar.JDateChooser jData3;
@@ -1170,6 +1385,7 @@ public class guiClientenovo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList lstclientes;
     private javax.swing.JRadioButton optf;
