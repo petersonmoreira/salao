@@ -343,9 +343,9 @@ public class guiClientenovo extends javax.swing.JFrame {
                         .addGap(34, 34, 34))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnexcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(57, 57, 57)
                         .addComponent(btnalterar)
-                        .addGap(46, 46, 46)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnsalvar1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnnovo, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1141,13 +1141,17 @@ public class guiClientenovo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnencerrarMouseClicked
 
     private void btnencerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnencerrarActionPerformed
-
+        
+        if (cliente==null) return;
+        
+        clienteXpromocao cp = new clienteXpromocao();
+        
         int resposta;
-
+        
         try {
             resposta = JOptionPane.showConfirmDialog(null, "ENCERRAR A PROMOÇÃO", "Deseja realmente encerrar?", JOptionPane.YES_NO_OPTION);
             if (resposta == JOptionPane.YES_OPTION){
-             //   cliente.getData01(jData1.getDate());
+               // cliente
 //cliente.setData01(jData1.getDate());
                         
                 new clientenovoJpaController().destroy(cliente.getId());
