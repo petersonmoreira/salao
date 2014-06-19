@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package gui;
+import JPA.clienteXpromocaoJpaController;
 import JPA.clientenovoJpaController;
 import JPA.exceptions.NonexistentEntityException;
 import JPA.promocaonovoJpaController;
@@ -690,9 +691,9 @@ public class guiClientenovo extends javax.swing.JFrame {
                     .addGroup(cartaofidelidadeLayout.createSequentialGroup()
                         .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(cartaofidelidadeLayout.createSequentialGroup()
-                                .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel28)
-                                    .addComponent(jLabel29))
+                                .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel28))
                                 .addGap(6, 6, 6))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cartaofidelidadeLayout.createSequentialGroup()
                                 .addComponent(jLabel30)
@@ -707,7 +708,7 @@ public class guiClientenovo extends javax.swing.JFrame {
                                     .addComponent(jData1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                                     .addComponent(jData2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(cartaofidelidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnincluir2)
                                     .addComponent(btnincluir1)))))
                     .addGroup(cartaofidelidadeLayout.createSequentialGroup()
@@ -972,7 +973,15 @@ public class guiClientenovo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnexcluirActionPerformed
 
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
+        
+        cboPromocao.removeAllItems();
+        List l1 = new promocaonovoJpaController().findpromocaonovoEntities();
 
+        for (int i = 0; i < l1.size(); i++) {
+            promocaonovo p = (promocaonovo) l1.get(i);
+            cboPromocao.addItem(p);
+        }
+        
       try{
           cliente = new clientenovoJpaController().findclientenovo(txtCpf.getText());
       } catch (Exception e) {
@@ -1041,13 +1050,13 @@ public class guiClientenovo extends javax.swing.JFrame {
         List l = new clientenovoJpaController().findclientenovoEntities();
         lstclientes.setListData(l.toArray());
         
-        cboPromocao.removeAllItems();
+        /*cboPromocao.removeAllItems();
         List l1 = new promocaonovoJpaController().findpromocaonovoEntities();
 
         for (int i = 0; i < l1.size(); i++) {
             promocaonovo p = (promocaonovo) l1.get(i);
             cboPromocao.addItem(p);
-        }
+        }*/
         
               
         //DESATIVAR O CARTÃO DE FIDELIDADE
@@ -1098,10 +1107,7 @@ public class guiClientenovo extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(null,"PROMOÇÃO INCLUÍDA COM SUCESSO!");
          
-        
-        
-        cliente.setPromocao((promocaonovo) cboPromocao.getSelectedItem());
-        
+             
 // TODO add your handling code here:
     }//GEN-LAST:event_btnincluirActionPerformed
 
@@ -1148,47 +1154,37 @@ public class guiClientenovo extends javax.swing.JFrame {
         
         int resposta;
         
-        try {
-            resposta = JOptionPane.showConfirmDialog(null, "ENCERRAR A PROMOÇÃO", "Deseja realmente encerrar?", JOptionPane.YES_NO_OPTION);
-            if (resposta == JOptionPane.YES_OPTION){
-               // cliente
-//cliente.setData01(jData1.getDate());
-                        
-                new clientenovoJpaController().destroy(cliente.getId());
-                JOptionPane.showMessageDialog(null, "CLIENTE EXCLUIDO!");
-            } else {
-                //código que cancela a exclusão
-                 txtnome.setText("");
-                 txtCpf.setText("");
-                 txtdia.setText("DD");
-                 txtmes.setText("MM");
-                 txtano.setText("AAAA");                 
-//txtdatanasc.setCalendar(null);
-                 txtemail.setText("");
-                 txttelefone.setText("");
-                 txtendereco.setText("");
-                 optm.setSelected(false);
-                 optf.setSelected(false);
-                 txtCpf.grabFocus();
-            }
-        } catch (NonexistentEntityException ex) {
+        resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente encerrar?","ENCERRAR A PROMOÇÃO", JOptionPane.YES_NO_OPTION);
+        if (resposta == JOptionPane.YES_OPTION){
+            cp.setCliente(cliente);
+            cp.setData01(jData1.getDate());
+            cp.setData02(jData2.getDate());
+            cp.setData03(jData3.getDate());
+            cp.setData04(jData4.getDate());
+            cp.setData05(jData5.getDate());
+            cp.setPromocao((promocaonovo) cboPromocao.getSelectedItem());
+            
+            new clienteXpromocaoJpaController().create(cp);
+            JOptionPane.showMessageDialog(null, "PROMOÇÃO ENCERRADA COM SUCESSO!\n CADASTRE UMA NOVA PROMOÇÃO!");
+        } else {
             
         }
-        
-       // if (cliente==null) return;
-        
-         
-         //cliente.setData_nasc(txtdatanasc.getCalendar());
-             
-        try{
-            new clientenovoJpaController().edit(cliente);
+       
+       
+       cboPromocao.setActionCommand("");
+       jData1.setDate(null);
+       jData2.setDate(null);
+       jData3.setDate(null);
+       jData4.setDate(null);
+       jData5.setDate(null);
+       
+       try{
+           new clientenovoJpaController().edit(cliente);
          } catch (NonexistentEntityException ex) {
             JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage() + " Procure o Administrador do Sistema");
         }
-
-        JOptionPane.showMessageDialog(null,"DATA 01 INCLUÍDA COM SUCESSO!");
         
 // TODO add your handling code here:
     }//GEN-LAST:event_btnencerrarActionPerformed
@@ -1209,7 +1205,7 @@ public class guiClientenovo extends javax.swing.JFrame {
         }
 
         JOptionPane.showMessageDialog(null,"DATA 05 INCLUÍDA COM SUCESSO!");
-        
+       // cboPromocao.setName(cliente.getPromocao().getNome());
         btnencerrar.setEnabled(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnincluir5ActionPerformed
