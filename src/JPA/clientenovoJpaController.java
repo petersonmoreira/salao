@@ -56,6 +56,7 @@ public class clientenovoJpaController implements Serializable {
     public void edit(clientenovo clientenovo) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
+            System.out.println("entrei comando edit");
             em = getEntityManager();
             em.getTransaction().begin();
             clientenovo = em.merge(clientenovo);

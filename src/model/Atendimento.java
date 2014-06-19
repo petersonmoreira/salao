@@ -137,7 +137,7 @@ public class Atendimento implements Serializable {
 
     @Override
     public String toString() {
-        return this.servicoNovo.getDescricao() + this.servicoNovo.getPreco().toString();
+        return this.servicoNovo.getDescricao();
     }
     
 }

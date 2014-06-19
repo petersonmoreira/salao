@@ -1178,6 +1178,13 @@ public class guiClientenovo extends javax.swing.JFrame {
        jData4.setDate(null);
        jData5.setDate(null);
        
+       cliente.setData01(jData1.getDate());
+       cliente.setData02(jData2.getDate());
+       cliente.setData03(jData3.getDate());
+       cliente.setData04(jData4.getDate());
+       cliente.setData05(jData5.getDate());
+       
+       
        try{
            new clientenovoJpaController().edit(cliente);
          } catch (NonexistentEntityException ex) {

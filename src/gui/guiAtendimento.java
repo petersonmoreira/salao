@@ -8,17 +8,21 @@ package gui;
 
 import JPA.AtendimentoJpaController;
 import JPA.clientenovoJpaController;
+import JPA.exceptions.NonexistentEntityException;
 import JPA.profissionalJpaController;
 import JPA.promocaonovoJpaController;
 import JPA.servicoNovoJpaController;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.Atendimento;
 import model.clientenovo;
 import model.profissional;
 import model.promocaonovo;
 import model.servicoNovo;
+import static org.apache.xalan.lib.ExsltDatetime.date;
+import static org.eclipse.persistence.expressions.ExpressionOperator.today;
 
 /**
  *
@@ -418,6 +422,7 @@ public class guiAtendimento extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
 
+          
     cboCliente.removeAllItems();
     List l = new clientenovoJpaController().findclientenovoEntities();
 
@@ -485,13 +490,17 @@ public class guiAtendimento extends javax.swing.JFrame {
         Atendimento.setDataAtendimento(jData.getDate());
         Atendimento.setClientenovo((clientenovo) cboCliente.getSelectedItem());
         Atendimento.setProfissional((profissional) cboProfissional.getSelectedItem());
-       // Atendimento.setServicoNovo((servicoNovo)cboServico.getSelectedItem());
+        Atendimento.setServicoNovo((servicoNovo)cboServico.getSelectedItem());
+       
                     
         new AtendimentoJpaController().create(Atendimento);
         
         txtcodigo.setText(Atendimento.getId());
 
         new AtendimentoJpaController().findAtendimento(txtcodigo.getText());
+       
+       //List l = new AtendimentoJpaController().findAtendimentoEntities();
+       //lstservicos.setListData(l.toArray()); 
 
        
        
@@ -506,14 +515,16 @@ public class guiAtendimento extends javax.swing.JFrame {
        
         if (Atendimento == null) return;
         
-       // new AtendimentoJpaController().findAtendimento(txtcodigo.getText());
+        new AtendimentoJpaController().findAtendimento(txtcodigo.getText());
         
         Atendimento.setServicoNovo((servicoNovo)cboServico.getSelectedItem());
         
         try {
             new AtendimentoJpaController().edit(Atendimento);
+         } catch (NonexistentEntityException ex) {
+            JOptionPane.showMessageDialog(null, "");
         } catch (Exception ex) {
-            Logger.getLogger(guiAtendimento.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage() + " Procure o Administrador do Sistema");
         }
         // List l = new AtendimentoJpaController().findAtendimentoEntities();
             //lstservicos.setListData(l.toArray()); 
