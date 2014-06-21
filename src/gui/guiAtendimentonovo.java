@@ -29,6 +29,7 @@ public class guiAtendimentonovo extends javax.swing.JFrame {
     
     private clientenovo cliente; 
     Atendimento Atendimento = new Atendimento();
+    Double tot;
     
 
 
@@ -49,6 +50,7 @@ public class guiAtendimentonovo extends javax.swing.JFrame {
         cboProfissional.setEnabled(false);
         cboPromocao.setEnabled(false);
         btnpromocao.setEnabled(false);
+        btnconcluir.setEnabled(false);
     }
 
     /**
@@ -71,22 +73,17 @@ public class guiAtendimentonovo extends javax.swing.JFrame {
         jData = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
         btnconcluir = new javax.swing.JToggleButton();
-        btniniciar = new javax.swing.JToggleButton();
         btnadicionar = new javax.swing.JToggleButton();
         jLabel9 = new javax.swing.JLabel();
         txtcodigo = new javax.swing.JTextField();
         cboCliente = new javax.swing.JComboBox();
         cboServico1 = new javax.swing.JComboBox();
-        txtservico1 = new javax.swing.JTextField();
-        txtvalor1 = new javax.swing.JTextField();
-        txtservico2 = new javax.swing.JTextField();
-        txtvalor2 = new javax.swing.JTextField();
-        txtservico3 = new javax.swing.JTextField();
-        txtvalor3 = new javax.swing.JTextField();
         btnservico2 = new javax.swing.JButton();
         cboServico2 = new javax.swing.JComboBox();
         btnpromocao = new javax.swing.JButton();
         btnservico1 = new javax.swing.JButton();
+        btnnovo = new javax.swing.JToggleButton();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -107,8 +104,9 @@ public class guiAtendimentonovo extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
                 .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,9 +151,15 @@ public class guiAtendimentonovo extends javax.swing.JFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
-        jLabel8.setText("TOTAL:   R$");
+        jLabel8.setText("TOTAL:");
 
-        txttotal.setFont(new java.awt.Font("AR ESSENCE", 0, 28)); // NOI18N
+        txttotal.setBackground(new java.awt.Color(255, 255, 153));
+        txttotal.setFont(new java.awt.Font("AR ESSENCE", 1, 28)); // NOI18N
+        txttotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txttotalActionPerformed(evt);
+            }
+        });
 
         jData.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
         jData.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -186,19 +190,6 @@ public class guiAtendimentonovo extends javax.swing.JFrame {
             }
         });
 
-        btniniciar.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
-        btniniciar.setText("INICIAR");
-        btniniciar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btniniciarMouseClicked(evt);
-            }
-        });
-        btniniciar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btniniciarActionPerformed(evt);
-            }
-        });
-
         btnadicionar.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
         btnadicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Ok.png"))); // NOI18N
         btnadicionar.setText("Adicionar");
@@ -216,6 +207,7 @@ public class guiAtendimentonovo extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
         jLabel9.setText("Código:");
 
+        txtcodigo.setEditable(false);
         txtcodigo.setBackground(new java.awt.Color(204, 204, 204));
         txtcodigo.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
 
@@ -257,30 +249,6 @@ public class guiAtendimentonovo extends javax.swing.JFrame {
                 cboServico1ActionPerformed(evt);
             }
         });
-
-        txtservico1.setEditable(false);
-        txtservico1.setBackground(new java.awt.Color(255, 255, 255));
-        txtservico1.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
-
-        txtvalor1.setEditable(false);
-        txtvalor1.setBackground(new java.awt.Color(255, 255, 255));
-        txtvalor1.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
-
-        txtservico2.setEditable(false);
-        txtservico2.setBackground(new java.awt.Color(255, 255, 255));
-        txtservico2.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
-
-        txtvalor2.setEditable(false);
-        txtvalor2.setBackground(new java.awt.Color(255, 255, 255));
-        txtvalor2.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
-
-        txtservico3.setEditable(false);
-        txtservico3.setBackground(new java.awt.Color(255, 255, 255));
-        txtservico3.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
-
-        txtvalor3.setEditable(false);
-        txtvalor3.setBackground(new java.awt.Color(255, 255, 255));
-        txtvalor3.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
 
         btnservico2.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
         btnservico2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/+ serviços.png"))); // NOI18N
@@ -326,77 +294,82 @@ public class guiAtendimentonovo extends javax.swing.JFrame {
             }
         });
 
+        btnnovo.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
+        btnnovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/novo.png"))); // NOI18N
+        btnnovo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnnovo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnnovoMouseClicked(evt);
+            }
+        });
+        btnnovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnovoActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("AR ESSENCE", 1, 28)); // NOI18N
+        jLabel10.setText("R$");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnpromocao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cboPromocao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(btnservico2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(jLabel5))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(btnservico1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboServico1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cboServico2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel3)
+                        .addGap(45, 45, 45)
+                        .addComponent(cboCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(btnconcluir))
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jData, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtservico2, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtvalor2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jData, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel8)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txttotal, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(txtservico3, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtvalor3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnadicionar)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(txtservico1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtvalor1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnpromocao)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cboPromocao, 0, 320, Short.MAX_VALUE))
-                            .addComponent(cboProfissional, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btniniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel5)
+                        .addGap(12, 12, 12)
+                        .addComponent(cboProfissional, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnservico2)
+                    .addComponent(btnservico1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cboServico1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cboServico2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txttotal, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(20, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnconcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnnovo, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnadicionar))))
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -431,28 +404,17 @@ public class guiAtendimentonovo extends javax.swing.JFrame {
                     .addComponent(cboPromocao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnpromocao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btniniciar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnadicionar)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtservico1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtvalor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtservico2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtvalor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtservico3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtvalor3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txttotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnconcluir)
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addComponent(txttotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnconcluir)
+                    .addComponent(btnnovo))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -480,48 +442,6 @@ public class guiAtendimentonovo extends javax.swing.JFrame {
     
     }//GEN-LAST:event_formWindowActivated
 
-    private void btnconcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnconcluirMouseClicked
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnconcluirMouseClicked
-
-    private void btnconcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconcluirActionPerformed
-
-        try{
-          Atendimento = new AtendimentoJpaController().findAtendimento(txtcodigo.getText());
-      } catch (Exception e) {
-          JOptionPane.showMessageDialog(null, "CLIENTE NÃO CADASTRADO");
-          return;
-      }
-        
-        txtcodigo.setText(Atendimento.getId());
-        jData.setDate(Atendimento.getDataAtendimento());
-        cboCliente.setSelectedItem(Atendimento.getClientenovo());
-        cboProfissional.setSelectedItem(Atendimento.getProfissional());
-        cboServico1.setSelectedItem(Atendimento.getServicoNovo1());
-               
-       Atendimento.setTotal(Double.parseDouble(txttotal.getText()));
-       
-       try {
-            new AtendimentoJpaController().edit(Atendimento);
-            } catch (Exception ex) {
-            Logger.getLogger(guiAtendimentonovo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnconcluirActionPerformed
-
-    private void btniniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btniniciarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btniniciarMouseClicked
-
-    private void btniniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btniniciarActionPerformed
-               
-        
-        
-        
-        
-// TODO add your handling code here:
-    }//GEN-LAST:event_btniniciarActionPerformed
-
     private void btnadicionarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnadicionarMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnadicionarMouseClicked
@@ -532,15 +452,47 @@ public class guiAtendimentonovo extends javax.swing.JFrame {
         Atendimento.setDataAtendimento(jData.getDate());
         Atendimento.setClientenovo((clientenovo) cboCliente.getSelectedItem());
         Atendimento.setProfissional((profissional) cboProfissional.getSelectedItem());
-        Atendimento.setServicoNovo1((servicoNovo)cboServico1.getSelectedItem());
-        Atendimento.setServicoNovo2((servicoNovo)cboServico2.getSelectedItem());
-        Atendimento.setPromocaonovo((promocaonovo)cboPromocao.getSelectedItem());
-        //if (cboServico2 = ){
-        Atendimento.setTotal(Atendimento.getServicoNovo1().getPreco() + Atendimento.getServicoNovo2().getPreco() + Atendimento.getPromocaonovo().getValor());
-                    
+        
+        //SERVIÇO 1 + SERVIÇO 2 + PROMOÇÃO - ok
+        if (cboServico1.isEnabled() && cboServico2.isEnabled() && cboPromocao.isEnabled() ){
+            Atendimento.setServicoNovo1((servicoNovo)cboServico1.getSelectedItem());//PEGAR SERVIÇO 1
+            Atendimento.setServicoNovo2((servicoNovo)cboServico2.getSelectedItem());//PEGAR SERVIÇO 2
+            Atendimento.setPromocaonovo((promocaonovo)cboPromocao.getSelectedItem());//PEGAR PROMOÇÃO
+            Atendimento.setTotal(Atendimento.getServicoNovo1().getPreco() + Atendimento.getServicoNovo2().getPreco() + Atendimento.getPromocaonovo().getValor());
+            txttotal.setText(Atendimento.getTotal().toString());
+        }
+        
+        //SERVIÇO 1 +SERVIÇO 2 - ok
+        if (cboServico1.isEnabled() && cboServico2.isEnabled()){
+            Atendimento.setServicoNovo1((servicoNovo)cboServico1.getSelectedItem());
+            Atendimento.setServicoNovo2((servicoNovo)cboServico2.getSelectedItem());
+            Atendimento.setTotal(Atendimento.getServicoNovo1().getPreco() + Atendimento.getServicoNovo2().getPreco());
+            txttotal.setText(Atendimento.getTotal().toString());
+            }
+        
+        //SERVIÇO 1 + PROMOÇÃO
+        if (cboServico1.isEnabled() && cboPromocao.isEnabled()){
+            Atendimento.setServicoNovo1((servicoNovo)cboServico1.getSelectedItem());
+            Atendimento.setPromocaonovo((promocaonovo)cboPromocao.getSelectedItem());
+            Atendimento.setTotal(Atendimento.getServicoNovo1().getPreco() + Atendimento.getPromocaonovo().getValor());
+            txttotal.setText(Atendimento.getTotal().toString());
+        }
+        
+        //SERVIÇO 1 - ok
+        if (cboServico1.isEnabled()){
+            Atendimento.setServicoNovo1((servicoNovo)cboServico1.getSelectedItem());
+            Atendimento.setTotal(Atendimento.getServicoNovo1().getPreco());
+        }
+        
+        //PROMOÇÃO - ok
+        if (cboPromocao.isEnabled() ){
+            Atendimento.setPromocaonovo((promocaonovo)cboPromocao.getSelectedItem());
+            Atendimento.setTotal(Atendimento.getPromocaonovo().getValor());
+        }
+        
         new AtendimentoJpaController().create(Atendimento);
         /*
-        txtcodigo.setText(Atendimento.getId());
+        
         txttotal.setText(Atendimento.getServicoNovo1().getPreco().toString());
 
         Atendimento a;
@@ -548,23 +500,18 @@ public class guiAtendimentonovo extends javax.swing.JFrame {
         txtservico1.setText(a.getServicoNovo1().toString());
         txtvalor1.setText(a.getServicoNovo1().getPreco().toString());
         )*/
-        txttotal.setText(Atendimento.getTotal().toString());
-        btniniciar.setEnabled(false);
-        
-        
-        
-        
-        
-        
-        
+        //txttotal.setText(Atendimento.getTotal().toString());
+        txtcodigo.setText(Atendimento.getId());
+        btnconcluir.setEnabled(true);
+               
                 
-        txtservico2.setText(Atendimento.getServicoNovo2().toString());
-        txtvalor2.setText(Atendimento.getServicoNovo2().getPreco().toString());
-        Double sub;
-        sub = Double.parseDouble(txttotal.getText());
-        sub += (Atendimento.getServicoNovo2().getPreco());
+       // txtservico2.setText(Atendimento.getServicoNovo2().toString());
+       // txtvalor2.setText(Atendimento.getServicoNovo2().getPreco().toString());
+        //Double sub;
+        //sub = Double.parseDouble(txttotal.getText());
+        //sub += (Atendimento.getServicoNovo2().getPreco());
         
-        txttotal.setText(sub.toString());
+        //txttotal.setText(sub.toString());
 
         //Atendimento a;
         //a = new AtendimentoJpaController().findAtendimento(txtcodigo.getText());
@@ -581,7 +528,6 @@ public class guiAtendimentonovo extends javax.swing.JFrame {
     }//GEN-LAST:event_cboClienteActionPerformed
 
     private void cboServico1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboServico1ItemStateChanged
-
         btnservico2.setEnabled(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_cboServico1ItemStateChanged
@@ -704,6 +650,31 @@ public class guiAtendimentonovo extends javax.swing.JFrame {
          btnservico2.setEnabled(true);// TODO add your handling code here:
     }//GEN-LAST:event_cboServico1MouseClicked
 
+    private void btnconcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconcluirActionPerformed
+        this.dispose();
+       
+    }//GEN-LAST:event_btnconcluirActionPerformed
+
+    private void btnconcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnconcluirMouseClicked
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnconcluirMouseClicked
+
+    private void btnnovoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnnovoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnnovoMouseClicked
+
+    private void btnnovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnovoActionPerformed
+        this.dispose();
+        new guiAtendimentonovo().setVisible(true);
+       
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnnovoActionPerformed
+
+    private void txttotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txttotalActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -743,7 +714,7 @@ public class guiAtendimentonovo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnadicionar;
     private javax.swing.JToggleButton btnconcluir;
-    private javax.swing.JToggleButton btniniciar;
+    private javax.swing.JToggleButton btnnovo;
     private javax.swing.JButton btnpromocao;
     private javax.swing.JButton btnservico1;
     private javax.swing.JButton btnservico2;
@@ -754,6 +725,7 @@ public class guiAtendimentonovo extends javax.swing.JFrame {
     private javax.swing.JComboBox cboServico2;
     private com.toedter.calendar.JDateChooser jData;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -761,12 +733,6 @@ public class guiAtendimentonovo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtcodigo;
-    private javax.swing.JTextField txtservico1;
-    private javax.swing.JTextField txtservico2;
-    private javax.swing.JTextField txtservico3;
     private javax.swing.JTextField txttotal;
-    private javax.swing.JTextField txtvalor1;
-    private javax.swing.JTextField txtvalor2;
-    private javax.swing.JTextField txtvalor3;
     // End of variables declaration//GEN-END:variables
 }
