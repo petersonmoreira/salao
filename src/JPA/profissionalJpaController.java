@@ -1,7 +1,9 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package JPA;
 
 import JPA.exceptions.NonexistentEntityException;
@@ -23,7 +25,7 @@ import model.profissional;
 public class profissionalJpaController implements Serializable {
 
     public profissionalJpaController() {
-        emf = Persistence.createEntityManagerFactory("salao.belezaPU");
+        emf = Persistence.createEntityManagerFactory("salao.belezaPU");;
     }
     private EntityManagerFactory emf = null;
 
@@ -55,7 +57,7 @@ public class profissionalJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Long id = profissional.getId();
+                String id = profissional.getId();
                 if (findprofissional(id) == null) {
                     throw new NonexistentEntityException("The profissional with id " + id + " no longer exists.");
                 }
@@ -68,7 +70,7 @@ public class profissionalJpaController implements Serializable {
         }
     }
 
-    public void destroy(Long id) throws NonexistentEntityException {
+    public void destroy(String id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -113,7 +115,7 @@ public class profissionalJpaController implements Serializable {
         }
     }
 
-    public profissional findprofissional(Long id) {
+    public profissional findprofissional(String id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(profissional.class, id);
@@ -121,13 +123,6 @@ public class profissionalJpaController implements Serializable {
             em.close();
         }
     }
-    
-    /**
-     *
-     * @param p
-     * @return
-     */
-
 
     public int getprofissionalCount() {
         EntityManager em = getEntityManager();
@@ -140,11 +135,6 @@ public class profissionalJpaController implements Serializable {
         } finally {
             em.close();
         }
-    }
-    
-     public profissional getprofissional(String Id) {
-        EntityManager em = getEntityManager();
-        return (profissional) em.createQuery("select p from profissional p where p.Id like '" + Id + "%'").getSingleResult();
     }
     
 }

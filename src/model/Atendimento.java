@@ -32,11 +32,16 @@ public class Atendimento implements Serializable {
     @OneToOne
     private profissional profissional;
     @ManyToOne
-    private servicoNovo servicoNovo;
+    private servicoNovo servicoNovo1;
+    @ManyToOne
+    private servicoNovo servicoNovo2;
+    @ManyToOne
+    private servicoNovo servicoNovo3;
     @OneToOne
     private promocaonovo promocaonovo;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataAtendimento;
+    
     private Double subtotal;
     private Double desconto;
     private Double total;
@@ -65,12 +70,28 @@ public class Atendimento implements Serializable {
         this.profissional = profissional;
     }
 
-    public servicoNovo getServicoNovo() {
-        return servicoNovo;
+    public servicoNovo getServicoNovo1() {
+        return servicoNovo1;
     }
 
-    public void setServicoNovo(servicoNovo servicoNovo) {
-        this.servicoNovo = servicoNovo;
+    public void setServicoNovo1(servicoNovo servicoNovo1) {
+        this.servicoNovo1 = servicoNovo1;
+    }
+
+    public servicoNovo getServicoNovo2() {
+        return servicoNovo2;
+    }
+
+    public void setServicoNovo2(servicoNovo servicoNovo2) {
+        this.servicoNovo2 = servicoNovo2;
+    }
+
+    public servicoNovo getServicoNovo3() {
+        return servicoNovo3;
+    }
+
+    public void setServicoNovo3(servicoNovo servicoNovo3) {
+        this.servicoNovo3 = servicoNovo3;
     }
 
     public promocaonovo getPromocaonovo() {
@@ -137,7 +158,7 @@ public class Atendimento implements Serializable {
 
     @Override
     public String toString() {
-        return this.servicoNovo.getDescricao();
+        return null;
     }
     
 }

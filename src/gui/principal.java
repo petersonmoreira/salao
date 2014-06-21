@@ -5,6 +5,7 @@
 package gui;
 
 import JPA.produtoJpaController;
+import Relatórios.Aniversarios;
 import Relatórios.JDBC.ConectaBanco;
 import java.util.HashMap;
 import java.util.List;
@@ -50,8 +51,10 @@ public class principal extends javax.swing.JFrame {
         cadastrarcliente1 = new javax.swing.JMenuItem();
         cadastrarcliente2 = new javax.swing.JMenuItem();
         cadastrarcliente3 = new javax.swing.JMenuItem();
+        cadastrarpromocao = new javax.swing.JMenuItem();
         menuatendimento = new javax.swing.JMenu();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        MenuAtendimento = new javax.swing.JMenuItem();
         menuAgendamento = new javax.swing.JMenu();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
@@ -64,6 +67,7 @@ public class principal extends javax.swing.JFrame {
         RelAniversariantes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 204));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -177,11 +181,36 @@ public class principal extends javax.swing.JFrame {
         });
         menucadastros.add(cadastrarcliente3);
 
+        cadastrarpromocao.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
+        cadastrarpromocao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/promocao.png"))); // NOI18N
+        cadastrarpromocao.setText("Cadastrar Promoção");
+        cadastrarpromocao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cadastrarpromocaoMouseClicked(evt);
+            }
+        });
+        cadastrarpromocao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarpromocaoActionPerformed(evt);
+            }
+        });
+        menucadastros.add(cadastrarpromocao);
+
         jMenuBar1.add(menucadastros);
 
         menuatendimento.setText("     ATENDIMENTO     |");
         menuatendimento.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
         menuatendimento.add(jSeparator1);
+
+        MenuAtendimento.setFont(new java.awt.Font("AR CENA", 0, 24)); // NOI18N
+        MenuAtendimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/caixa.png"))); // NOI18N
+        MenuAtendimento.setText("Gerar Atendimento");
+        MenuAtendimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuAtendimentoActionPerformed(evt);
+            }
+        });
+        menuatendimento.add(MenuAtendimento);
 
         jMenuBar1.add(menuatendimento);
 
@@ -236,6 +265,7 @@ public class principal extends javax.swing.JFrame {
         menurelatorioclientes.add(cadastrarfuncao2);
 
         RelAniversariantes.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
+        RelAniversariantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/aniversario.png"))); // NOI18N
         RelAniversariantes.setText("Aniversariantes");
         RelAniversariantes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -388,7 +418,9 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_RelAniversariantesMouseClicked
 
     private void RelAniversariantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelAniversariantesActionPerformed
-        System.out.println("entrou relatorio");
+        
+        new Aniversarios().setVisible(true);
+        /*
         try{
             conecta.executaSQL("select * from clientenovo");
             System.out.println("PASSOU CONECTA");
@@ -399,8 +431,24 @@ public class principal extends javax.swing.JFrame {
             jv.toFront();
         } catch (JRException ex) {
             JOptionPane.showMessageDialog(rootPane, "Erro ao chamar o relatorio!\nErro:" + ex);
-        }// TODO add your handling code here:
+        }*/// TODO add your handling code here:
     }//GEN-LAST:event_RelAniversariantesActionPerformed
+
+    private void MenuAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAtendimentoActionPerformed
+
+        new guiAtendimentonovo().setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuAtendimentoActionPerformed
+
+    private void cadastrarpromocaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastrarpromocaoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cadastrarpromocaoMouseClicked
+
+    private void cadastrarpromocaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarpromocaoActionPerformed
+
+        new guiPromocao().setVisible(true);
+// TODO add your handling code here:
+    }//GEN-LAST:event_cadastrarpromocaoActionPerformed
 
     
     /**
@@ -443,6 +491,7 @@ public class principal extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuAgendar;
+    private javax.swing.JMenuItem MenuAtendimento;
     private javax.swing.JMenuItem RelAniversariantes;
     private javax.swing.JMenuItem RelClientes;
     private javax.swing.JMenuItem cadastrarcliente;
@@ -452,6 +501,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem cadastrarfuncao;
     private javax.swing.JMenuItem cadastrarfuncao2;
     private javax.swing.JMenuItem cadastrarprofissional;
+    private javax.swing.JMenuItem cadastrarpromocao;
     private javax.swing.JMenuItem cadastrarservico;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;

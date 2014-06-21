@@ -19,8 +19,8 @@ import javax.persistence.OneToOne;
 public class profissional implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id;
     private String nome;
     private String Data_Nasc;
     private String sexo;
@@ -69,11 +69,11 @@ public class profissional implements Serializable {
     }
 
     
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
