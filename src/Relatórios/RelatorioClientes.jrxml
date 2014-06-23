@@ -4,15 +4,30 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[select * from clientenovo]]>
+		<![CDATA[SELECT
+     *,
+     clientenovo."nome" AS clientenovo_nome
+FROM
+     "clientenovo" clientenovo
+ORDER BY
+     clientenovo."nome" ASC]]>
 	</queryString>
 	<field name="id" class="java.lang.String"/>
-	<field name="data_nasc" class="java.lang.String"/>
+	<field name="ano" class="java.lang.Integer"/>
+	<field name="data01" class="java.sql.Date"/>
+	<field name="data02" class="java.sql.Date"/>
+	<field name="data03" class="java.sql.Date"/>
+	<field name="data04" class="java.sql.Date"/>
+	<field name="data05" class="java.sql.Date"/>
+	<field name="dia" class="java.lang.Integer"/>
 	<field name="email" class="java.lang.String"/>
 	<field name="endereco" class="java.lang.String"/>
+	<field name="mes" class="java.lang.Integer"/>
 	<field name="nome" class="java.lang.String"/>
 	<field name="sexo" class="java.lang.String"/>
 	<field name="telefone" class="java.lang.String"/>
+	<field name="promocao_codigo" class="java.lang.String"/>
+	<field name="clientenovo_nome" class="java.lang.String"/>
 	<variable name="nome_1" class="java.lang.Integer" resetType="Column" calculation="Count">
 		<variableExpression><![CDATA[$F{nome}]]></variableExpression>
 	</variable>

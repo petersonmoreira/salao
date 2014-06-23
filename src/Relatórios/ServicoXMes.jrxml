@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ServicoXMes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c24679ed-0498-42c7-a0de-d14f3727cc38">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="DATA_INICIO" class="java.util.Date"/>
+	<parameter name="DATA_FIM" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT
+     profissional."nome" AS nome_profissional,
+     atendimento."dataatendimento" AS atendimento_dataatendimento,
+     serviconovo."descricao" AS servico
+FROM
+     "atendimento" atendimento,
+     "serviconovo" serviconovo,
+     "profissional" profissional
+WHERE
+    atendimento.dataatendimento BETWEEN $P{DATA_INICIO} AND $P{DATA_FIM}
+ORDER BY
+     atendimento."dataatendimento" ASC,
+     profissional."nome" ASC]]>
+	</queryString>
+	<field name="nome_profissional" class="java.lang.String"/>
+	<field name="atendimento_dataatendimento" class="java.sql.Date"/>
+	<field name="servico" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement uuid="add7d24a-a150-4e7e-8e1a-4695e959d3bd" x="219" y="0" width="115" height="79"/>
+				<imageExpression><![CDATA["C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\ícones\\Logo_menor.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="b77871bf-2dd1-4077-9187-00d960902cc8" x="0" y="0" width="555" height="35"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="24" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Relatório de Serviços por Profissional]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<line>
+				<reportElement uuid="c6049cee-4235-4afc-95fc-0919ec5ce065" x="0" y="60" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="0e16eba8-e71a-45f9-a737-5bc19969db95" x="0" y="41" width="100" height="20"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="88ecfd62-5cf4-4e30-a20a-a299e560f002" x="119" y="41" width="100" height="20"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Profissional]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="84fd24fb-a454-4d22-ad3b-9c48a041d85c" x="352" y="41" width="100" height="20"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[servico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4a571a69-a6ea-494f-9863-23672ebd4c79" x="154" y="0" width="65" height="20"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Período: de]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="f2901a8a-5537-4900-8880-7377cff09ec3" x="219" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATA_INICIO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="31ac67b6-61a6-4ed4-81c0-c3c206ad11d8" x="319" y="0" width="18" height="20"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[à]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="6eb916c5-cee9-4880-bd04-b9cf66db7411" x="337" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATA_FIM}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="3c45c6d6-551b-451f-abb2-490f43c90163" x="0" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{atendimento_dataatendimento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e0f34796-b2fc-4498-9425-40e2345a48c4" x="119" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_profissional}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="539b0a37-63b9-4f26-beb0-a4d1673ad18b" x="352" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{servico}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement uuid="3b3e7641-4e00-4c14-b3ba-517eb84cef6e" x="529" y="34" width="26" height="20"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="915584bc-e53a-452e-86bd-a0697941fc14" x="489" y="34" width="21" height="20"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a3cdbd67-d79c-450a-8609-3c98e7f33efe" x="510" y="34" width="19" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

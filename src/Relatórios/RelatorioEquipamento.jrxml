@@ -4,12 +4,16 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[SELECT * FROM EQUIPAMENTO]]>
+		<![CDATA[SELECT
+     equipamento."descricao" AS nome,
+     equipamento."data_utilizacao" AS equipamento_data_utilizacao
+FROM
+     "equipamento" equipamento
+ORDER BY
+     equipamento."descricao" ASC]]>
 	</queryString>
-	<field name="id" class="java.lang.Long"/>
-	<field name="data_utilizacao" class="java.lang.String"/>
-	<field name="descricao" class="java.lang.String"/>
 	<field name="nome" class="java.lang.String"/>
+	<field name="equipamento_data_utilizacao" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -35,7 +39,7 @@
 	<columnHeader>
 		<band height="61" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="fc93f430-0ac6-471f-be54-e1ec75458a74" x="0" y="41" width="144" height="20"/>
+				<reportElement uuid="fc93f430-0ac6-471f-be54-e1ec75458a74" x="1" y="41" width="144" height="20"/>
 				<textElement>
 					<font fontName="Arial Black" size="14"/>
 				</textElement>
@@ -46,7 +50,7 @@
 				<textElement>
 					<font fontName="Arial Black" size="14"/>
 				</textElement>
-				<text><![CDATA[TEMPO DE USO:]]></text>
+				<text><![CDATA[EM USO DESDE:]]></text>
 			</staticText>
 			<line>
 				<reportElement uuid="b82ee2df-2d37-4e14-8056-adf9d1e9d856" x="-1" y="60" width="555" height="1"/>
@@ -63,9 +67,11 @@
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement uuid="b39e9a13-a359-4a88-a12c-367adaa18fba" x="337" y="0" width="218" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{data_utilizacao}]]></textFieldExpression>
+				<reportElement uuid="245c3538-7dce-4b43-b271-320a1c6e134f" x="337" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{equipamento_data_utilizacao}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -78,7 +84,7 @@
 	<summary>
 		<band height="42" splitType="Stretch">
 			<textField>
-				<reportElement uuid="a94de35f-6db3-41f0-982d-e1fd8b3dcc54" x="434" y="22" width="80" height="20"/>
+				<reportElement uuid="a94de35f-6db3-41f0-982d-e1fd8b3dcc54" x="432" y="22" width="80" height="20"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>

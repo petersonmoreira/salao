@@ -65,6 +65,8 @@ public class principal extends javax.swing.JFrame {
         RelClientes = new javax.swing.JMenuItem();
         cadastrarfuncao2 = new javax.swing.JMenuItem();
         RelAniversariantes = new javax.swing.JMenuItem();
+        RelServicosXprofissional = new javax.swing.JMenuItem();
+        RelEquipamentos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 204));
@@ -279,6 +281,34 @@ public class principal extends javax.swing.JFrame {
         });
         menurelatorioclientes.add(RelAniversariantes);
 
+        RelServicosXprofissional.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
+        RelServicosXprofissional.setText("Serviços X Profissional (Mês)");
+        RelServicosXprofissional.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RelServicosXprofissionalMouseClicked(evt);
+            }
+        });
+        RelServicosXprofissional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RelServicosXprofissionalActionPerformed(evt);
+            }
+        });
+        menurelatorioclientes.add(RelServicosXprofissional);
+
+        RelEquipamentos.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
+        RelEquipamentos.setText("Equipamentos");
+        RelEquipamentos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RelEquipamentosMouseClicked(evt);
+            }
+        });
+        RelEquipamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RelEquipamentosActionPerformed(evt);
+            }
+        });
+        menurelatorioclientes.add(RelEquipamentos);
+
         jMenuBar1.add(menurelatorioclientes);
 
         setJMenuBar(jMenuBar1);
@@ -450,6 +480,65 @@ public class principal extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_cadastrarpromocaoActionPerformed
 
+    private void RelServicosXprofissionalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RelServicosXprofissionalMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RelServicosXprofissionalMouseClicked
+
+    private void RelServicosXprofissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelServicosXprofissionalActionPerformed
+try{
+            conecta.executaSQL("SELECT\n" +
+"     profissional.\"nome\" AS nome_profissional,\n" +
+"     atendimento.\"dataatendimento\" AS atendimento_dataatendimento,\n" +
+"     serviconovo.\"descricao\" AS servico\n" +
+"FROM\n" +
+"     \"atendimento\" atendimento,\n" +
+"     \"serviconovo\" serviconovo,\n" +
+"     \"profissional\" profissional\n" +
+"WHERE\n" +
+"    atendimento.dataatendimento BETWEEN $P{DATA_INICIO} AND $P{DATA_FIM}\n" +
+"ORDER BY\n" +
+"     atendimento.\"dataatendimento\" ASC,\n" +
+"     profissional.\"nome\" ASC");
+            System.out.println("PASSOU CONECTA");
+            JRResultSetDataSource relatResul = new JRResultSetDataSource(conecta.rs);
+            System.out.println("PASSOU JRRESULTSET");
+            JasperPrint jpPrint = JasperFillManager.fillReport("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/ServicoXMes.jasper", new HashMap(), relatResul);
+            System.out.println("PASSOU LOCALIZAÇÃO DO RELATORIO");
+            JasperViewer jv = new JasperViewer (jpPrint,false);
+            jv.setVisible(true);
+            jv.toFront();
+        } catch (JRException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Erro ao chamar o relatorio!\nErro:" + ex);
+        }
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_RelServicosXprofissionalActionPerformed
+
+    private void RelEquipamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RelEquipamentosMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RelEquipamentosMouseClicked
+
+    private void RelEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelEquipamentosActionPerformed
+ try{
+            conecta.executaSQL("SELECT\n" +
+"     equipamento.\"descricao\" AS nome,\n" +
+"     equipamento.\"data_utilizacao\" AS equipamento_data_utilizacao\n" +
+"FROM\n" +
+"     \"equipamento\" equipamento\n" +
+"ORDER BY\n" +
+"     equipamento.\"descricao\" ASC");
+            JRResultSetDataSource relatResul = new JRResultSetDataSource(conecta.rs);
+            JasperPrint jpPrint = JasperFillManager.fillReport("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/RelatorioEquipamento.jasper", new HashMap(), relatResul);
+            JasperViewer jv = new JasperViewer (jpPrint,false);
+            jv.setVisible(true);
+            jv.toFront();
+        } catch (JRException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Erro ao chamar o relatorio!\nErro:" + ex);
+        }
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_RelEquipamentosActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -494,6 +583,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuAtendimento;
     private javax.swing.JMenuItem RelAniversariantes;
     private javax.swing.JMenuItem RelClientes;
+    private javax.swing.JMenuItem RelEquipamentos;
+    private javax.swing.JMenuItem RelServicosXprofissional;
     private javax.swing.JMenuItem cadastrarcliente;
     private javax.swing.JMenuItem cadastrarcliente1;
     private javax.swing.JMenuItem cadastrarcliente2;
