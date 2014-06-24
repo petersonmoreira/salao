@@ -7,8 +7,10 @@ package gui;
 import JPA.produtoJpaController;
 import Relatórios.Aniversarios;
 import Relatórios.JDBC.ConectaBanco;
+import java.awt.Color;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
@@ -29,7 +31,7 @@ public class principal extends javax.swing.JFrame {
     public principal() {
         initComponents();
         conecta.conexao();
-    }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,11 +67,14 @@ public class principal extends javax.swing.JFrame {
         RelClientes = new javax.swing.JMenuItem();
         cadastrarfuncao2 = new javax.swing.JMenuItem();
         RelAniversariantes = new javax.swing.JMenuItem();
-        RelServicosXprofissional = new javax.swing.JMenuItem();
         RelEquipamentos = new javax.swing.JMenuItem();
+        RelServicosXprofissional = new javax.swing.JMenuItem();
+        LucroXProfissional = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 204));
+        setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(java.awt.Color.white);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -78,10 +83,11 @@ public class principal extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Logo.png"))); // NOI18N
 
-        menucadastros.setText("     CADASTROS     |");
+        menucadastros.setText("|     CADASTROS     |");
         menucadastros.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
 
         cadastrarfuncao.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
+        cadastrarfuncao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/funcao.png"))); // NOI18N
         cadastrarfuncao.setText("Cadastrar Função");
         cadastrarfuncao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -96,6 +102,7 @@ public class principal extends javax.swing.JFrame {
         menucadastros.add(cadastrarfuncao);
 
         cadastrarservico.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
+        cadastrarservico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/servico.png"))); // NOI18N
         cadastrarservico.setText("Cadastrar Serviço");
         cadastrarservico.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -110,6 +117,7 @@ public class principal extends javax.swing.JFrame {
         menucadastros.add(cadastrarservico);
 
         cadastrarprofissional.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
+        cadastrarprofissional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/profissional.png"))); // NOI18N
         cadastrarprofissional.setText("Cadastrar Profissional");
         cadastrarprofissional.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -200,7 +208,7 @@ public class principal extends javax.swing.JFrame {
 
         jMenuBar1.add(menucadastros);
 
-        menuatendimento.setText("     ATENDIMENTO     |");
+        menuatendimento.setText("|     ATENDIMENTO     |");
         menuatendimento.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
         menuatendimento.add(jSeparator1);
 
@@ -216,7 +224,7 @@ public class principal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuatendimento);
 
-        menuAgendamento.setText("     AGENDAMENTO     |");
+        menuAgendamento.setText("|     AGENDAMENTO     |");
         menuAgendamento.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
         menuAgendamento.add(jSeparator2);
         menuAgendamento.add(jSeparator3);
@@ -233,12 +241,13 @@ public class principal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuAgendamento);
 
-        menurelatorioclientes.setText("     RELATÓRIOS     ");
+        menurelatorioclientes.setText("|     RELATÓRIOS     |");
         menurelatorioclientes.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
         menurelatorioclientes.add(jSeparator5);
         menurelatorioclientes.add(jSeparator6);
 
         RelClientes.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
+        RelClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Clientes.png"))); // NOI18N
         RelClientes.setText("Clientes Cadastrados");
         RelClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -253,6 +262,7 @@ public class principal extends javax.swing.JFrame {
         menurelatorioclientes.add(RelClientes);
 
         cadastrarfuncao2.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
+        cadastrarfuncao2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Produto.png"))); // NOI18N
         cadastrarfuncao2.setText("Controle de Estoque");
         cadastrarfuncao2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -281,21 +291,8 @@ public class principal extends javax.swing.JFrame {
         });
         menurelatorioclientes.add(RelAniversariantes);
 
-        RelServicosXprofissional.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
-        RelServicosXprofissional.setText("Serviços X Profissional (Mês)");
-        RelServicosXprofissional.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RelServicosXprofissionalMouseClicked(evt);
-            }
-        });
-        RelServicosXprofissional.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RelServicosXprofissionalActionPerformed(evt);
-            }
-        });
-        menurelatorioclientes.add(RelServicosXprofissional);
-
         RelEquipamentos.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
+        RelEquipamentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/equipamentos.png"))); // NOI18N
         RelEquipamentos.setText("Equipamentos");
         RelEquipamentos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -309,6 +306,36 @@ public class principal extends javax.swing.JFrame {
         });
         menurelatorioclientes.add(RelEquipamentos);
 
+        RelServicosXprofissional.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
+        RelServicosXprofissional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/relatorio.png"))); // NOI18N
+        RelServicosXprofissional.setText("Serviços X Profissional (Mês)");
+        RelServicosXprofissional.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RelServicosXprofissionalMouseClicked(evt);
+            }
+        });
+        RelServicosXprofissional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RelServicosXprofissionalActionPerformed(evt);
+            }
+        });
+        menurelatorioclientes.add(RelServicosXprofissional);
+
+        LucroXProfissional.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
+        LucroXProfissional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/relatorio.png"))); // NOI18N
+        LucroXProfissional.setText("Lucro X Profissional (Mês)");
+        LucroXProfissional.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LucroXProfissionalMouseClicked(evt);
+            }
+        });
+        LucroXProfissional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LucroXProfissionalActionPerformed(evt);
+            }
+        });
+        menurelatorioclientes.add(LucroXProfissional);
+
         jMenuBar1.add(menurelatorioclientes);
 
         setJMenuBar(jMenuBar1);
@@ -317,7 +344,7 @@ public class principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(210, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(164, 164, 164))
@@ -334,6 +361,7 @@ public class principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastrarfuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarfuncaoActionPerformed
+
         new guiFuncao().setVisible(true);
         
                 // TODO add your handling code here:
@@ -437,7 +465,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastrarfuncao2ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-
+    this.setBackground(Color.WHITE);
       
 // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
@@ -502,7 +530,10 @@ try{
             System.out.println("PASSOU CONECTA");
             JRResultSetDataSource relatResul = new JRResultSetDataSource(conecta.rs);
             System.out.println("PASSOU JRRESULTSET");
-            JasperPrint jpPrint = JasperFillManager.fillReport("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/ServicoXMes.jasper", new HashMap(), relatResul);
+            Map parametros = new HashMap(); 
+            parametros.put("DATA_INICIO","to_date("+19/06/2014+",'DD/MM/YYYY')");    
+            parametros.put("DATA_FIM","to_date("+23/06/2014+",'DD/MM/YYYY')");   
+            JasperPrint jpPrint = JasperFillManager.fillReport("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/ServicoXMes.jasper", parametros, relatResul);
             System.out.println("PASSOU LOCALIZAÇÃO DO RELATORIO");
             JasperViewer jv = new JasperViewer (jpPrint,false);
             jv.setVisible(true);
@@ -538,6 +569,41 @@ try{
         
 // TODO add your handling code here:
     }//GEN-LAST:event_RelEquipamentosActionPerformed
+
+    private void LucroXProfissionalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LucroXProfissionalMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LucroXProfissionalMouseClicked
+
+    private void LucroXProfissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LucroXProfissionalActionPerformed
+ try{
+            conecta.executaSQL("SELECT\n" +
+"\n" +
+"  SUM (atendimento.total) AS total,\n" +
+"  atendimento.profissional_id\n" +
+"\n" +
+"FROM\n" +
+"  atendimento,\n" +
+"  profissional\n" +
+"\n" +
+"WHERE\n" +
+"extract(month from atendimento.dataatendimento) = $P{MES}\n" +
+"\n" +
+"GROUP BY\n" +
+"  atendimento.profissional_id");
+            JRResultSetDataSource relatResul = new JRResultSetDataSource(conecta.rs);
+             HashMap<String, Object> parametros = new HashMap<>();     
+            parametros.put("MES", 6);  
+            JasperPrint jpPrint;
+            jpPrint = JasperFillManager.fillReport("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/LucroXProfissionalXMes.jasper", parametros, relatResul);
+            JasperViewer jv = new JasperViewer (jpPrint,false);
+            jv.setVisible(true);
+            jv.toFront();
+        } catch (JRException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Erro ao chamar o relatorio!\nErro:" + ex);
+        }
+        
+
+    }//GEN-LAST:event_LucroXProfissionalActionPerformed
 
     
     /**
@@ -579,6 +645,7 @@ try{
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem LucroXProfissional;
     private javax.swing.JMenuItem MenuAgendar;
     private javax.swing.JMenuItem MenuAtendimento;
     private javax.swing.JMenuItem RelAniversariantes;
