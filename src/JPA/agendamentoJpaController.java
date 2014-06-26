@@ -1,9 +1,11 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package JPA;
-/*
+
 import JPA.exceptions.NonexistentEntityException;
 import JPA.exceptions.PreexistingEntityException;
 import java.io.Serializable;
@@ -16,16 +18,16 @@ import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import model.agendamento;
-import model.clientenovo;
+import model.servicoNovo;
 
 /**
  *
  * @author Peterson
  */
-//public class agendamentoJpaController implements Serializable {
-/*
+public class agendamentoJpaController implements Serializable {
+
     public agendamentoJpaController() {
-        emf = Persistence.createEntityManagerFactory("salao.belezaPU");
+        emf = emf = Persistence.createEntityManagerFactory("salao.belezaPU");;
     }
     private EntityManagerFactory emf = null;
 
@@ -41,7 +43,7 @@ import model.clientenovo;
             em.persist(agendamento);
             em.getTransaction().commit();
         } catch (Exception ex) {
-            if (findagendamento(agendamento.getClientenovo()) != null) {
+            if (findagendamento(agendamento.getServico()) != null) {
                 throw new PreexistingEntityException("agendamento " + agendamento + " already exists.", ex);
             }
             throw ex;
@@ -62,7 +64,7 @@ import model.clientenovo;
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                clientenovo id = agendamento.getClientenovo();
+                servicoNovo id = agendamento.getServico();
                 if (findagendamento(id) == null) {
                     throw new NonexistentEntityException("The agendamento with id " + id + " no longer exists.");
                 }
@@ -75,7 +77,7 @@ import model.clientenovo;
         }
     }
 
-    public void destroy(Long id) throws NonexistentEntityException {
+    public void destroy(String id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -83,7 +85,7 @@ import model.clientenovo;
             agendamento agendamento;
             try {
                 agendamento = em.getReference(agendamento.class, id);
-                agendamento.getClientenovo();
+                agendamento.getServico();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The agendamento with id " + id + " no longer exists.", enfe);
             }
@@ -96,8 +98,8 @@ import model.clientenovo;
         }
     }
 
-    public void destroy(clientenovo id) throws NonexistentEntityException {
-        destroy(id.getId());
+    public void destroy(servicoNovo id) throws NonexistentEntityException {
+        destroy(id.getCodigo());
     }
 
     public List<agendamento> findagendamentoEntities() {
@@ -124,7 +126,7 @@ import model.clientenovo;
         }
     }
 
-    public agendamento findagendamento(Long id) {
+    public agendamento findagendamento(String id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(agendamento.class, id);
@@ -133,9 +135,8 @@ import model.clientenovo;
         }
     }
 
-  
-    public agendamento findagendamento(clientenovo id) {
-        return findagendamento(id.getId());
+    public agendamento findagendamento(servicoNovo id) {
+        return findagendamento(id.getCodigo());
     }
 
     public int getagendamentoCount() {
@@ -150,5 +151,5 @@ import model.clientenovo;
             em.close();
         }
     }
-  */  
-//}
+    
+}

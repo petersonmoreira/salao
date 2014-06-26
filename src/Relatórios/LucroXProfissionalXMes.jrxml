@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LucroXProfissionalXMes" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isTitleNewPage="true" uuid="2843da76-5f5a-4821-9ead-f9cf3a707dd6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="MES" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+
+  SUM (atendimento.total) AS total,
+  atendimento.profissional_id
+
+FROM
+  atendimento,
+  profissional
+
+WHERE
+extract(month from atendimento.dataatendimento) = $P{MES}
+
+GROUP BY
+  atendimento.profissional_id]]>
+	</queryString>
+	<field name="total" class="java.lang.Double"/>
+	<field name="profissional_id" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement uuid="add7d24a-a150-4e7e-8e1a-4695e959d3bd" x="216" y="0" width="115" height="79"/>
+				<imageExpression><![CDATA["C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\ícones\\Logo_menor.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="b77871bf-2dd1-4077-9187-00d960902cc8" x="0" y="0" width="555" height="35"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Black" size="24" isBold="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Relatório de Lucro X Profissional]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="ebee3d58-dce2-42be-9aa9-973416643d88" x="0" y="41" width="100" height="20"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[profissional_id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bdb974df-dcfb-4b50-bf68-a4173897ef1a" x="269" y="41" width="100" height="20"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fa143bde-7561-48de-a7b5-692437a834bf" x="216" y="0" width="47" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<text><![CDATA[Mês: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="dd69d466-d342-464f-aba6-9c85858cfad0" x="269" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MES}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="64aa5d2a-44dc-47a7-bd8f-d13c2c697851" x="0" y="60" width="555" height="1"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement uuid="d853f36c-d53d-4448-8081-741021972169" x="0" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Comic Sans MS" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{profissional_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0d22eb1b-5c0b-4c7e-9939-d3399c94c515" x="269" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Comic Sans MS" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

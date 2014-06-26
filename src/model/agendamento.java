@@ -6,6 +6,7 @@ package model;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Locale;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -122,7 +123,7 @@ public class agendamento implements Serializable {
 
     @Override
     public String toString() {
-        return "model.agendamento[ id=" + id + " ]";
+        return "CLIENTE: "+this.cliente +" - PROFISSIONAL: "+ this.profissional +" - SERVIÇO: "+ this.servico +" - HORA: "+ this.horaInicio;
     }
     
 }
