@@ -577,7 +577,6 @@ try{
     private void LucroXProfissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LucroXProfissionalActionPerformed
  try{
             conecta.executaSQL("SELECT\n" +
-"\n" +
 "  SUM (atendimento.total) AS total,\n" +
 "  atendimento.profissional_id\n" +
 "\n" +
@@ -586,13 +585,16 @@ try{
 "  profissional\n" +
 "\n" +
 "WHERE\n" +
-"extract(month from atendimento.dataatendimento) = $P{MES}\n" +
+"extract(month from atendimento.dataatendimento) = $P!{MES}\n" +
 "\n" +
 "GROUP BY\n" +
-"  atendimento.profissional_id");
+"  atendimento.profissional_id\n" +
+"\n" +
+"ORDER BY\n" +
+"  atendimento.profissional_id ASC");
             JRResultSetDataSource relatResul = new JRResultSetDataSource(conecta.rs);
-             HashMap<String, Object> parametros = new HashMap<>();     
-            parametros.put("MES", 6);  
+            Map parametros = new HashMap();
+            parametros.put("$P{MES}", 6);  
             JasperPrint jpPrint;
             jpPrint = JasperFillManager.fillReport("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/LucroXProfissionalXMes.jasper", parametros, relatResul);
             JasperViewer jv = new JasperViewer (jpPrint,false);

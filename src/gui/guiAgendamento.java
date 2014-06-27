@@ -7,19 +7,14 @@ package gui;
 //import JPA.agendamentoJpaController;
 import JPA.agendamentoJpaController;
 import JPA.clientenovoJpaController;
+import JPA.exceptions.NonexistentEntityException;
 import JPA.profissionalJpaController;
 import JPA.servicoNovoJpaController;
 import Relatórios.JDBC.ConectaBanco;
-import com.toedter.calendar.JDateChooser;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JToggleButton;
 import model.agendamento;
 import model.clientenovo;
 import model.profissional;
@@ -67,11 +62,14 @@ public class guiAgendamento extends javax.swing.JFrame {
         cboHoraFim = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
         jDateAgenda = new com.toedter.calendar.JDateChooser();
+        btnagendar = new javax.swing.JToggleButton();
+        btnalterar = new javax.swing.JToggleButton();
+        btnexcluir = new javax.swing.JToggleButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstagendamentos = new javax.swing.JList();
+        jDatebuscar = new com.toedter.calendar.JDateChooser();
         btnlistar = new javax.swing.JToggleButton();
-        btnagendar = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -103,7 +101,7 @@ public class guiAgendamento extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        dados.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        dados.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel2.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
         jLabel2.setText("Cliente:");
@@ -182,6 +180,119 @@ public class guiAgendamento extends javax.swing.JFrame {
 
         jDateAgenda.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
 
+        btnagendar.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
+        btnagendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Ok.png"))); // NOI18N
+        btnagendar.setText("Agendar");
+        btnagendar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnagendarMouseClicked(evt);
+            }
+        });
+        btnagendar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnagendarActionPerformed(evt);
+            }
+        });
+
+        btnalterar.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
+        btnalterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Alterar.png"))); // NOI18N
+        btnalterar.setText("Alterar");
+        btnalterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnalterarActionPerformed(evt);
+            }
+        });
+
+        btnexcluir.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
+        btnexcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/excluir.png"))); // NOI18N
+        btnexcluir.setText("Excluir");
+        btnexcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnexcluirActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dadosLayout = new javax.swing.GroupLayout(dados);
+        dados.setLayout(dadosLayout);
+        dadosLayout.setHorizontalGroup(
+            dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dadosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dadosLayout.createSequentialGroup()
+                        .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(dadosLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(51, 51, 51)
+                                .addComponent(cboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(dadosLayout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(47, 47, 47)
+                                .addComponent(cboServico, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(36, 36, 36)
+                        .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addGroup(dadosLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel6)))
+                        .addGap(18, 18, 18)
+                        .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(dadosLayout.createSequentialGroup()
+                        .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnexcluir)
+                            .addGroup(dadosLayout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)
+                                .addComponent(cboHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel8)))
+                        .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(dadosLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cboHoraFim, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(dadosLayout.createSequentialGroup()
+                                .addGap(58, 58, 58)
+                                .addComponent(btnalterar)
+                                .addGap(47, 47, 47)
+                                .addComponent(btnagendar)))))
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+        dadosLayout.setVerticalGroup(
+            dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dadosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(dadosLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(cboHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(cboHoraFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33))
+                    .addGroup(dadosLayout.createSequentialGroup()
+                        .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(cboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(cboProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel5)
+                                .addComponent(cboServico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)))
+                .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnagendar)
+                    .addComponent(btnalterar)
+                    .addComponent(btnexcluir))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Agendamentos"));
 
         lstagendamentos.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
@@ -199,19 +310,21 @@ public class guiAgendamento extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 861, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGap(14, 14, 14)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
+        jDatebuscar.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
+
         btnlistar.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
-        btnlistar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Ok.png"))); // NOI18N
+        btnlistar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Buscar-pequeno.png"))); // NOI18N
         btnlistar.setText("Listar Agenda");
         btnlistar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -224,99 +337,6 @@ public class guiAgendamento extends javax.swing.JFrame {
             }
         });
 
-        btnagendar.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
-        btnagendar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Ok.png"))); // NOI18N
-        btnagendar.setText("Agendar");
-        btnagendar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnagendarMouseClicked(evt);
-            }
-        });
-        btnagendar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnagendarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout dadosLayout = new javax.swing.GroupLayout(dados);
-        dados.setLayout(dadosLayout);
-        dadosLayout.setHorizontalGroup(
-            dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dadosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(dadosLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
-                        .addComponent(cboHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cboHoraFim, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnlistar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnagendar))
-                    .addGroup(dadosLayout.createSequentialGroup()
-                        .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(dadosLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(51, 51, 51)
-                                .addComponent(cboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(dadosLayout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(47, 47, 47)
-                                .addComponent(cboServico, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(36, 36, 36)
-                        .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(dadosLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(47, 47, 47)
-                                .addComponent(jDateAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(dadosLayout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(cboProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(dadosLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 16, Short.MAX_VALUE))
-        );
-        dadosLayout.setVerticalGroup(
-            dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dadosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(dadosLayout.createSequentialGroup()
-                        .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(cboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(cboProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(cboServico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel6)
-                    .addComponent(jDateAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(dadosLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(cboHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addComponent(cboHoraFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(dadosLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(dadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnagendar)
-                            .addComponent(btnlistar))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -327,8 +347,17 @@ public class guiAgendamento extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(dados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(237, 237, 237)
+                .addComponent(jDatebuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnlistar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -336,7 +365,13 @@ public class guiAgendamento extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(dados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnlistar)
+                    .addComponent(jDatebuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -435,150 +470,8 @@ public class guiAgendamento extends javax.swing.JFrame {
             
        JOptionPane.showMessageDialog(null, "CLIENTE AGENDADO COM SUCESSO!");
 
-    }
+    
 
-    public JToggleButton getBtnagendar() {
-        return btnagendar;
-    }
-
-    public void setBtnagendar(JToggleButton btnagendar) {
-        this.btnagendar = btnagendar;
-    }
-
-    public JComboBox getCboCliente() {
-        return cboCliente;
-    }
-
-    public void setCboCliente(JComboBox cboCliente) {
-        this.cboCliente = cboCliente;
-    }
-
-    public JComboBox getCboHoraFim() {
-        return cboHoraFim;
-    }
-
-    public void setCboHoraFim(JComboBox cboHoraFim) {
-        this.cboHoraFim = cboHoraFim;
-    }
-
-    public JComboBox getCboHoraInicio() {
-        return cboHoraInicio;
-    }
-
-    public void setCboHoraInicio(JComboBox cboHoraInicio) {
-        this.cboHoraInicio = cboHoraInicio;
-    }
-
-    public JComboBox getCboProfissional() {
-        return cboProfissional;
-    }
-
-    public void setCboProfissional(JComboBox cboProfissional) {
-        this.cboProfissional = cboProfissional;
-    }
-
-    public JComboBox getCboServico() {
-        return cboServico;
-    }
-
-    public void setCboServico(JComboBox cboServico) {
-        this.cboServico = cboServico;
-    }
-
-    public JPanel getDados() {
-        return dados;
-    }
-
-    public void setDados(JPanel dados) {
-        this.dados = dados;
-    }
-
-    public JDateChooser getjDateAgenda() {
-        return jDateAgenda;
-    }
-
-    public void setjDateAgenda(JDateChooser jDateAgenda) {
-        this.jDateAgenda = jDateAgenda;
-    }
-
-    public JLabel getjLabel1() {
-        return jLabel1;
-    }
-
-    public void setjLabel1(JLabel jLabel1) {
-        this.jLabel1 = jLabel1;
-    }
-
-    public JLabel getjLabel2() {
-        return jLabel2;
-    }
-
-    public void setjLabel2(JLabel jLabel2) {
-        this.jLabel2 = jLabel2;
-    }
-
-    public JLabel getjLabel3() {
-        return jLabel3;
-    }
-
-    public void setjLabel3(JLabel jLabel3) {
-        this.jLabel3 = jLabel3;
-    }
-
-    public JLabel getjLabel5() {
-        return jLabel5;
-    }
-
-    public void setjLabel5(JLabel jLabel5) {
-        this.jLabel5 = jLabel5;
-    }
-
-    public JLabel getjLabel6() {
-        return jLabel6;
-    }
-
-    public void setjLabel6(JLabel jLabel6) {
-        this.jLabel6 = jLabel6;
-    }
-
-    public JLabel getjLabel7() {
-        return jLabel7;
-    }
-
-    public void setjLabel7(JLabel jLabel7) {
-        this.jLabel7 = jLabel7;
-    }
-
-    public JLabel getjLabel8() {
-        return jLabel8;
-    }
-
-    public void setjLabel8(JLabel jLabel8) {
-        this.jLabel8 = jLabel8;
-    }
-
-    public JPanel getjPanel1() {
-        return jPanel1;
-    }
-
-    public void setjPanel1(JPanel jPanel1) {
-        this.jPanel1 = jPanel1;
-    }
-
-    public JPanel getjPanel2() {
-        return jPanel2;
-    }
-
-    public void setjPanel2(JPanel jPanel2) {
-        this.jPanel2 = jPanel2;
-    }
-
-    public JScrollPane getjScrollPane1() {
-        return jScrollPane1;
-    }
-
-    public void setjScrollPane1(JScrollPane jScrollPane1) {
-        this.jScrollPane1 = jScrollPane1;
       
     }//GEN-LAST:event_btnagendarActionPerformed
 
@@ -595,16 +488,66 @@ public class guiAgendamento extends javax.swing.JFrame {
         
     }//GEN-LAST:event_lstagendamentosValueChanged
 
+    private void btnalterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnalterarActionPerformed
+
+        if (agendamento==null) return;
+        agendamento a = (agendamento)lstagendamentos.getSelectedValue();
+        
+        a.setCliente((clientenovo)cboCliente.getSelectedItem());
+        a.setProfissional((profissional)cboProfissional.getSelectedItem());
+        a.setServicoNovo((servicoNovo)cboServico.getSelectedItem());
+        a.setDataAgenda(jDateAgenda.getCalendar());
+        a.setHoraInicio((String) cboHoraInicio.getSelectedItem());
+        a.setHoraFim ((String) cboHoraFim.getSelectedItem());
+        
+
+        try{
+            new agendamentoJpaController().edit(a);
+        } catch (NonexistentEntityException ex) {
+            JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage() + " Procure o Administrador do Sistema");
+        }
+
+        JOptionPane.showMessageDialog(null,"Agendamento Alterados");
+
+        
+    }//GEN-LAST:event_btnalterarActionPerformed
+
+    private void btnexcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexcluirActionPerformed
+
+        int resposta;
+
+        agendamento a = (agendamento)lstagendamentos.getSelectedValue();
+
+        try {
+            resposta = JOptionPane.showConfirmDialog(null, "DESEJA EXCLUIR ESTE AGENDAMENTO?", "Deseja apagar?", JOptionPane.YES_NO_OPTION);
+            if (resposta == JOptionPane.YES_OPTION){
+                new agendamentoJpaController().destroy(a.getId().toString());
+                JOptionPane.showMessageDialog(null, "AGENDAMENTO EXCLUIDO!");
+            } else {
+               
+            }
+        } catch (NonexistentEntityException ex) {
+
+        }
+
+      
+    }//GEN-LAST:event_btnexcluirActionPerformed
+
+    private void btnlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlistarActionPerformed
+
+        // new agendamentoJpaController().getAgendamento(jDatebuscar.getDate());
+
+        List l = new agendamentoJpaController().getAgendamento("2014-06-26");
+        lstagendamentos.setListData(l.toArray());
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnlistarActionPerformed
+
     private void btnlistarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnlistarMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnlistarMouseClicked
-
-    private void btnlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlistarActionPerformed
-        List l = new agendamentoJpaController().findagendamentoEntities();
-        lstagendamentos.setListData(l.toArray());
-        
-// TODO add your handling code here:
-    }//GEN-LAST:event_btnlistarActionPerformed
 
     
     /**
@@ -644,6 +587,8 @@ public class guiAgendamento extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnagendar;
+    private javax.swing.JToggleButton btnalterar;
+    private javax.swing.JToggleButton btnexcluir;
     private javax.swing.JToggleButton btnlistar;
     private javax.swing.JComboBox cboCliente;
     private javax.swing.JComboBox cboHoraFim;
@@ -652,6 +597,7 @@ public class guiAgendamento extends javax.swing.JFrame {
     private javax.swing.JComboBox cboServico;
     private javax.swing.JPanel dados;
     private com.toedter.calendar.JDateChooser jDateAgenda;
+    private com.toedter.calendar.JDateChooser jDatebuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

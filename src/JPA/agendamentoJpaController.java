@@ -8,13 +8,16 @@ package JPA;
 
 import JPA.exceptions.NonexistentEntityException;
 import JPA.exceptions.PreexistingEntityException;
+import com.toedter.calendar.JDateChooser;
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import model.agendamento;
@@ -150,6 +153,17 @@ public class agendamentoJpaController implements Serializable {
         } finally {
             em.close();
         }
+    }
+    
+    /**
+     *
+     * @param data
+     * @return
+     */
+    public List<agendamento> getAgendamento(String data) {
+            EntityManager em = getEntityManager();
+            List agendamentos = (List) em.createQuery("select a from agendamento a where a.dataagenda =" + data);
+            return (List) agendamentos;
     }
     
 }
