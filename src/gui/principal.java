@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
@@ -30,6 +31,7 @@ public class principal extends javax.swing.JFrame {
      */
     public principal() {
         initComponents();
+        this.setTitle("          . . . . . : : : : : . . . . .  SALÃO NOVO STILO - UNISSEX  - (Versão 1.0) . . . . . : : : : : . . . . ." );
         conecta.conexao();
         }
 
@@ -43,7 +45,8 @@ public class principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jSeparator4 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menucadastros = new javax.swing.JMenu();
         cadastrarfuncao = new javax.swing.JMenuItem();
@@ -70,20 +73,51 @@ public class principal extends javax.swing.JFrame {
         RelEquipamentos = new javax.swing.JMenuItem();
         RelServicosXprofissional = new javax.swing.JMenuItem();
         LucroXProfissional = new javax.swing.JMenuItem();
+        menusair = new javax.swing.JMenu();
+        jSeparator7 = new javax.swing.JPopupMenu.Separator();
+        jSeparator8 = new javax.swing.JPopupMenu.Separator();
+        exit = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setForeground(java.awt.Color.white);
-        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Logo.png"))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setFont(new java.awt.Font("AR CENA", 0, 14)); // NOI18N
+        jPanel1.setName("SALÃO NOVO STILO - UNISSEX"); // NOI18N
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Logo.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(171, 171, 171)
+                .addComponent(jLabel1)
+                .addContainerGap(171, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(59, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(70, 70, 70))
+        );
+
+        jMenuBar1.setBackground(new java.awt.Color(153, 0, 0));
+        jMenuBar1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(255, 255, 204), new java.awt.Color(153, 0, 0), new java.awt.Color(255, 255, 153)));
+
+        menucadastros.setBackground(new java.awt.Color(153, 0, 0));
+        menucadastros.setForeground(new java.awt.Color(255, 255, 255));
         menucadastros.setText("|     CADASTROS     |");
+        menucadastros.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menucadastros.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
 
         cadastrarfuncao.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
@@ -208,6 +242,7 @@ public class principal extends javax.swing.JFrame {
 
         jMenuBar1.add(menucadastros);
 
+        menuatendimento.setForeground(new java.awt.Color(255, 255, 255));
         menuatendimento.setText("|     ATENDIMENTO     |");
         menuatendimento.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
         menuatendimento.add(jSeparator1);
@@ -224,6 +259,7 @@ public class principal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuatendimento);
 
+        menuAgendamento.setForeground(new java.awt.Color(255, 255, 255));
         menuAgendamento.setText("|     AGENDAMENTO     |");
         menuAgendamento.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
         menuAgendamento.add(jSeparator2);
@@ -241,6 +277,8 @@ public class principal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuAgendamento);
 
+        menurelatorioclientes.setBackground(new java.awt.Color(153, 0, 0));
+        menurelatorioclientes.setForeground(new java.awt.Color(255, 255, 255));
         menurelatorioclientes.setText("|     RELATÓRIOS     |");
         menurelatorioclientes.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
         menurelatorioclientes.add(jSeparator5);
@@ -338,6 +376,34 @@ public class principal extends javax.swing.JFrame {
 
         jMenuBar1.add(menurelatorioclientes);
 
+        menusair.setBackground(new java.awt.Color(153, 0, 0));
+        menusair.setForeground(new java.awt.Color(255, 255, 255));
+        menusair.setText("|     SAIR     |");
+        menusair.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
+        menusair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menusairActionPerformed(evt);
+            }
+        });
+        menusair.add(jSeparator7);
+        menusair.add(jSeparator8);
+
+        exit.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
+        exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/exit.png"))); // NOI18N
+        exit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitMouseClicked(evt);
+            }
+        });
+        exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitActionPerformed(evt);
+            }
+        });
+        menusair.add(exit);
+
+        jMenuBar1.add(menusair);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -345,16 +411,14 @@ public class principal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(210, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(164, 164, 164))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(98, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(98, 98, 98))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -607,6 +671,20 @@ try{
 
     }//GEN-LAST:event_LucroXProfissionalActionPerformed
 
+    private void menusairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menusairActionPerformed
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menusairActionPerformed
+
+    private void exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exitMouseClicked
+
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+        this.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exitActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -663,17 +741,22 @@ try{
     private javax.swing.JMenuItem cadastrarprofissional;
     private javax.swing.JMenuItem cadastrarpromocao;
     private javax.swing.JMenuItem cadastrarservico;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenuItem exit;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
+    private javax.swing.JPopupMenu.Separator jSeparator7;
+    private javax.swing.JPopupMenu.Separator jSeparator8;
     private javax.swing.JMenu menuAgendamento;
     private javax.swing.JMenu menuatendimento;
     private javax.swing.JMenu menucadastros;
     private javax.swing.JMenu menurelatorioclientes;
+    private javax.swing.JMenu menusair;
     // End of variables declaration//GEN-END:variables
 }
