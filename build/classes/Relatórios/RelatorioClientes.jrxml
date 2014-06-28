@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a947b2a7-91bc-4734-ad23-34403ae69f3c">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CLIENTES CADASTRADOS" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a947b2a7-91bc-4734-ad23-34403ae69f3c">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[SELECT
-     *,
-     clientenovo."nome" AS clientenovo_nome
-FROM
-     "clientenovo" clientenovo
+		<![CDATA[SELECT * FROM
+     clientenovo
 ORDER BY
-     clientenovo."nome" ASC]]>
+     clientenovo."nome"]]>
 	</queryString>
 	<field name="id" class="java.lang.String"/>
 	<field name="ano" class="java.lang.Integer"/>
@@ -27,10 +24,6 @@ ORDER BY
 	<field name="sexo" class="java.lang.String"/>
 	<field name="telefone" class="java.lang.String"/>
 	<field name="promocao_codigo" class="java.lang.String"/>
-	<field name="clientenovo_nome" class="java.lang.String"/>
-	<variable name="nome_1" class="java.lang.Integer" resetType="Column" calculation="Count">
-		<variableExpression><![CDATA[$F{nome}]]></variableExpression>
-	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -43,7 +36,7 @@ ORDER BY
 		</band>
 	</title>
 	<pageHeader>
-		<band height="41" splitType="Stretch">
+		<band height="35" splitType="Stretch">
 			<staticText>
 				<reportElement uuid="b77871bf-2dd1-4077-9187-00d960902cc8" x="0" y="0" width="555" height="35"/>
 				<textElement textAlignment="Center">
@@ -78,16 +71,16 @@ ORDER BY
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="25" splitType="Stretch">
+		<band height="33" splitType="Stretch">
 			<textField>
-				<reportElement uuid="9d1efaa7-b44c-4f3d-a960-aa0e4763a4a4" x="0" y="0" width="308" height="20"/>
+				<reportElement uuid="bc2cd247-dc1d-4907-8b38-41f42eebe0c9" x="0" y="0" width="293" height="20"/>
 				<textElement>
 					<font fontName="Comic Sans MS" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="ef41c622-1d7a-4217-a471-25b4fb903c21" x="352" y="0" width="203" height="20"/>
+				<reportElement uuid="0a5e9605-c2dc-4b99-ac22-fb983137eae8" x="352" y="0" width="190" height="20"/>
 				<textElement>
 					<font fontName="Comic Sans MS" size="14"/>
 				</textElement>

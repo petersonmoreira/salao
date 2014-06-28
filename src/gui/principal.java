@@ -11,7 +11,6 @@ import java.awt.Color;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
@@ -388,6 +387,7 @@ public class principal extends javax.swing.JFrame {
         menusair.add(jSeparator7);
         menusair.add(jSeparator8);
 
+        exit.setBackground(new java.awt.Color(153, 0, 0));
         exit.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
         exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/exit.png"))); // NOI18N
         exit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -502,7 +502,10 @@ public class principal extends javax.swing.JFrame {
 
     private void RelClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelClientesActionPerformed
  try{
-            conecta.executaSQL("select * from clientenovo");
+            conecta.executaSQL("SELECT * FROM\n" +
+"     clientenovo\n" +
+"ORDER BY\n" +
+"     clientenovo.\"nome\"");
             JRResultSetDataSource relatResul = new JRResultSetDataSource(conecta.rs);
             JasperPrint jpPrint = JasperFillManager.fillReport("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/RelatorioClientes.jasper", new HashMap(), relatResul);
             JasperViewer jv = new JasperViewer (jpPrint,false);
@@ -649,7 +652,7 @@ try{
 "  profissional\n" +
 "\n" +
 "WHERE\n" +
-"extract(month from atendimento.dataatendimento) = $P!{MES}\n" +
+"extract(month from atendimento.dataatendimento) = $P{MES}\n" +
 "\n" +
 "GROUP BY\n" +
 "  atendimento.profissional_id\n" +
@@ -658,7 +661,7 @@ try{
 "  atendimento.profissional_id ASC");
             JRResultSetDataSource relatResul = new JRResultSetDataSource(conecta.rs);
             Map parametros = new HashMap();
-            parametros.put("$P{MES}", 6);  
+            parametros.put("$P!{MES}", 6);  
             JasperPrint jpPrint;
             jpPrint = JasperFillManager.fillReport("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/LucroXProfissionalXMes.jasper", parametros, relatResul);
             JasperViewer jv = new JasperViewer (jpPrint,false);
