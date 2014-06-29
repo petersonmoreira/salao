@@ -160,9 +160,9 @@ public class agendamentoJpaController implements Serializable {
      * @param data
      * @return
      */
-    public List<agendamento> getAgendamento(String data) {
+    public List<agendamento> getAgendamento(Date data) {
             EntityManager em = getEntityManager();
-            List agendamentos = (List) em.createQuery("select a from agendamento a where a.dataagenda =" + data);
+            Query agendamentos = em.createQuery("select a from agendamento a where a.dataagenda =" + data);
             return (List) agendamentos;
     }
     

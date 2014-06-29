@@ -1,16 +1,20 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package gui;
 
-//import JPA.agendamentoJpaController;
 import JPA.agendamentoJpaController;
 import JPA.clientenovoJpaController;
-import JPA.exceptions.NonexistentEntityException;
 import JPA.profissionalJpaController;
 import JPA.servicoNovoJpaController;
-import Relatórios.JDBC.ConectaBanco;
+import static java.lang.String.format;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,23 +23,20 @@ import model.agendamento;
 import model.clientenovo;
 import model.profissional;
 import model.servicoNovo;
+import static org.codehaus.groovy.runtime.DateGroovyMethods.format;
 
 /**
  *
  * @author Peterson
  */
-public class guiAgendamento extends javax.swing.JFrame {
+public class guiAgendamentoNovo extends javax.swing.JFrame {
     
     agendamento a = new agendamento();
-    ConectaBanco conecta = new ConectaBanco();
-    
     /**
-     * Creates new form guiAgendamento
+     * Creates new form guiAgendamentoNovo
      */
-    public guiAgendamento() {
+    public guiAgendamentoNovo() {
         initComponents();
-       // preencherTabela("Select * from agendamento");
-  //      listener = new agendamentoActionListener(this);
     }
 
     /**
@@ -66,10 +67,11 @@ public class guiAgendamento extends javax.swing.JFrame {
         btnalterar = new javax.swing.JToggleButton();
         btnexcluir = new javax.swing.JToggleButton();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        lstagendamentos = new javax.swing.JList();
         jDatebuscar = new com.toedter.calendar.JDateChooser();
         btnlistar = new javax.swing.JToggleButton();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstagendamentos = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -98,7 +100,7 @@ public class guiAgendamento extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         dados.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -290,39 +292,15 @@ public class guiAgendamento extends javax.swing.JFrame {
                     .addComponent(btnagendar)
                     .addComponent(btnalterar)
                     .addComponent(btnexcluir))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Agendamentos"));
+        jPanel2.setBackground(new java.awt.Color(153, 0, 0));
 
-        lstagendamentos.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
-        lstagendamentos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        lstagendamentos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                lstagendamentosValueChanged(evt);
-            }
-        });
-        jScrollPane1.setViewportView(lstagendamentos);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
+        jDatebuscar.setBackground(new java.awt.Color(255, 255, 204));
         jDatebuscar.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
 
+        btnlistar.setBackground(new java.awt.Color(255, 255, 204));
         btnlistar.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
         btnlistar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Buscar-pequeno.png"))); // NOI18N
         btnlistar.setText("Listar Agenda");
@@ -337,41 +315,84 @@ public class guiAgendamento extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(jDatebuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67)
+                .addComponent(btnlistar)
+                .addContainerGap(97, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnlistar)
+                    .addComponent(jDatebuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Agendamentos"));
+
+        lstagendamentos.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
+        lstagendamentos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lstagendamentos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lstagendamentosValueChanged(evt);
+            }
+        });
+        jScrollPane1.setViewportView(lstagendamentos);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(dados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(dados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(142, 142, 142)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(237, 237, 237)
-                .addComponent(jDatebuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnlistar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(dados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnlistar)
-                    .addComponent(jDatebuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -414,9 +435,77 @@ public class guiAgendamento extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cboHoraFimActionPerformed
 
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+    private void btnagendarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnagendarMouseClicked
 
-             cboCliente.removeAllItems();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnagendarMouseClicked
+
+    private void btnagendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagendarActionPerformed
+
+        // agendamento a = new agendamento();
+        a.setCliente((clientenovo)cboCliente.getSelectedItem());
+        a.setProfissional((profissional)cboProfissional.getSelectedItem());
+        a.setServicoNovo((servicoNovo)cboServico.getSelectedItem());
+        a.setDataAgenda(jDateAgenda.getCalendar());
+        a.setHoraInicio((String) cboHoraInicio.getSelectedItem());
+        a.setHoraFim ((String) cboHoraFim.getSelectedItem());
+
+        try {
+            new agendamentoJpaController().create(a);
+        } catch (Exception ex) {
+            Logger.getLogger(guiAgendamentoNovo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        JOptionPane.showMessageDialog(null, "CLIENTE AGENDADO COM SUCESSO!");
+
+    }//GEN-LAST:event_btnagendarActionPerformed
+
+    private void btnalterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnalterarActionPerformed
+/*
+        if (agendamento==null) return;
+        agendamento a = (agendamento)lstagendamentos.getSelectedValue();
+
+        a.setCliente((clientenovo)cboCliente.getSelectedItem());
+        a.setProfissional((profissional)cboProfissional.getSelectedItem());
+        a.setServicoNovo((servicoNovo)cboServico.getSelectedItem());
+        a.setDataAgenda(jDateAgenda.getCalendar());
+        a.setHoraInicio((String) cboHoraInicio.getSelectedItem());
+        a.setHoraFim ((String) cboHoraFim.getSelectedItem());
+
+        try{
+            new agendamentoJpaController().edit(a);
+        } catch (NonexistentEntityException ex) {
+            JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage() + " Procure o Administrador do Sistema");
+        }
+
+        JOptionPane.showMessageDialog(null,"Agendamento Alterados");
+*/
+    }//GEN-LAST:event_btnalterarActionPerformed
+
+    private void btnexcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexcluirActionPerformed
+/*
+        int resposta;
+
+        agendamento a = (agendamento)lstagendamentos.getSelectedValue();
+
+        try {
+            resposta = JOptionPane.showConfirmDialog(null, "DESEJA EXCLUIR ESTE AGENDAMENTO?", "Deseja apagar?", JOptionPane.YES_NO_OPTION);
+            if (resposta == JOptionPane.YES_OPTION){
+                new agendamentoJpaController().destroy(a.getId().toString());
+                JOptionPane.showMessageDialog(null, "AGENDAMENTO EXCLUIDO!");
+            } else {
+
+            }
+        } catch (NonexistentEntityException ex) {
+
+        }
+*/
+    }//GEN-LAST:event_btnexcluirActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+     cboCliente.removeAllItems();
         List l = new clientenovoJpaController().findclientenovoEntities();
 
         for (int i = 0; i < l.size(); i++) {
@@ -439,42 +528,44 @@ public class guiAgendamento extends javax.swing.JFrame {
         for (int i = 0; i < l3.size(); i++) {
             servicoNovo s = (servicoNovo) l3.get(i);
             cboServico.addItem(s);
-        }
-        
-        
-        // TODO add your handling code here:
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
 
-    private void btnagendarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnagendarMouseClicked
+    private void btnlistarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnlistarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnlistarMouseClicked
+
+    private void btnlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlistarActionPerformed
+
+        // new agendamentoJpaController().getAgendamento(jDatebuscar.getDate());
+    
+       
+        
+        List l = null;
+        try {
+            l = new agendamentoJpaController().getAgendamento(formataData("26/06/2014"));
+        } catch (Exception ex) {
+            Logger.getLogger(guiAgendamentoNovo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        lstagendamentos.setListData(l.toArray());
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnagendarMouseClicked
+    }//GEN-LAST:event_btnlistarActionPerformed
 
-  
+    public static Date formataData(String data) throws Exception {   
+        if (data == null || data.equals(""))  
+            return null;  
+          
+        Date date = null;  
+        try {  
+            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+            date =  new java.sql.Date( ((java.util.Date)formatter.parse(data)).getTime());   
+        } catch (ParseException e) {              
+            throw e;  
+        }  
+        return date;  
+    }  
     
-    private void btnagendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagendarActionPerformed
-
-       // agendamento a = new agendamento();
-        a.setCliente((clientenovo)cboCliente.getSelectedItem());
-        a.setProfissional((profissional)cboProfissional.getSelectedItem());
-        a.setServicoNovo((servicoNovo)cboServico.getSelectedItem());
-        a.setDataAgenda(jDateAgenda.getCalendar());
-        a.setHoraInicio((String) cboHoraInicio.getSelectedItem());
-        a.setHoraFim ((String) cboHoraFim.getSelectedItem());
-        
-        try {
-            new agendamentoJpaController().create(a);
-        } catch (Exception ex) {
-            Logger.getLogger(guiAgendamento.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
-       JOptionPane.showMessageDialog(null, "CLIENTE AGENDADO COM SUCESSO!");
-
-    
-
-      
-    }//GEN-LAST:event_btnagendarActionPerformed
-
     private void lstagendamentosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstagendamentosValueChanged
 
         agendamento a = (agendamento)lstagendamentos.getSelectedValue();
@@ -485,71 +576,9 @@ public class guiAgendamento extends javax.swing.JFrame {
         jDateAgenda.setCalendar(a.getDataAgenda());
         cboHoraInicio.setSelectedItem(a.getHoraInicio());
         cboHoraFim.setSelectedItem(a.getHoraFim());
-        
+
     }//GEN-LAST:event_lstagendamentosValueChanged
 
-    private void btnalterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnalterarActionPerformed
-
-        if (agendamento==null) return;
-        agendamento a = (agendamento)lstagendamentos.getSelectedValue();
-        
-        a.setCliente((clientenovo)cboCliente.getSelectedItem());
-        a.setProfissional((profissional)cboProfissional.getSelectedItem());
-        a.setServicoNovo((servicoNovo)cboServico.getSelectedItem());
-        a.setDataAgenda(jDateAgenda.getCalendar());
-        a.setHoraInicio((String) cboHoraInicio.getSelectedItem());
-        a.setHoraFim ((String) cboHoraFim.getSelectedItem());
-        
-
-        try{
-            new agendamentoJpaController().edit(a);
-        } catch (NonexistentEntityException ex) {
-            JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage() + " Procure o Administrador do Sistema");
-        }
-
-        JOptionPane.showMessageDialog(null,"Agendamento Alterados");
-
-        
-    }//GEN-LAST:event_btnalterarActionPerformed
-
-    private void btnexcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexcluirActionPerformed
-
-        int resposta;
-
-        agendamento a = (agendamento)lstagendamentos.getSelectedValue();
-
-        try {
-            resposta = JOptionPane.showConfirmDialog(null, "DESEJA EXCLUIR ESTE AGENDAMENTO?", "Deseja apagar?", JOptionPane.YES_NO_OPTION);
-            if (resposta == JOptionPane.YES_OPTION){
-                new agendamentoJpaController().destroy(a.getId().toString());
-                JOptionPane.showMessageDialog(null, "AGENDAMENTO EXCLUIDO!");
-            } else {
-               
-            }
-        } catch (NonexistentEntityException ex) {
-
-        }
-
-      
-    }//GEN-LAST:event_btnexcluirActionPerformed
-
-    private void btnlistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlistarActionPerformed
-
-        // new agendamentoJpaController().getAgendamento(jDatebuscar.getDate());
-
-        List l = new agendamentoJpaController().getAgendamento("2014-06-26");
-        lstagendamentos.setListData(l.toArray());
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnlistarActionPerformed
-
-    private void btnlistarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnlistarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnlistarMouseClicked
-
-    
     /**
      * @param args the command line arguments
      */
@@ -567,24 +596,24 @@ public class guiAgendamento extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(guiAgendamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(guiAgendamentoNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(guiAgendamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(guiAgendamentoNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(guiAgendamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(guiAgendamentoNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(guiAgendamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(guiAgendamentoNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
             public void run() {
-                new guiAgendamento().setVisible(true);
+                new guiAgendamentoNovo().setVisible(true);
             }
         });
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnagendar;
     private javax.swing.JToggleButton btnalterar;
@@ -607,7 +636,12 @@ public class guiAgendamento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList lstagendamentos;
     // End of variables declaration//GEN-END:variables
+
+    private Date toDate(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

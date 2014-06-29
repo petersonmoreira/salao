@@ -115,7 +115,7 @@ public class principal extends javax.swing.JFrame {
 
         menucadastros.setBackground(new java.awt.Color(153, 0, 0));
         menucadastros.setForeground(new java.awt.Color(255, 255, 255));
-        menucadastros.setText("|     CADASTROS     |");
+        menucadastros.setText("        |     CADASTROS     |");
         menucadastros.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menucadastros.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
 
@@ -467,7 +467,7 @@ public class principal extends javax.swing.JFrame {
 
     private void MenuAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAgendarActionPerformed
 
-        new guiAgendamento().setVisible(true);
+        new guiAgendamentoNovo().setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_MenuAgendarActionPerformed
 
