@@ -25,6 +25,8 @@ public class guiControleEstoque extends javax.swing.JFrame {
      */
     public guiControleEstoque() {
         initComponents();
+         this.setTitle("CONTROLE DE ESTOQUE" );
+         this.setLocationRelativeTo(null);
     }
 
     /**

@@ -26,6 +26,8 @@ public class guiFuncao extends javax.swing.JFrame {
      */
     public guiFuncao() {
         initComponents();
+         this.setTitle("CADASTRAR FUNÇÃO" );
+         this.setLocationRelativeTo(null);
     }
 
     /**

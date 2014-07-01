@@ -38,6 +38,7 @@ public class principal extends javax.swing.JFrame {
     public principal() {
         initComponents();
         this.setTitle("          . . . . . : : : : : . . . . .  SALÃO NOVO STILO - UNISSEX  - (Versão 1.0) . . . . . : : : : : . . . . ." );
+        this.setLocationRelativeTo(null);
         conecta.conexao();
         }
 
@@ -98,7 +99,7 @@ public class principal extends javax.swing.JFrame {
         jPanel1.setFont(new java.awt.Font("AR CENA", 0, 14)); // NOI18N
         jPanel1.setName("SALÃO NOVO STILO - UNISSEX"); // NOI18N
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Logo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\ícones\\Logo-Alterada.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -384,7 +385,7 @@ public class principal extends javax.swing.JFrame {
 
         menusair.setBackground(new java.awt.Color(153, 0, 0));
         menusair.setForeground(new java.awt.Color(255, 255, 255));
-        menusair.setText("|     SAIR     |");
+        menusair.setText("|     SAIR     |        ");
         menusair.setFont(new java.awt.Font("AR ESSENCE", 0, 24)); // NOI18N
         menusair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

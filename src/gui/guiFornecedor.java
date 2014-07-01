@@ -25,6 +25,8 @@ public class guiFornecedor extends javax.swing.JFrame {
      */
     public guiFornecedor() {
         initComponents();
+         this.setTitle("CADASTRAR FORNECEDOR" );
+         this.setLocationRelativeTo(null);
     }
 
     /**

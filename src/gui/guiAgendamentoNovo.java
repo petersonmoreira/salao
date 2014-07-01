@@ -38,6 +38,9 @@ public class guiAgendamentoNovo extends javax.swing.JFrame {
      */
     public guiAgendamentoNovo() {
         initComponents();
+        this.setTitle("AGENDAR CLIENTE" );
+        this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -68,12 +71,12 @@ public class guiAgendamentoNovo extends javax.swing.JFrame {
         btnalterar = new javax.swing.JToggleButton();
         btnexcluir = new javax.swing.JToggleButton();
         jPanel2 = new javax.swing.JPanel();
-        jDatebuscar = new com.toedter.calendar.JDateChooser();
         btnlistar = new javax.swing.JToggleButton();
+        txtdata = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstagendamentos = new javax.swing.JList();
-        txtdata = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -299,9 +302,6 @@ public class guiAgendamentoNovo extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(153, 0, 0));
 
-        jDatebuscar.setBackground(new java.awt.Color(255, 255, 204));
-        jDatebuscar.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
-
         btnlistar.setBackground(new java.awt.Color(255, 255, 204));
         btnlistar.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
         btnlistar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Buscar-pequeno.png"))); // NOI18N
@@ -317,14 +317,22 @@ public class guiAgendamentoNovo extends javax.swing.JFrame {
             }
         });
 
+        txtdata.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
+
+        jLabel9.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Data:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(jDatebuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
+                .addGap(116, 116, 116)
+                .addComponent(jLabel9)
+                .addGap(18, 18, 18)
+                .addComponent(txtdata, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
                 .addComponent(btnlistar)
                 .addContainerGap(97, Short.MAX_VALUE))
         );
@@ -332,9 +340,10 @@ public class guiAgendamentoNovo extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnlistar)
-                    .addComponent(jDatebuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtdata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -366,8 +375,6 @@ public class guiAgendamentoNovo extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        txtdata.setFont(new java.awt.Font("AR ESSENCE", 0, 18)); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -382,9 +389,7 @@ public class guiAgendamentoNovo extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(dados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(txtdata, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(142, 142, 142)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
@@ -396,13 +401,8 @@ public class guiAgendamentoNovo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(dados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(txtdata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -660,7 +660,6 @@ public static Date formataData(String data) throws Exception {
     private javax.swing.JComboBox cboServico;
     private javax.swing.JPanel dados;
     private com.toedter.calendar.JDateChooser jDateAgenda;
-    private com.toedter.calendar.JDateChooser jDatebuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -668,6 +667,7 @@ public static Date formataData(String data) throws Exception {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

@@ -19,6 +19,8 @@ public class Aniversarios extends javax.swing.JFrame {
      */
     public Aniversarios() {
         initComponents();
+         this.setTitle("ANIVERSARIANTES POR MÊS" );
+         this.setLocationRelativeTo(null);
     }
 
     /**

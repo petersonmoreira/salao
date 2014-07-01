@@ -27,6 +27,8 @@ public class guiServico extends javax.swing.JFrame {
      */
     public guiServico() {
         initComponents();
+         this.setTitle("CADASTRAR SERVIÇO" );
+         this.setLocationRelativeTo(null);
     }
 
     /**

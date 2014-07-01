@@ -27,6 +27,8 @@ public class guiPromocao extends javax.swing.JFrame {
      */
     public guiPromocao() {
         initComponents();
+         this.setTitle("CADASTRAR PROMOÇÃO" );
+         this.setLocationRelativeTo(null);
     }
 
     /**

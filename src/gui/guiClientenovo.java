@@ -30,6 +30,8 @@ public class guiClientenovo extends javax.swing.JFrame {
      */
     public guiClientenovo() {
         initComponents();
+        this.setTitle("CADASTRAR CLIENTE" );
+        this.setLocationRelativeTo(null);
         desativabotoes();
     }
 

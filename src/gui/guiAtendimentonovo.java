@@ -28,6 +28,7 @@ public class guiAtendimentonovo extends javax.swing.JFrame {
     Atendimento Atendimento = new Atendimento();
     Double tot;
     
+    
 
 
     /**
@@ -35,7 +36,9 @@ public class guiAtendimentonovo extends javax.swing.JFrame {
      */
     public guiAtendimentonovo() {
         initComponents();
+         this.setTitle("ATENDIMENTO AO CLIENTE" );
         desativabotao();
+        this.setLocationRelativeTo(null);
     }
     
         private void desativabotao(){

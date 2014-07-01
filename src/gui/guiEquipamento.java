@@ -26,6 +26,8 @@ public class guiEquipamento extends javax.swing.JFrame {
      */
     public guiEquipamento() {
         initComponents();
+         this.setTitle("CADASTRAR EQUIPAMENTO" );
+         this.setLocationRelativeTo(null);
     }
 
     /**

@@ -28,6 +28,8 @@ public class guiProduto extends javax.swing.JFrame {
      */
     public guiProduto() {
         initComponents();
+         this.setTitle("CADASTRAR PRODUTO" );
+         this.setLocationRelativeTo(null);
     }
 
     /**

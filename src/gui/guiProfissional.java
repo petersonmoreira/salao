@@ -22,6 +22,8 @@ public class guiProfissional extends javax.swing.JFrame {
      */
     public guiProfissional() {
         initComponents();
+         this.setTitle("CADASTRAR PROFISSIONAL" );
+         this.setLocationRelativeTo(null);
     }
 
     /**
