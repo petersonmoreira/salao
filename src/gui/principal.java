@@ -8,6 +8,7 @@ import JPA.produtoJpaController;
 import Relatórios.Aniversarios;
 import Relatórios.JDBC.ConectaBanco;
 import java.awt.Color;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -585,6 +586,68 @@ public class principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RelServicosXprofissionalMouseClicked
 
+    /*
+    private void RelServicosXprofissionalActionPerformed(Date datai, Date dataf) throws IOException{
+
+    try {
+
+
+ sql = "SELECT\n" +
+"     profissional.\"nome\" AS nome_profissional,\n" +
+"     atendimento.\"dataatendimento\" AS atendimento_dataatendimento,\n" +
+"     serviconovo.\"descricao\" AS servico\n" +
+"FROM\n" +
+"     \"atendimento\" atendimento,\n" +
+"     \"serviconovo\" serviconovo,\n" +
+"     \"profissional\" profissional\n" + 
+"WHERE\n" +
+"     atendimento.dataatendimento BETWEEN $P{DATA_INICIO} AND $P{DATA_FIM}" +
+//"    atendimento.dataatendimento BETWEEN " + datai + " AND " + dataf + "\n" +
+"ORDER BY\n" +
+"     atendimento.\"dataatendimento\" ASC,\n" +
+"     profissional.\"nome\" ASC";       
+
+PreparedStatement ps = con.prepareStatement(sql);
+rs = ps.executeQuery();
+
+        JRResultSetDataSource jrRS = new 
+JRResultSetDataSource(rs) ;
+
+//        JasperReport report = JasperCompileManager.compileReport(System.getProperty("user.dir")+""
+//                + "/src/FolhaChamada/FC1.jrxml");    
+        JasperReport report = JasperCompileManager.compileReport("//192.168.0.2/Alunos/FolhaChamada/FC1.jrxml");   
+
+        Map parametro = new HashMap();
+        parametro.put("professor_aula", professor);
+        parametro.put("local_aula_aula", local_aula);
+        parametro.put("modalidade_aula", modalidade);
+        parametro.put("semana_aula", semana);
+        parametro.put("hora_aula", hora);
+        parametro.put("faixa_etaria_aula", faixa_etaria);
+        parametro.put("sexo_aula", sexo);
+        parametro.put("nivel_aula", nivel);
+
+        JasperPrint print = JasperFillManager.fillReport(report, parametro, jrRS);
+
+        JasperViewer view = new JasperViewer(print, false);
+
+
+        String home_path=System.getProperty("user.home"); 
+
+        JasperExportManager.exportReportToPdfFile(print,home_path+"/FolhaDeChamada.pdf"); 
+        view.setTitle("Folha de Chamada");
+        view.setExtendedState(Frame.MAXIMIZED_BOTH);
+        view.setVisible(true);
+
+
+    } catch (SQLException | JRException e) {
+        System.out.println("e "+e.getMessage());
+    }   
+}//fim da folha chamada
+    */
+    
+  
+    
     private void RelServicosXprofissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelServicosXprofissionalActionPerformed
 
            
@@ -605,8 +668,15 @@ public class principal extends javax.swing.JFrame {
         
         
         try{
-             datai = convertUtilDateToSqlDate(JOptionPane.showInputDialog("Digite a Data Inicial:" ));
-             dataf = convertUtilDateToSqlDate(JOptionPane.showInputDialog("Digite a Data Final:" ));
+            datai = convertUtilDateToSqlDate(JOptionPane.showInputDialog("Digite a Data Inicial:" ));
+            dataf = convertUtilDateToSqlDate(JOptionPane.showInputDialog("Digite a Data Final:" ));
+            
+         //   Map parametros = new HashMap(); 
+        //    parametros.put("$P{DATA_INICIO}",datai);    
+        //    parametros.put("$P{DATA_FIM}", dataf);   
+        //    
+            
+            
             conecta.executaSQL("SELECT\n" +
 "     profissional.\"nome\" AS nome_profissional,\n" +
 "     atendimento.\"dataatendimento\" AS atendimento_dataatendimento,\n" +
@@ -616,14 +686,13 @@ public class principal extends javax.swing.JFrame {
 "     \"serviconovo\" serviconovo,\n" +
 "     \"profissional\" profissional\n" + 
 "WHERE\n" +
-"    atendimento.dataatendimento BETWEEN " + datai + " AND " + dataf + "\n" +
+"     atendimento.dataatendimento BETWEEN'"+datai+ "'AND'"+dataf+ "'\n" +
+//"    atendimento.dataatendimento BETWEEN " + datai + " AND " + dataf + "\n" +
 "ORDER BY\n" +
 "     atendimento.\"dataatendimento\" ASC,\n" +
 "     profissional.\"nome\" ASC");
             JRResultSetDataSource relatResul = new JRResultSetDataSource(conecta.rs);
-           // Map parametros = new HashMap(); 
-          //  parametros.put("DATA_INICIO","to_date("+19/06/2014+",'DD/MM/YYYY')");    
-           // parametros.put("DATA_FIM","to_date("+23/06/2014+",'DD/MM/YYYY')");   
+            
             JasperPrint jpPrint = JasperFillManager.fillReport("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/ServicoXMes.jasper", new HashMap(), relatResul);
             JasperViewer jv = new JasperViewer (jpPrint,false);
             jv.setVisible(true);

@@ -4,7 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="MES" class="java.lang.Integer">
-		<defaultValueExpression><![CDATA[6]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[5]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT

@@ -3,8 +3,12 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="DATA_INICIO" class="java.util.Date"/>
-	<parameter name="DATA_FIM" class="java.util.Date"/>
+	<parameter name="DATA_INICIO" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DATA_FIM" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
      profissional."nome" AS nome_profissional,
@@ -58,7 +62,7 @@ ORDER BY
 				<text><![CDATA[Data]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="88ecfd62-5cf4-4e30-a20a-a299e560f002" x="119" y="41" width="100" height="20"/>
+				<reportElement uuid="88ecfd62-5cf4-4e30-a20a-a299e560f002" x="119" y="41" width="127" height="20"/>
 				<textElement>
 					<font fontName="Comic Sans MS" size="12" isBold="true"/>
 				</textElement>
@@ -78,13 +82,6 @@ ORDER BY
 				</textElement>
 				<text><![CDATA[Período: de]]></text>
 			</staticText>
-			<textField>
-				<reportElement uuid="f2901a8a-5537-4900-8880-7377cff09ec3" x="219" y="0" width="100" height="20"/>
-				<textElement>
-					<font fontName="Arial" isBold="true" isUnderline="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{DATA_INICIO}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement uuid="31ac67b6-61a6-4ed4-81c0-c3c206ad11d8" x="319" y="0" width="18" height="20"/>
 				<textElement>
@@ -92,13 +89,6 @@ ORDER BY
 				</textElement>
 				<text><![CDATA[à]]></text>
 			</staticText>
-			<textField>
-				<reportElement uuid="6eb916c5-cee9-4880-bd04-b9cf66db7411" x="337" y="0" width="100" height="20"/>
-				<textElement>
-					<font fontName="Arial" isBold="true" isUnderline="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{DATA_FIM}]]></textFieldExpression>
-			</textField>
 		</band>
 	</columnHeader>
 	<detail>
@@ -111,7 +101,7 @@ ORDER BY
 				<textFieldExpression><![CDATA[$F{atendimento_dataatendimento}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="e0f34796-b2fc-4498-9425-40e2345a48c4" x="119" y="0" width="100" height="20"/>
+				<reportElement uuid="e0f34796-b2fc-4498-9425-40e2345a48c4" x="119" y="0" width="127" height="20"/>
 				<textElement>
 					<font fontName="Comic Sans MS" size="12"/>
 				</textElement>

@@ -18,6 +18,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.TemporalType;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import model.agendamento;
@@ -155,15 +156,26 @@ public class agendamentoJpaController implements Serializable {
         }
     }
     
-    /**
-     *
-     * @param data
-     * @return
-     */
-    public List<agendamento> getAgendamento(Date data) {
+   
+     
+    public List getAgendamento(Date data) {
             EntityManager em = getEntityManager();
-            Query agendamentos = em.createQuery("select a from agendamento a where a.dataagenda =" + data);
-            return (List) agendamentos;
+           //   return em.createQuery("select c from clientenovo c where c.mes =" + mes).getResultList();
+            
+            return em.createQuery("select a from agendamento a where a.dataAgenda = '"+data+"'").getResultList();
+          //  return (List) agendamentos;
     }
     
+    /*
+    public List getAgendamentodata (JDataChooser data){
+       
+        EntityManager em= getEntityManager();
+        Query agendamento = em.createQuery("select a from Agendamento a where a.dataagenda=:dataa" );
+        agendamento.setParameter("dataa",data.getCalendar().getTime());
+//agendamento.setParameter("dataa",data.getCalendar().getTime();
+        List obs = agendamento.getResultList();
+        
+        return obs;
+      */  
+   // }
 }
