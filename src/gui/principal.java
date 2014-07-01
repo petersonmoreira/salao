@@ -8,9 +8,15 @@ import JPA.produtoJpaController;
 import Relatórios.Aniversarios;
 import Relatórios.JDBC.ConectaBanco;
 import java.awt.Color;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
@@ -580,7 +586,21 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_RelServicosXprofissionalMouseClicked
 
     private void RelServicosXprofissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelServicosXprofissionalActionPerformed
-try{
+
+        Date datai = null, dataf = null;
+        try {
+            datai = formataData(JOptionPane.showInputDialog("Digite a Data Inicial:" ));
+            dataf = formataData(JOptionPane.showInputDialog("Digite a Data Final:" ));
+       
+        } catch (Exception ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("data ini = "+ datai);
+        System.out.println("data fim = " + dataf);
+        
+        
+        try{
+            
             conecta.executaSQL("SELECT\n" +
 "     profissional.\"nome\" AS nome_profissional,\n" +
 "     atendimento.\"dataatendimento\" AS atendimento_dataatendimento,\n" +
@@ -590,16 +610,18 @@ try{
 "     \"serviconovo\" serviconovo,\n" +
 "     \"profissional\" profissional\n" +
 "WHERE\n" +
-"    atendimento.dataatendimento BETWEEN $P{DATA_INICIO} AND $P{DATA_FIM}\n" +
-"ORDER BY\n" +
+"    atendimento.dataatendimento BETWEEN" + datai + "AND" + dataf +
+//"    atendimento.dataatendimento BETWEEN" +(JOptionPane.showInputDialog("Digite Data Inicial:" ))+ "AND" + (JOptionPane.showInputDialog("Digite Data Final:" )) +
+
+                    "ORDER BY\n" +
 "     atendimento.\"dataatendimento\" ASC,\n" +
 "     profissional.\"nome\" ASC");
             System.out.println("PASSOU CONECTA");
             JRResultSetDataSource relatResul = new JRResultSetDataSource(conecta.rs);
             System.out.println("PASSOU JRRESULTSET");
             Map parametros = new HashMap(); 
-            parametros.put("DATA_INICIO","to_date("+19/06/2014+",'DD/MM/YYYY')");    
-            parametros.put("DATA_FIM","to_date("+23/06/2014+",'DD/MM/YYYY')");   
+          //  parametros.put("DATA_INICIO","to_date("+19/06/2014+",'DD/MM/YYYY')");    
+           // parametros.put("DATA_FIM","to_date("+23/06/2014+",'DD/MM/YYYY')");   
             JasperPrint jpPrint = JasperFillManager.fillReport("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/ServicoXMes.jasper", parametros, relatResul);
             System.out.println("PASSOU LOCALIZAÇÃO DO RELATORIO");
             JasperViewer jv = new JasperViewer (jpPrint,false);
@@ -607,6 +629,8 @@ try{
             jv.toFront();
         } catch (JRException ex) {
             JOptionPane.showMessageDialog(rootPane, "Erro ao chamar o relatorio!\nErro:" + ex);
+        } catch (Exception ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
         
 // TODO add your handling code here:
@@ -636,7 +660,21 @@ try{
         
 // TODO add your handling code here:
     }//GEN-LAST:event_RelEquipamentosActionPerformed
-
+public static Date formataData(String data) throws Exception {   
+        if (data == null || data.equals(""))  
+            return null;  
+          
+        Date date = null;  
+        try {  
+            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+            date =  new java.sql.Date( ((java.util.Date)formatter.parse(data)).getTime());   
+        } catch (ParseException e) {              
+            throw e;  
+        }  
+        return date;  
+    }  
+    
+    
     private void LucroXProfissionalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LucroXProfissionalMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_LucroXProfissionalMouseClicked
@@ -644,7 +682,7 @@ try{
     private void LucroXProfissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LucroXProfissionalActionPerformed
  try{
             conecta.executaSQL("SELECT\n" +
-"  SUM (atendimento.total) AS total,\n" +
+"  SUM (atendimento.total) AS total,\n" + 
 "  atendimento.profissional_id\n" +
 "\n" +
 "FROM\n" +
@@ -652,7 +690,7 @@ try{
 "  profissional\n" +
 "\n" +
 "WHERE\n" +
-"extract(month from atendimento.dataatendimento) = $P{MES}\n" +
+"extract(month from atendimento.dataatendimento) = " + (JOptionPane.showInputDialog("Digite o mês:" ))+
 "\n" +
 "GROUP BY\n" +
 "  atendimento.profissional_id\n" +
@@ -661,7 +699,7 @@ try{
 "  atendimento.profissional_id ASC");
             JRResultSetDataSource relatResul = new JRResultSetDataSource(conecta.rs);
             Map parametros = new HashMap();
-            parametros.put("$P!{MES}", 6);  
+           // parametros.put("$P{MES}", 8);  
             JasperPrint jpPrint;
             jpPrint = JasperFillManager.fillReport("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/LucroXProfissionalXMes.jasper", parametros, relatResul);
             JasperViewer jv = new JasperViewer (jpPrint,false);
