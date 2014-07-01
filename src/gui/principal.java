@@ -587,20 +587,26 @@ public class principal extends javax.swing.JFrame {
 
     private void RelServicosXprofissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelServicosXprofissionalActionPerformed
 
+           
         Date datai = null, dataf = null;
+        
         try {
-            datai = formataData(JOptionPane.showInputDialog("Digite a Data Inicial:" ));
-            dataf = formataData(JOptionPane.showInputDialog("Digite a Data Final:" ));
+           //   datai = convertUtilDateToSqlDate(JOptionPane.showInputDialog("Digite a Data Inicial:" ));
+           //   dataf = convertUtilDateToSqlDate(JOptionPane.showInputDialog("Digite a Data Final:" ));
+            
+           // datai = formataData(JOptionPane.showInputDialog("Digite a Data Inicial:" ));
+           // dataf = formataData(JOptionPane.showInputDialog("Digite a Data Final:" ));
        
         } catch (Exception ex) {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("data ini = "+ datai);
-        System.out.println("data fim = " + dataf);
+       // System.out.println("data ini = "+ datai);
+       // System.out.println("data fim = " + dataf);
         
         
         try{
-            
+             datai = convertUtilDateToSqlDate(JOptionPane.showInputDialog("Digite a Data Inicial:" ));
+             dataf = convertUtilDateToSqlDate(JOptionPane.showInputDialog("Digite a Data Final:" ));
             conecta.executaSQL("SELECT\n" +
 "     profissional.\"nome\" AS nome_profissional,\n" +
 "     atendimento.\"dataatendimento\" AS atendimento_dataatendimento,\n" +
@@ -608,22 +614,17 @@ public class principal extends javax.swing.JFrame {
 "FROM\n" +
 "     \"atendimento\" atendimento,\n" +
 "     \"serviconovo\" serviconovo,\n" +
-"     \"profissional\" profissional\n" +
+"     \"profissional\" profissional\n" + 
 "WHERE\n" +
-"    atendimento.dataatendimento BETWEEN" + datai + "AND" + dataf +
-//"    atendimento.dataatendimento BETWEEN" +(JOptionPane.showInputDialog("Digite Data Inicial:" ))+ "AND" + (JOptionPane.showInputDialog("Digite Data Final:" )) +
-
-                    "ORDER BY\n" +
+"    atendimento.dataatendimento BETWEEN " + datai + " AND " + dataf + "\n" +
+"ORDER BY\n" +
 "     atendimento.\"dataatendimento\" ASC,\n" +
 "     profissional.\"nome\" ASC");
-            System.out.println("PASSOU CONECTA");
             JRResultSetDataSource relatResul = new JRResultSetDataSource(conecta.rs);
-            System.out.println("PASSOU JRRESULTSET");
-            Map parametros = new HashMap(); 
+           // Map parametros = new HashMap(); 
           //  parametros.put("DATA_INICIO","to_date("+19/06/2014+",'DD/MM/YYYY')");    
            // parametros.put("DATA_FIM","to_date("+23/06/2014+",'DD/MM/YYYY')");   
-            JasperPrint jpPrint = JasperFillManager.fillReport("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/ServicoXMes.jasper", parametros, relatResul);
-            System.out.println("PASSOU LOCALIZAÇÃO DO RELATORIO");
+            JasperPrint jpPrint = JasperFillManager.fillReport("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/ServicoXMes.jasper", new HashMap(), relatResul);
             JasperViewer jv = new JasperViewer (jpPrint,false);
             jv.setVisible(true);
             jv.toFront();
@@ -632,6 +633,8 @@ public class principal extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println("data ini = "+ datai);
+        System.out.println("data fim = " + dataf);
         
 // TODO add your handling code here:
     }//GEN-LAST:event_RelServicosXprofissionalActionPerformed
@@ -666,13 +669,25 @@ public static Date formataData(String data) throws Exception {
           
         Date date = null;  
         try {  
-            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
             date =  new java.sql.Date( ((java.util.Date)formatter.parse(data)).getTime());   
         } catch (ParseException e) {              
             throw e;  
         }  
         return date;  
     }  
+
+public java.sql.Date convertUtilDateToSqlDate( String str) {
+
+    SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+
+    java.util.Date dataUtil = new java.util.Date();
+    try { dataUtil = df.parse( str ); 
+    } catch (ParseException ex) {
+} 
+    java.sql.Date dataSql = new java.sql.Date(dataUtil.getTime());
+
+return dataSql; } 
     
     
     private void LucroXProfissionalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LucroXProfissionalMouseClicked
@@ -698,10 +713,10 @@ public static Date formataData(String data) throws Exception {
 "ORDER BY\n" +
 "  atendimento.profissional_id ASC");
             JRResultSetDataSource relatResul = new JRResultSetDataSource(conecta.rs);
-            Map parametros = new HashMap();
+           // Map parametros = new HashMap();
            // parametros.put("$P{MES}", 8);  
             JasperPrint jpPrint;
-            jpPrint = JasperFillManager.fillReport("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/LucroXProfissionalXMes.jasper", parametros, relatResul);
+            jpPrint = JasperFillManager.fillReport("C:\\Users\\Peterson\\Dropbox\\Faculdade\\2014 - 01\\Desenvolvimento II\\Sistema Salão de Beleza\\salao.beleza-05-05-14\\salao.beleza\\src\\Relatórios/LucroXProfissionalXMes.jasper", new HashMap(), relatResul);
             JasperViewer jv = new JasperViewer (jpPrint,false);
             jv.setVisible(true);
             jv.toFront();
